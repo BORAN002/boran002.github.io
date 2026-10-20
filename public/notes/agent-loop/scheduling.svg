@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="552" viewBox="0 0 400 460" role="img" aria-labelledby="title desc">
+  <title id="title">模型响应与工具执行的两种调度边界</title>
+  <desc id="desc">第一种先收完整条模型响应，再启动工具批次。第二种在完整工具调用到达时启动工具，与后续响应重叠。两种方式都在所需工具结果就绪后进入下一次模型决策。条形长度不代表实测耗时。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0 0L7 3.5L0 7Z" fill="#687268"/>
+    </marker>
+  </defs>
+  <rect width="400" height="460" rx="8" fill="#f3f3ed"/>
+  <g font-family="Inter, -apple-system, PingFang SC, Microsoft YaHei, sans-serif" fill="#303b35">
+    <text x="20" y="34" font-size="20" font-weight="600">完整响应后启动工具</text>
+    <text x="20" y="60" font-size="16" fill="#687268">Pi / Gemini 的上述默认路径</text>
+    <rect x="20" y="82" width="176" height="34" rx="5" fill="#dce6d5"/>
+    <text x="108" y="105" text-anchor="middle" font-size="18">模型响应流</text>
+    <path d="M196 99H207V147H218" fill="none" stroke="#687268" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="223" y="130" width="145" height="34" rx="5" fill="#e1e3dc"/>
+    <text x="295" y="153" text-anchor="middle" font-size="18">工具批次</text>
+    <path d="M368 147H380V180" fill="none" stroke="#687268" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="262" y="202" font-size="16" fill="#687268">下一次模型决策</text>
+    <path d="M20 225H380" stroke="#d9ddd3"/>
+    <text x="20" y="260" font-size="20" font-weight="600">完整工具调用到达后即可启动</text>
+    <text x="20" y="286" font-size="16" fill="#687268">OpenCode / Codex 的相应执行路径</text>
+    <rect x="20" y="310" width="260" height="34" rx="5" fill="#dce6d5"/>
+    <text x="30" y="333" font-size="18">模型响应流</text>
+    <circle cx="146" cy="327" r="4" fill="#48664f"/>
+    <text x="159" y="333" font-size="17" fill="#48664f">完整调用</text>
+    <path d="M146 344V362" fill="none" stroke="#687268" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="146" y="367" width="222" height="34" rx="5" fill="#e1e3dc"/>
+    <text x="257" y="390" text-anchor="middle" font-size="18">工具执行</text>
+    <path d="M368 384H380V418" fill="none" stroke="#687268" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="262" y="441" font-size="16" fill="#687268">下一次模型决策</text>
+  </g>
+</svg>
