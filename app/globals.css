@@ -224,6 +224,7 @@ main {
 .prose th,
 .prose td {
   border: 1px solid var(--line);
+  min-width: 150px;
   padding: 8px 14px;
   text-align: left;
 }
