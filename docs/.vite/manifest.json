@@ -23,61 +23,53 @@
       "_rolldown-runtime-C60lm6uB.js"
     ]
   },
-  "_papers-C-t9GG3o.js": {
-    "file": "_next/static/chunks/papers-C-t9GG3o.js",
-    "name": "papers",
-    "imports": [
-      "_createLucideIcon-BrNKFXBt.js"
-    ]
-  },
-  "_play-oi1-UoHe.js": {
-    "file": "_next/static/chunks/play-oi1-UoHe.js",
-    "name": "play",
-    "imports": [
-      "_createLucideIcon-BrNKFXBt.js"
-    ]
-  },
   "_rolldown-runtime-C60lm6uB.js": {
     "file": "_next/static/chunks/rolldown-runtime-C60lm6uB.js",
     "name": "rolldown-runtime"
   },
-  "components/pelican-background.tsx": {
-    "file": "_next/static/chunks/pelican-background-yKQEeLr6.js",
-    "name": "pelican-background",
-    "src": "components/pelican-background.tsx",
-    "isDynamicEntry": true,
+  "_x-Uwu_lTOy.js": {
+    "file": "_next/static/chunks/x-Uwu_lTOy.js",
+    "name": "x",
     "imports": [
-      "_rolldown-runtime-C60lm6uB.js",
-      "_play-oi1-UoHe.js",
-      "_framework-D_rUT4EX.js"
+      "_createLucideIcon-BrNKFXBt.js"
     ]
   },
-  "components/rsi/library.tsx": {
-    "file": "_next/static/chunks/library-B0ypF1Rg.js",
-    "name": "library",
-    "src": "components/rsi/library.tsx",
+  "components/notebook/article-tools.tsx": {
+    "file": "_next/static/chunks/article-tools-CHXrnFom.js",
+    "name": "article-tools",
+    "src": "components/notebook/article-tools.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_rolldown-runtime-C60lm6uB.js",
-      "_papers-C-t9GG3o.js",
       "_createLucideIcon-BrNKFXBt.js",
       "_framework-D_rUT4EX.js"
     ]
   },
-  "components/rsi/site-frame.tsx": {
-    "file": "_next/static/chunks/site-frame-CtvP4P1f.js",
-    "name": "site-frame",
-    "src": "components/rsi/site-frame.tsx",
+  "components/notebook/collection.tsx": {
+    "file": "_next/static/chunks/collection-Vxs7PpsI.js",
+    "name": "collection",
+    "src": "components/notebook/collection.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_rolldown-runtime-C60lm6uB.js",
-      "_papers-C-t9GG3o.js",
-      "_play-oi1-UoHe.js",
+      "_x-Uwu_lTOy.js",
+      "_framework-D_rUT4EX.js"
+    ]
+  },
+  "components/notebook/shell.tsx": {
+    "file": "_next/static/chunks/shell-JW9fYyFl.js",
+    "name": "shell",
+    "src": "components/notebook/shell.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-C60lm6uB.js",
+      "_createLucideIcon-BrNKFXBt.js",
+      "_x-Uwu_lTOy.js",
       "_framework-D_rUT4EX.js"
     ]
   },
   "node_modules/vinext/dist/shims/internal/app-route-prefetch-policy.js": {
-    "file": "_next/static/chunks/app-route-prefetch-policy-C-i3Nsze.js",
+    "file": "_next/static/chunks/app-route-prefetch-policy-mYpfPxik.js",
     "name": "app-route-prefetch-policy",
     "src": "node_modules/vinext/dist/shims/internal/app-route-prefetch-policy.js",
     "isDynamicEntry": true,
@@ -86,7 +78,7 @@
     ]
   },
   "node_modules/vinext/dist/shims/layout-segment-context.js": {
-    "file": "_next/static/chunks/layout-segment-context-um1V7dUp.js",
+    "file": "_next/static/chunks/layout-segment-context-C5tnnci-.js",
     "name": "layout-segment-context",
     "src": "node_modules/vinext/dist/shims/layout-segment-context.js",
     "isDynamicEntry": true,
@@ -97,7 +89,7 @@
     ]
   },
   "node_modules/vinext/dist/shims/streamed-icons.js": {
-    "file": "_next/static/chunks/streamed-icons-D0Q1wsQE.js",
+    "file": "_next/static/chunks/streamed-icons-D-TahkkG.js",
     "name": "streamed-icons",
     "src": "node_modules/vinext/dist/shims/streamed-icons.js",
     "isDynamicEntry": true,
@@ -107,7 +99,7 @@
     ]
   },
   "virtual:vinext-app-browser-entry": {
-    "file": "_next/static/chunks/index-DUwXWwae.js",
+    "file": "_next/static/chunks/index-ZbPvgtXW.js",
     "name": "index",
     "src": "virtual:vinext-app-browser-entry",
     "isEntry": true,
@@ -118,12 +110,12 @@
     "dynamicImports": [
       "node_modules/vinext/dist/shims/internal/app-route-prefetch-policy.js",
       "virtual:vinext-app-browser-entry",
+      "components/notebook/collection.tsx",
       "node_modules/vinext/dist/shims/layout-segment-context.js",
-      "components/rsi/site-frame.tsx",
       "_Icon-D0zGVybZ.js",
-      "components/pelican-background.tsx",
+      "components/notebook/shell.tsx",
       "node_modules/vinext/dist/shims/streamed-icons.js",
-      "components/rsi/library.tsx"
+      "components/notebook/article-tools.tsx"
     ]
   }
 }
