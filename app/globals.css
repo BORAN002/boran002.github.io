@@ -52,6 +52,11 @@ summary:focus-visible {
   padding: 0 32px 96px;
 }
 .site-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px 24px;
   padding: 39px 0 27px;
   border-bottom: 1px solid var(--line);
   font-size: 15px;
@@ -59,6 +64,83 @@ summary:focus-visible {
 }
 .site-header a {
   display: inline-block;
+}
+.site-nav {
+  display: flex;
+  gap: 24px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.site-nav a[aria-current='page'] {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 7px;
+}
+.section-description {
+  color: var(--muted);
+  margin: -15px 0 32px;
+}
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 38px 0 50px;
+}
+.section-card {
+  border-top: 1px solid var(--line);
+  padding: 16px 0;
+}
+.section-card h2 {
+  font-size: 18px;
+  font-weight: 550;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 8px;
+}
+.section-card h2 span {
+  color: var(--muted);
+  font-weight: 400;
+}
+.section-card p {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0 0 12px;
+}
+.section-card small {
+  color: var(--muted);
+  font: 11px var(--mono);
+}
+.list-heading {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--muted);
+  margin: 0;
+}
+.entry-section {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  margin-bottom: 3px;
+}
+.collection-link {
+  border-left: 2px solid var(--accent);
+  padding: 2px 0 2px 20px;
+  margin: 0 0 34px;
+}
+.collection-link .eyebrow {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+.collection-link > a {
+  color: var(--accent);
+  font-size: 17px;
+}
+.collection-link > p {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 8px 0 0;
 }
 main {
   outline: none;
@@ -270,6 +352,20 @@ main {
   top: 10px;
 }
 @media (max-width: 600px) {
+  .section-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin: 28px 0 36px;
+  }
+  .section-card {
+    padding: 12px 0;
+  }
+  .section-card p {
+    margin-bottom: 6px;
+  }
+  .site-nav {
+    gap: 18px;
+  }
   .page {
     padding: 0 24px 64px;
   }

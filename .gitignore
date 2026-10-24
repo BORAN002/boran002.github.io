@@ -39,3 +39,7 @@ next-env.d.ts
 
 # TypeScript incremental build cache
 *.tsbuildinfo
+
+# Generated from content/data by scripts/build-paper-catalog.mjs
+/public/data/agent-tool-use-2026.json
+/public/papers/agent-tool-use-2026/

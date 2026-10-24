@@ -7,7 +7,7 @@ draft: false
 
 这份笔记整理 **359 篇主会论文**：CVPR 2026 共 110 篇，ACL 2026 共 249 篇，覆盖工具调用、多模态、搜索、GUI/Web、代码与具身执行。
 
-每篇用三句话记录 **Idea、Research Problem、Insight**，标题链接到官方论文页。需要按会议、方向和相关程度筛选时，可以打开[交互式文献表](https://boran002.github.io/agent-tool-use-2026/)；[GitHub 笔记仓库](https://github.com/BORAN002/agent-tool-use-2026)保留 Markdown 和[结构化数据](https://boran002.github.io/agent-tool-use-2026/agent-tool-use-2026.json)。
+每篇用三句话记录 **Idea、Research Problem、Insight**，标题链接到官方论文页。可以打开[交互式文献表](/papers/agent-tool-use-2026/explorer/)按会议、方向与相关程度筛选，或下载[结构化数据（JSON）](/data/agent-tool-use-2026.json)与[完整笔记（Markdown）](/papers/agent-tool-use-2026/notes.md)。
 
 仅收录 CVPR Main 与 ACL Long / Short，排除 Findings、Workshop、Industry 和 Demo。172 篇标为直接工具使用，187 篇为相关的执行、规划、记忆、安全和评测研究。以下分类用于阅读导航，方向之间存在交叉。
 

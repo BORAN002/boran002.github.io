@@ -1,9 +1,9 @@
-import { formatDate, type Entry } from '@/lib/content';
+import { formatDate, sections, type Entry } from '@/lib/content';
 export function Article({ entry }: { entry: Entry }) {
   return (
     <main id="main" tabIndex={-1}>
-      <a className="back-link" href="/">
-        ← Notes
+      <a className="back-link" href={`/${entry.section}/`}>
+        ← {sections[entry.section].title}
       </a>
       <article>
         <header className="note-header">
