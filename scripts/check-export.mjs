@@ -41,11 +41,25 @@ const embedded = explorer.slice(
 );
 assert.deepEqual(JSON.parse(embedded), papers);
 assert.equal((note.match(/<h4 /g) || []).length, papers.length);
-assert.equal(
-  (note.match(/<strong>Idea：<\/strong>/g) || []).length,
-  papers.length,
-);
-assert.ok(!note.includes('**Idea：**'));
+for (const paper of papers) {
+  const page = await read(
+    `docs/papers/agent-tool-use-2026/reading/${paper.id.toLowerCase()}/index.html`,
+  );
+  for (const heading of [
+    'idea',
+    'research-problem',
+    'insight',
+    'method',
+    'sources',
+  ])
+    assert.ok(page.includes(`id="${heading}"`));
+  if (paper.method) {
+    assert.ok(!page.includes('详细笔记整理中'));
+    assert.ok(page.includes(paper.evidence.pdf_url));
+    for (const number of paper.evidence.read_pages)
+      assert.ok(page.includes(`#page=${number}`));
+  }
+}
 assert.ok(
   (await read('docs/notes/agent-tool-use-2026/index.html')).includes(
     'location.hash',
@@ -82,7 +96,9 @@ for (const file of await htmlFiles('docs')) {
     !html.includes('https://boran002.github.io/agent-tool-use-2026/'),
     'Stale explorer link in ' + file,
   );
-  for (const match of html.matchAll(/(?:href|src)="(\/[^"#?]*)/g)) {
+  for (const match of html
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
+    .matchAll(/(?:href|src)="(\/[^"#?]*)/g)) {
     const pathname = decodeURIComponent(match[1]);
     await access(
       'docs' + pathname + (pathname.endsWith('/') ? 'index.html' : ''),

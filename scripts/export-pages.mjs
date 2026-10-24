@@ -1,4 +1,17 @@
 import { cp, mkdir, rm, access, readFile, writeFile } from 'node:fs/promises';
+const sourceCatalog = JSON.parse(
+  await readFile('content/data/agent-tool-use-2026.json', 'utf8'),
+);
+if (
+  sourceCatalog.papers.some(
+    (p) => !p.method || p.evidence?.basis !== 'full_text',
+  ) &&
+  process.env.PAPER_NOTES_PREVIEW !== '1'
+) {
+  throw new Error(
+    'Detailed paper notes are incomplete. Set PAPER_NOTES_PREVIEW=1 only for a local preview.',
+  );
+}
 const entries = JSON.parse(await readFile('content/generated.json', 'utf8'));
 const paths = [
   '/',
@@ -38,7 +51,16 @@ await cp(
   'docs/data/agent-tool-use-2026.json',
   'docs/agent-tool-use-2026/agent-tool-use-2026.json',
 );
-const canonicalPaths = [...paths, '/papers/agent-tool-use-2026/explorer/'];
+const catalog = JSON.parse(
+  await readFile('content/data/agent-tool-use-2026.json', 'utf8'),
+);
+const canonicalPaths = [
+  ...paths,
+  '/papers/agent-tool-use-2026/explorer/',
+  ...catalog.papers.map(
+    (p) => `/papers/agent-tool-use-2026/reading/${p.id.toLowerCase()}/`,
+  ),
+];
 await writeFile(
   'docs/sitemap.xml',
   '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
