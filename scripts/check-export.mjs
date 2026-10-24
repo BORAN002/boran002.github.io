@@ -23,6 +23,13 @@ assert.ok(
 );
 const source = await read('content/data/agent-tool-use-2026.json');
 assert.equal(await read('docs/data/agent-tool-use-2026.json'), source);
+assert.equal(
+  await read('docs/agent-tool-use-2026/agent-tool-use-2026.json'),
+  source,
+);
+const legacyExplorer = await read('docs/agent-tool-use-2026/index.html');
+assert.ok(legacyExplorer.includes('/papers/agent-tool-use-2026/explorer/'));
+assert.ok(legacyExplorer.includes('location.search + location.hash'));
 const papers = JSON.parse(source).papers;
 const note = await read('docs/papers/agent-tool-use-2026/index.html');
 const explorer = await read(
@@ -53,6 +60,9 @@ for (const section of ['notes', 'blog', 'papers']) {
 const sitemap = await read('docs/sitemap.xml');
 assert.ok(sitemap.includes('/papers/agent-tool-use-2026/explorer/'));
 assert.ok(!sitemap.includes('/notes/agent-tool-use-2026/'));
+assert.ok(
+  !sitemap.includes('<loc>https://boran002.github.io/agent-tool-use-2026/'),
+);
 async function htmlFiles(path) {
   const files = [];
   for (const entry of await readdir(path, { withFileTypes: true })) {

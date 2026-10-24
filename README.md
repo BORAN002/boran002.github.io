@@ -34,7 +34,7 @@
 - `public/papers/agent-tool-use-2026/notes.md`：Markdown 下载。
 - `public/data/agent-tool-use-2026.json`：JSON 下载。
 
-展示模板在 `content/templates/paper-explorer.html`，专题文案生成逻辑在 `scripts/build-paper-catalog.mjs`。独立旧仓库只作为迁移入口，不再维护内容。旧文章路径 `/notes/agent-tool-use-2026/` 会保留章节锚点并跳转到 Papers。
+展示模板在 `content/templates/paper-explorer.html`，专题文案生成逻辑在 `scripts/build-paper-catalog.mjs`。主站直接承接旧文章路径 `/notes/agent-tool-use-2026/`、旧交互表路径 `/agent-tool-use-2026/` 和旧 JSON 下载地址；跳转保留章节锚点，不再依赖独立旧仓库。
 
 ## 预览与发布
 
