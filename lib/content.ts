@@ -11,6 +11,7 @@ export type Entry = {
   title: string;
   description: string;
   date: string;
+  showDate?: boolean;
   updated: string;
   url: string;
   toc: { id: string; title: string; depth: number }[];

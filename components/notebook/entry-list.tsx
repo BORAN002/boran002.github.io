@@ -19,7 +19,9 @@ export function EntryList({
               )}
               {entry.title}
             </span>
-            <time dateTime={entry.date}>{formatDate(entry.date)}</time>
+            {entry.showDate !== false && (
+              <time dateTime={entry.date}>{formatDate(entry.date)}</time>
+            )}
           </a>
         </li>
       ))}

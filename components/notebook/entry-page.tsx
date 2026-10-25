@@ -14,8 +14,12 @@ export async function entryMetadata(section: Section, { params }: EntryProps) {
       title: entry.title,
       description: entry.description || entry.title,
       url: entry.url,
-      publishedTime: entry.date,
-      modifiedTime: entry.updated,
+      ...(entry.showDate === false
+        ? {}
+        : {
+            publishedTime: entry.date,
+            modifiedTime: entry.updated,
+          }),
     },
   };
 }

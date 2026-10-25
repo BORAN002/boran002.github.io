@@ -30,6 +30,8 @@ for (const section of ['notes', 'blog', 'papers']) {
     );
     if (data.draft !== undefined && typeof data.draft !== 'boolean')
       throw new Error(`${file}: draft must be true or false`);
+    if (data.showDate !== undefined && typeof data.showDate !== 'boolean')
+      throw new Error(`${file}: showDate must be true or false`);
     if (data.draft === true) continue;
     const slug = file.replace(/\.md$/, '');
     if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) || slug === 'index')
@@ -78,6 +80,7 @@ for (const section of ['notes', 'blog', 'papers']) {
       section,
       title: data.title.trim(),
       date: data.date,
+      showDate: data.showDate ?? true,
       description: data.description?.trim() ?? '',
       updated: data.updated ?? data.date,
       url: `/${section}/${slug}/`,

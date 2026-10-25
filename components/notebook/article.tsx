@@ -8,7 +8,9 @@ export function Article({ entry }: { entry: Entry }) {
       <article>
         <header className="note-header">
           <h1>{entry.title}</h1>
-          <time dateTime={entry.date}>{formatDate(entry.date)}</time>
+          {entry.showDate !== false && (
+            <time dateTime={entry.date}>{formatDate(entry.date)}</time>
+          )}
         </header>
         {entry.toc.filter((item) => item.depth === 2).length >= 3 && (
           <details className="toc">
