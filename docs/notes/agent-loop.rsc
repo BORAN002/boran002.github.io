@@ -1,4 +1,4 @@
-0:{"page:/notes/agent-loop":"$L1","layout:/":"$L2","route:/notes/agent-loop":"$L3","__route":"route:/notes/agent-loop","__interceptionContext":null,"__layoutIds":["layout:/"],"__rootLayout":"/","__bfcacheSegmentIdentities":{"layout:/":"[\"layout\",\"layout:/\",\"root-boundary:/\",\"\"]","page:/notes/agent-loop":"[\"page\",\"page:/notes/:slug\",\"root-boundary:/\",\"[\\\"notes\\\",\\\"slug|agent-loop|d\\\"]\"]"},"__srcPage":["notes","[slug]","page"],"__layoutFlags":{"layout:/":"s"},"__artifactCompatibility":{"schemaVersion":1,"graphVersion":"app-route-graph:528b3508fbd9ac74","deploymentVersion":"50ff78da-8fcd-440e-bcb4-062974ce7298","appElementsSchemaVersion":1,"rscPayloadSchemaVersion":1,"rootBoundaryId":"/","renderEpoch":null}}
+0:{"page:/notes/agent-loop":"$L1","layout:/":"$L2","route:/notes/agent-loop":"$L3","__route":"route:/notes/agent-loop","__interceptionContext":null,"__layoutIds":["layout:/"],"__rootLayout":"/","__bfcacheSegmentIdentities":{"layout:/":"[\"layout\",\"layout:/\",\"root-boundary:/\",\"\"]","page:/notes/agent-loop":"[\"page\",\"page:/notes/:slug\",\"root-boundary:/\",\"[\\\"notes\\\",\\\"slug|agent-loop|d\\\"]\"]"},"__srcPage":["notes","[slug]","page"],"__layoutFlags":{"layout:/":"s"},"__artifactCompatibility":{"schemaVersion":1,"graphVersion":"app-route-graph:528b3508fbd9ac74","deploymentVersion":"e449c2fa-6a33-4504-9ae7-8e308fddd871","appElementsSchemaVersion":1,"rscPayloadSchemaVersion":1,"rootBoundaryId":"/","renderEpoch":null}}
 4:I["dda6c9d07718",[],"Navigation",1]
 5:I["8c0f216c4604",[],"Children",1]
 6:I["593f344dc510",[],"GlobalErrorBoundary",1]
@@ -11,211 +11,176 @@ c:I["9276801271d6",[],"AppRouterScrollTarget",1]
 d:I["593f344dc510",[],"RedirectBoundary",1]
 :HL["/_next/static/css/index.BxEeVPYR.css","style"     ]
 2:[[["$","link","css:/_next/static/css/index.BxEeVPYR.css",{"rel":"stylesheet","precedence":"vite-rsc/importer-resources","href":"/_next/static/css/index.BxEeVPYR.css","data-rsc-css-href":"/_next/static/css/index.BxEeVPYR.css"}],"$undefined"],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"children":[["$","a",null,{"className":"skip-link","href":"#main","children":"跳至正文"}],["$","div",null,{"className":"page","children":[["$","header",null,{"className":"site-header","children":[["$","a",null,{"href":"/","children":"Riven Zhang"}],["$","$L4",null,{}]]}],["$","$L5",null,{}]]}]]}]}]]
-3:[[["$","meta",null,{"charSet":"utf-8"}],[["$","title","0",{"children":"Agent Loop：从闭环决策到开源实现 · Riven Zhang"}],["$","meta","1",{"name":"description","content":"从控制流、动作粒度、反馈时机与状态表示出发，比较 mini-SWE-agent、OpenHands、Pi、Codex CLI、Gemini CLI、OpenCode，以及 LangGraph 与 smolagents。"}],["$","meta","2",{"property":"og:title","content":"Agent Loop：从闭环决策到开源实现"}],["$","meta","3",{"property":"og:description","content":"从控制流、动作粒度、反馈时机与状态表示出发，比较 mini-SWE-agent、OpenHands、Pi、Codex CLI、Gemini CLI、OpenCode，以及 LangGraph 与 smolagents。"}],["$","meta","4",{"property":"og:url","content":"https://boran002.github.io/notes/agent-loop/"}],["$","meta","5",{"property":"og:type","content":"article"}],["$","meta","6",{"property":"article:published_time","content":"2026-10-20"}],["$","meta","7",{"property":"article:modified_time","content":"2026-10-20"}],["$","meta","8",{"name":"twitter:card","content":"summary"}],["$","meta","9",{"name":"twitter:title","content":"Agent Loop：从闭环决策到开源实现"}],["$","meta","10",{"name":"twitter:description","content":"从控制流、动作粒度、反馈时机与状态表示出发，比较 mini-SWE-agent、OpenHands、Pi、Codex CLI、Gemini CLI、OpenCode，以及 LangGraph 与 smolagents。"}],["$","link","11",{"data-vinext-streamed-icon":"$undefined","rel":"icon","href":"/favicon.svg","type":"$undefined","sizes":"$undefined","color":"$undefined","media":"$undefined","fetchPriority":"$undefined"}],["$","link","12",{"rel":"canonical","href":"https://boran002.github.io/notes/agent-loop/"}]],[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]],["$","$L6",null,{"fallback":"$7","children":["$","$L8",null,{"fallback":"$7","children":["$","$L9",null,{"providerId":"layout:/","segmentMap":{"children":["notes","agent-loop"]},"children":["$","$La",null,{"id":"layout:/","parallelSlots":"$undefined","children":["$","$Lb",null,{"resetKey":"notes","fallback":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"children":["$","$Lc",null,{"children":["$","$Ld",null,{"children":[["$","$L9",null,{"providerId":"page:/notes/agent-loop","segmentMap":{"children":["__PAGE__"]},"children":["$","$La",null,{"id":"page:/notes/agent-loop"}]}],null]}]}]}]}]}]}]}],null,null]
-e:Te9bb,<p>让模型修改一个函数并修复测试，大致有两种做法。第一种是让它一次写出固定步骤，再按步骤执行；第二种是先让它读代码，拿到结果后决定改哪里，看到测试失败后再决定怎样修。两者都能调用工具，区别在于：<strong>执行过程中获得的新信息，什么时候能够改变后续决策。</strong></p>
-<p>Agent Loop 研究的就是这个闭环。比较开源 Agent 时，最值得看的也不是工具数量，而是控制权如何在模型、运行时和环境之间流动：谁选择下一步，一次选择承诺执行多少工作，哪些事件会让系统继续、暂停或结束。</p>
-<p>本章选取 Codex CLI、Gemini CLI、OpenCode、Pi、OpenHands SDK，并用 mini-SWE-agent 作为最小实现的参照；另以 LangGraph 和 smolagents 说明控制图与动作语言两个不同维度。源码固定到 2026 年 10 月 20 日核查的提交，具体版本见文末。</p>
-<h2 id="一-一个-loop-实际在循环什么">一、一个 Loop 实际在循环什么</h2>
-<h3 id="1-1-模型选择动作-运行时推进执行">1.1 模型选择动作，运行时推进执行</h3>
-<p>对一次普通的工具交互，可以用下面的抽象描述：</p>
-<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>c</mi><mi>t</mi></msub><mo>=</mo><mi>C</mi><mo stretchy="false">(</mo><msub><mi>S</mi><mi>t</mi></msub><mo stretchy="false">)</mo><mo separator="true">,</mo><mspace width="2em"/><msub><mi>a</mi><mi>t</mi></msub><mo>∼</mo><msub><mi>π</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mo>⋅</mo><mo>∣</mo><msub><mi>c</mi><mi>t</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">
-c_t=C(S_t),\qquad a_t\sim\pi_\theta(\cdot\mid c_t)
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">⋅</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></eqn></section><section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo separator="true">,</mo><msub><mi>o</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="script">E</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mi>t</mi></msub><mo separator="true">,</mo><mi>D</mi><mo stretchy="false">(</mo><msub><mi>a</mi><mi>t</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">
-(x_{t+1},o_{t+1})=\mathcal E(x_t,D(a_t))
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.0894em;">E</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">D</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">))</span></span></span></span></span></eqn></section><section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>S</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>U</mi><mo stretchy="false">(</mo><msub><mi>S</mi><mi>t</mi></msub><mo separator="true">,</mo><msub><mi>a</mi><mi>t</mi></msub><mo separator="true">,</mo><msub><mi>o</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">
-S_{t+1}=U(S_t,a_t,o_{t+1})
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8917em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">U</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></eqn></section><p>这里，<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">x_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> 是环境状态，例如仓库文件、进程和外部服务；<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">S_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> 是运行时保存的状态，例如消息、待执行动作、计数器与队列；<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">c_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> 是本次实际送给模型的上下文。模型策略 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>π</mi><mi>θ</mi></msub></mrow><annotation encoding="application/x-tex">\pi_\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> 生成动作表示 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">a_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq>，调度器 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi></mrow><annotation encoding="application/x-tex">D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">D</span></span></span></span></eq> 将它变成可执行操作，环境 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">E</mi></mrow><annotation encoding="application/x-tex">\mathcal E</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0894em;">E</span></span></span></span></eq> 返回观察 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>o</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">o_{t+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6389em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span></eq>，更新函数 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi></mrow><annotation encoding="application/x-tex">U</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">U</span></span></span></span></eq> 再把结果纳入下一步。</p>
-<p>这几个对象不能混在一起。模型输出一条 <code>run_tests</code> 调用，不意味着测试已经运行；工具运行结束，也不意味着结果已经进入下一次模型请求。<strong>模型负责提出动作，运行时负责让动作发生，并决定何时再次调用模型。</strong></p>
-<p>上述公式只画出了正常的工具反馈路径。实际程序还有文本回复、等待用户、取消、重试等分支。它们都在改变同一个问题的答案：当前状态下，下一次允许发生什么？</p>
-<h3 id="1-2-闭环的核心是反馈进入决策">1.2 闭环的核心是反馈进入决策</h3>
-<p>ReAct 把语言推理、行动与环境观察交织起来，使新观察能够影响后续计划。<a href="https://arxiv.org/abs/2210.03629v3">[1]</a> 它提供的是一种交互范式。今天的实现可以用原生 tool calls 表达动作，也可以让推理发生在模型内部；公开输出一段 <code>Thought:</code> 不是构成 Loop 的必要条件。</p>
-<p>反过来，源文件里出现 <code>while True</code> 也不足以说明系统在做闭环决策。如果循环只是机械执行一张既定任务表，而中途观察不会改变动作选择，那么它主要承担执行器的角色。只有观察重新进入选择过程，反馈回路才闭合。</p>
-<p>代码任务尤其适合用部分可观测的视角理解。模型只读到搜索命中的几个片段，并没有看到整个仓库；一条成功退出的测试命令，也只揭示了环境的部分性质。因此，上下文 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">c_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> 是对历史信息的一种选择性表示，并不是环境 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">x_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> 的完整副本。</p>
-<p>这也解释了搜索、测试和询问的作用：有些动作主要改变环境，有些动作主要减少不确定性。读一个调用点也许没有修改任何文件，却可能让下一步修改完全不同。把“有价值的行动”只理解为写代码，会漏掉 Agent Loop 中的信息获取过程。</p>
-<h3 id="1-3-三种时间尺度">1.3 三种时间尺度</h3>
-<p>阅读源码时，至少要分清三个单位：</p>
+3:[[["$","meta",null,{"charSet":"utf-8"}],[["$","title","0",{"children":"Agent Loop · Riven Zhang"}],["$","meta","1",{"name":"description","content":"围绕 Agent Loop 记录关键 Insight 与 Method。第一章 Context Engineering：稳定前缀、按需加载、显式状态与任务感知压缩。"}],["$","meta","2",{"property":"og:title","content":"Agent Loop"}],["$","meta","3",{"property":"og:description","content":"围绕 Agent Loop 记录关键 Insight 与 Method。第一章 Context Engineering：稳定前缀、按需加载、显式状态与任务感知压缩。"}],["$","meta","4",{"property":"og:url","content":"https://boran002.github.io/notes/agent-loop/"}],["$","meta","5",{"property":"og:type","content":"article"}],["$","meta","6",{"property":"article:published_time","content":"2026-10-20"}],["$","meta","7",{"property":"article:modified_time","content":"2026-10-25"}],["$","meta","8",{"name":"twitter:card","content":"summary"}],["$","meta","9",{"name":"twitter:title","content":"Agent Loop"}],["$","meta","10",{"name":"twitter:description","content":"围绕 Agent Loop 记录关键 Insight 与 Method。第一章 Context Engineering：稳定前缀、按需加载、显式状态与任务感知压缩。"}],["$","link","11",{"data-vinext-streamed-icon":"$undefined","rel":"icon","href":"/favicon.svg","type":"$undefined","sizes":"$undefined","color":"$undefined","media":"$undefined","fetchPriority":"$undefined"}],["$","link","12",{"rel":"canonical","href":"https://boran002.github.io/notes/agent-loop/"}]],[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]],["$","$L6",null,{"fallback":"$7","children":["$","$L8",null,{"fallback":"$7","children":["$","$L9",null,{"providerId":"layout:/","segmentMap":{"children":["notes","agent-loop"]},"children":["$","$La",null,{"id":"layout:/","parallelSlots":"$undefined","children":["$","$Lb",null,{"resetKey":"notes","fallback":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"children":["$","$Lc",null,{"children":["$","$Ld",null,{"children":[["$","$L9",null,{"providerId":"page:/notes/agent-loop","segmentMap":{"children":["__PAGE__"]},"children":["$","$La",null,{"id":"page:/notes/agent-loop"}]}],null]}]}]}]}]}]}]}],null,null]
+e:T3fa4,<h2 id="第一章-context-engineering">第一章 Context Engineering</h2>
+<p>本章参考李博杰《深入理解 AI Agent》<a href="https://bojieli.github.io/ai-agent-book/astro/book/chapter2/">第二章：上下文工程</a>，按 <strong>Insight → Method → 适用边界</strong> 整理。重点记录能改变系统设计的判断，以及可以落实到 Agent Loop 的方法；最后给出基于这些判断归纳的实现流程。</p>
+<p><strong>核心问题：在每一个决策点，怎样以可接受的成本，让模型看到足够、准确、可直接使用的信息？</strong></p>
+<h3 id="1-1-context-是决策输入-信息供给决定能力能否发挥">1.1 Context 是决策输入，信息供给决定能力能否发挥</h3>
+<p><strong>Insight</strong></p>
+<p>模型具备通用能力，不代表它知道当前项目的架构、业务约束和运行环境。Agent 的下一步动作取决于本轮实际收到的上下文；关键背景没有进入请求，模型就只能猜测。很多看起来像推理失败的问题，首先是信息缺失、过期或组织不当。</p>
+<p>上下文工程因此同时涉及软件架构和知识管理。团队把决策理由留在私聊、把操作规范留在个人经验里，会让人和 Agent 都反复摸索。可检索的文档、明确的流程与可验证的环境信息，是模型发挥能力的基础设施。</p>
+<p><strong>Method</strong></p>
+<p>在任务开始时建立三类最低必要背景：项目结构与接口约定、业务规则与完成标准、当前环境与权限。对每项关键判断，明确依据来自哪个文件、工具或记录；不确定的信息按需获取，避免一次性装入全部资料。</p>
+<p>把一轮工作理解为：<strong>运行时状态 → 上下文构造 → 模型选择动作 → 执行与反馈 → 更新状态</strong>。系统保存了什么，与模型这次看到了什么，需要分开设计。完整轨迹可以留在外部存储，每次请求只提供当前决策所需的视图。</p>
+<h3 id="1-2-消息协议承载语义-工具反馈必须正确闭环">1.2 消息协议承载语义，工具反馈必须正确闭环</h3>
+<p><strong>Insight</strong></p>
+<p>模型提出工具调用，运行时执行工具，再把结果交给模型。调用请求、执行结果和最终回答是不同事件；如果结果没有正确关联回历史，下一轮就可能重复操作或误判任务已经完成。</p>
+<p>原文以 Chat Completions 的 system、user、assistant、tool 四类消息及独立的 tools 字段说明这一结构。Chat Template 再把结构化请求转换成模型实际处理的 token 序列，角色与边界因此会影响模型对信息的解释。</p>
+<p><strong>Method</strong></p>
+<p>使用目标模型支持的原生消息协议，保留工具调用与结果的关联 ID。多工具之间没有数据依赖时可以并行；后一个调用需要前一个结果时，先等待结果，再构造后续动作。</p>
+<p>不要把工具返回伪装成新的用户要求，也不要把全部消息压成自行定义角色边界的纯文本。不同模型对 reasoning/thinking 的回传要求不同，应由适配层遵循各自协议；不能把某个模型的处理方式直接推广到所有模型。</p>
+<h3 id="1-3-缓存是上下文布局的约束">1.3 缓存是上下文布局的约束</h3>
+<p><strong>Insight</strong></p>
+<p>KV Cache 保存模型已经计算过的历史 token 的 Key/Value；跨请求的 Prompt Cache 则复用相同前缀的计算结果。前缀复用依赖实际 token 序列一致，语义相近并不足够。修改某个位置后，通常只能继续复用它之前的缓存，后面的状态需要重算。</p>
+<p>所以，一行放在系统提示词前部的动态时间、一次工具列表重排，都可能使很长的后缀失去复用机会。缓存收益需要在上下文组织时考虑，而不是上线后再补一个开关。</p>
+<p><strong>Method</strong></p>
 <table>
 <thead>
 <tr>
-<th>单位</th>
-<th>它描述什么</th>
+<th>信息</th>
+<th>默认布局</th>
+<th>更新方式</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>模型调用</td>
-<td>一次输入上下文到一次模型响应</td>
+<td>通用指令、核心工具定义</td>
+<td>稳定前缀</td>
+<td>版本化维护，避免每轮变化</td>
 </tr>
 <tr>
-<td>工具动作</td>
-<td>一次命令、文件编辑、检索，或一段程序的执行</td>
+<td>会话内稳定的项目背景</td>
+<td>通用前缀之后</td>
+<td>初始化后尽量保持一致</td>
 </tr>
 <tr>
-<td>用户轮次</td>
-<td>从接到用户输入，到把控制权交回用户的一段工作</td>
+<td>新观察、工具结果、任务进展</td>
+<td>轨迹后部</td>
+<td>按发生顺序追加</td>
+</tr>
+<tr>
+<td>时间、计数器、环境变化</td>
+<td>当前决策附近</td>
+<td>追加新状态或受控替换尾部状态</td>
+</tr>
+<tr>
+<td>大型资料、专用流程</td>
+<td>外部存储或按需加载</td>
+<td>只引入相关片段</td>
 </tr>
 </tbody>
 </table>
-<p>它们没有固定的一一对应关系。一次模型响应可以包含多个工具动作，一段生成的程序内部又可以调用许多工具；一个用户轮次可以包含很多次模型调用。</p>
-<p>项目里的 <code>step</code>、<code>turn</code>、<code>iteration</code> 还可能另有定义。OpenHands 的一次 <code>Agent.step()</code> 可以只处理此前待执行的动作；OpenCode 的一个逻辑 step 可以包含重试。因此，“两个 Agent 都用了十步”并不能直接说明它们消耗了相同计算，甚至不能说明它们获得了相同次数的环境反馈。</p>
-<h2 id="二-react-规划与搜索-改变的是哪个部分">二、ReAct、规划与搜索，改变的是哪个部分</h2>
-<h3 id="2-1-react-每次得到新观察-再选择下一步">2.1 ReAct：每次得到新观察，再选择下一步</h3>
-<p>最直接的闭环是：</p>
-<pre><code class="language-text">模型选择动作 → 执行 → 观察 → 模型重新选择动作
-</code></pre>
-<p>它把很多决策留到运行时。例如，测试失败以后，下一步可能是修代码，也可能是补依赖、修测试，或者重新理解需求。外部世界尚不清楚时，这种逐次决策保留了调整空间。</p>
-<p>代价是每个需要重新判断的边界都可能引入一次模型调用。若后续操作本来就是确定的，逐项询问模型就会把可以交给程序的工作重新语言化。</p>
-<p>这里的“反应式”也不等于没有规划。模型可以在上下文中维护长计划，但只提交当前动作。<strong>计划的存在，与控制流是否由计划执行器掌管，是两回事。</strong></p>
-<h3 id="2-2-plan-execute-提前决定结构-延后填入结果">2.2 Plan–Execute：提前决定结构，延后填入结果</h3>
-<p>ReWOO 提供了一个有用的对照：Planner 先生成带依赖的计划，Worker 执行工具并填充证据变量，Solver 最后结合计划和证据生成答案。<a href="https://arxiv.org/html/2305.18323v1">[2]</a></p>
-<p>例如，第二步可以引用第一步产生的 <code>#E1</code>，而不必在第一步完成后再调用规划模型来构造第二步。<strong>数据依赖并不自动意味着一次新的模型决策。</strong></p>
-<p>这个区别比“先规划还是不规划”更准确。若第一步只是查询一个已知 API 的资源 ID，第二步用该 ID 获取详情，提前写好依赖关系很自然；若新结果要求选择预先计划及其条件分支之外的路线，就需要一个返回规划器的边。加入这条边之后，Plan–Execute 自身也可以形成闭环。</p>
-<p>所以，规划与反应不是互斥的产品类别，而是两种分配决策时间的方式：哪些事情现在决定，哪些事情等观察到来后再决定。</p>
-<h3 id="2-3-搜索式-loop-保留多个候选状态">2.3 搜索式 Loop：保留多个候选状态</h3>
-<p>Tree of Thoughts 把中间推理组织成可评价、可扩展和可回退的候选状态。<a href="https://arxiv.org/html/2305.10601v2">[3]</a> 与沿着一条历史不断前进相比，搜索式控制器还需要维护候选集合、选择规则和分支预算。</p>
-<p>这不等于让同一个 Agent 多试几次。若系统没有保存候选状态，也没有显式选择和回溯机制，几轮失败后的重试仍然可能只是单条轨迹上的继续执行。</p>
-<p>对代码 Agent，还有一个更实际的限制：文本中的回退不自动撤销环境中的动作。要比较两个修改方案，就必须明确它们是否使用独立工作区，测试依据哪个版本，以及选中一条分支后怎样处理另一条分支的副作用。这是把搜索算法落实到可变环境时新增的语义。</p>
-<h2 id="三-六个开源实现怎样安排闭环">三、六个开源实现怎样安排闭环</h2>
-<h3 id="3-1-mini-swe-agent-把控制骨架压到消息循环">3.1 mini-SWE-agent：把控制骨架压到消息循环</h3>
-<p>mini-SWE-agent 的 <code>DefaultAgent.step()</code> 非常直接：</p>
-<pre><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">step</span>(<span class="hljs-params">self</span>) -&gt; <span class="hljs-built_in">list</span>[<span class="hljs-built_in">dict</span>]:
-    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.execute_actions(<span class="hljs-variable language_">self</span>.query())
-</code></pre>
-<p>它的外层 <code>run()</code> 初始化消息并反复调用 <code>step()</code>；<code>query()</code> 检查限制后把累计消息交给模型，<code>execute_actions()</code> 执行动作，再由模型适配器把观察转换成消息。<a href="https://github.com/SWE-agent/mini-swe-agent/blob/04d809ceab9df28f9adaed044884180159172930/src/minisweagent/agents/default.py#L88-L157">[4]</a></p>
-<p>在本文核查的 v2.4.6 中，原生工具调用路径提供 <code>bash</code>，一条响应可以含多个动作，核心执行器依次执行它们。最小循环并不意味着“一次模型调用只能执行一条命令”，更不意味着环境没有状态：文件修改保留在工作区里，消息轨迹保留在 Agent 中。</p>
-<p>这些动作虽然串行执行，动作之间并不重新调用模型。因此，第二个动作可以执行预先写好的条件逻辑，却不能在这里凭空多出一次基于第一个结果的语言决策。</p>
-<p>它的结束协议也很明确。以本地环境为例，命令成功退出并输出约定的提交标志后，系统产生 <code>exit</code> 消息，外层循环据此停止。这表达的是“Agent 提交了结果”，而非“结果已被测试证明正确”。<a href="https://github.com/SWE-agent/mini-swe-agent/blob/04d809ceab9df28f9adaed044884180159172930/src/minisweagent/environments/local.py#L45-L56">[4a]</a></p>
-<p>这个实现适合作为参照，因为模型、环境与反馈之间几乎没有多余的控制层。它也让信息组织的选择直接显现出来：默认核心累积消息，未在这里实现历史压缩。如果任务变长，需要另行决定怎样构造下一次上下文。</p>
-<h3 id="3-2-openhands-sdk-会话控制与动作决策分开">3.2 OpenHands SDK：会话控制与动作决策分开</h3>
-<p>OpenHands SDK 将外层生命周期交给 <code>Conversation.run()</code>，由它处理运行、暂停、等待确认、结束和错误等状态；内层 <code>Agent.step()</code> 负责推进一次 Agent 工作。<a href="https://github.com/OpenHands/software-agent-sdk/blob/33d8aa29c3078d074799e2fbf5e847aeb2d71360/openhands-sdk/openhands/sdk/conversation/impl/local_conversation.py#L1945-L2090">[5]</a></p>
-<p>两层分工使 <code>step()</code> 的含义更宽。它可能执行此前留下的待处理动作，可能应用一次上下文压缩，也可能正常调用模型并执行返回的动作批次。因此，外层的一次迭代不必对应一次新的行动决策。<a href="https://github.com/OpenHands/software-agent-sdk/blob/33d8aa29c3078d074799e2fbf5e847aeb2d71360/openhands-sdk/openhands/sdk/agent/agent.py#L707-L897">[5a]</a></p>
-<p>状态表示也是它与 mini-SWE-agent 的重要区别。模型生成的工具调用会成为 <code>ActionEvent</code>，结果成为对应的 <code>ObservationEvent</code>；系统保留事件记录，再从事件构造模型可见的视图。配置 condenser 时，可以隐藏旧事件并插入摘要，同时保留原始日志。<a href="https://github.com/OpenHands/software-agent-sdk/blob/33d8aa29c3078d074799e2fbf5e847aeb2d71360/openhands-sdk/openhands/sdk/context/view/view.py#L111-L158">[5b]</a></p>
-<p>从前面的抽象看，OpenHands 把 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">S_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> 与 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><msub><mi>S</mi><mi>t</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C(S_t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq> 显式分开了：<strong>系统记得的事情，多于这一次模型看到的事情。</strong> 这种设计给暂停、恢复、事件订阅和视图变换提供了明确位置，同时也增加了需要理解的状态转移。本文讨论的是新 SDK，而不是旧版 <code>AgentController</code>。</p>
-<h3 id="3-3-pi-两层循环-处理两种输入时机">3.3 Pi：两层循环，处理两种输入时机</h3>
-<p>Pi 的核心有内外两层循环。内层处理工具反馈和 steering；当这一轮本来要结束时，外层再检查 follow-up。<a href="https://github.com/earendil-works/pi/blob/73f8de80bc87021375f8b525292ac07492253002/packages/agent/src/agent-loop.ts#L163-L320">[6]</a></p>
-<p>这里的两层循环并不表示两个推理层级。它们解决的是用户输入何时进入模型的问题：steering 用于调整正在进行的工作，follow-up 用于接续本轮之后的工作。模型仍然是在每次调用时依据当前上下文生成下一条响应。</p>
-<p>在本文快照中，Pi 先等完整 assistant response，再执行其中的工具批次；steering 要等本批工具全部完成后，才在下一次模型调用前注入，不会跳过这一批剩余的工具。当前工具执行默认可并行，工具也可以要求整批顺序执行。<a href="https://github.com/earendil-works/pi/blob/73f8de80bc87021375f8b525292ac07492253002/packages/agent/src/types.ts#L282-L317">[6a]</a> <a href="https://github.com/earendil-works/pi/blob/73f8de80bc87021375f8b525292ac07492253002/packages/agent/src/agent-loop.ts#L508-L523">[6b]</a></p>
-<p>这里可以看到两个容易混淆的边界。用户能够“中途输入”，不意味着已经发出的模型请求会被改写；工具能够“并行执行”，也不意味着模型能够在同一批里读到第一个工具结果后再重新选择第二个工具。</p>
-<p>Pi 将核心 Loop 做成可嵌入组件，而把压缩等策略放到上层会话及 hooks 中。因此，核心文件精简并不意味着完整应用没有上下文管理。<a href="https://github.com/earendil-works/pi/blob/73f8de80bc87021375f8b525292ac07492253002/packages/coding-agent/src/core/agent-session.ts#L899-L931">[6c]</a></p>
-<h3 id="3-4-codex-cli-将续跑条件集中到一次用户轮次">3.4 Codex CLI：将续跑条件集中到一次用户轮次</h3>
-<p>Codex CLI 的 core 通过 <code>run_turn</code> 组织一次用户轮次，其中可以包含多次模型采样。每一步结束后，它综合模型的续跑信号与 pending input 决定是否继续；原本可以结束时，stop hook 也可能提供新的继续原因。<a href="https://github.com/openai/codex/blob/014489466a1739c2c563cdfe57880c2c7c8680e3/codex-rs/core/src/session/turn.rs#L580-L610">[7]</a> <a href="https://github.com/openai/codex/blob/014489466a1739c2c563cdfe57880c2c7c8680e3/codex-rs/core/src/session/turn.rs#L724-L776">[7d]</a></p>
-<p>这说明停止权并不完全属于模型。模型没有再请求工具，只是一个信号；运行时还要判断是否有尚未交给模型的输入，以及结束策略是否允许交回控制权。一个持久 session 则可以在这次 turn 结束后继续承载后面的用户轮次。</p>
-<p>Codex 还为每次采样建立 step 快照，固定该请求使用的模型设置、工具路由与环境信息。<a href="https://github.com/openai/codex/blob/014489466a1739c2c563cdfe57880c2c7c8680e3/codex-rs/core/src/session/step_context.rs#L22-L46">[7a]</a> 这解决的是一致性问题：本次模型看到的工具，与运行时随后解释它的调用时使用的工具定义，应当对应。</p>
-<p>在工具执行上，完整工具 item 到达后可以开始 dispatch，与后续模型流重叠；同步 post-model hook 等路径会延后执行。工具是否允许并行由 registry 显式声明，结果再按受控顺序写回历史。<a href="https://github.com/openai/codex/blob/014489466a1739c2c563cdfe57880c2c7c8680e3/codex-rs/core/src/stream_events_utils.rs#L347-L369">[7b]</a> <a href="https://github.com/openai/codex/blob/014489466a1739c2c563cdfe57880c2c7c8680e3/codex-rs/core/src/tools/router.rs#L246-L250">[7c]</a> 因此，模型选择一批动作、运行时安排这批动作、下一步模型读到结果，是三个相互衔接的过程。</p>
-<h3 id="3-5-gemini-cli-模型流与工具反馈循环分层">3.5 Gemini CLI：模型流与工具反馈循环分层</h3>
-<p>Gemini CLI 当前默认路径把职责分到不同层：core 的 <code>Turn.run</code> 处理一次逻辑模型响应，将流转成内容、工具请求等事件；CLI 外层再调用 scheduler，并把工具结果作为 continuation 送回 core。<a href="https://github.com/google-gemini/gemini-cli/blob/76e4d7c046c7dab5727787da378b9c06bf0948cf/packages/cli/src/nonInteractiveCli.ts#L310-L332">[8]</a> <a href="https://github.com/google-gemini/gemini-cli/blob/76e4d7c046c7dab5727787da378b9c06bf0948cf/packages/core/src/core/turn.ts#L254-L297">[8c]</a></p>
-<p>所以，Gemini 的这个 <code>Turn</code> 与 Codex 的用户 turn 不是同一个粒度。它们最终都能完成工具反馈闭环，但循环“闭合在哪里”不同：Codex 主要在 core 内组织完整工作轮次，Gemini 的默认路径需要 core、CLI 与调度器共同完成。</p>
-<p>默认交互路径会先收完整次模型流，再调度工具批次。<a href="https://github.com/google-gemini/gemini-cli/blob/76e4d7c046c7dab5727787da378b9c06bf0948cf/packages/cli/src/ui/hooks/useGeminiStream.ts#L1762-L1778">[8a]</a> scheduler 将连续可并行的调用组成一个 wave；编辑工具等构成边界，其他调用还可以用 <code>wait_for_previous</code> 表达等待要求。<a href="https://github.com/google-gemini/gemini-cli/blob/76e4d7c046c7dab5727787da378b9c06bf0948cf/packages/core/src/utils/tool-utils.ts#L25-L41">[8b]</a> <a href="https://github.com/google-gemini/gemini-cli/blob/76e4d7c046c7dab5727787da378b9c06bf0948cf/packages/core/src/scheduler/scheduler.ts#L505-L568">[8e]</a> 这是一套明确的调度政策，不能简单概括为“所有工具串行”或“只读工具才并行”。</p>
-<p>源码也保留了 next-speaker checker 等额外继续判定，但它默认跳过；本文比较的是默认 <code>GeminiClient + CLI Scheduler</code> 路径。<a href="https://github.com/google-gemini/gemini-cli/blob/76e4d7c046c7dab5727787da378b9c06bf0948cf/packages/core/src/config/config.ts#L1288">[8d]</a> 一个可选分支的存在，不应被画成所有请求都必经的节点。</p>
-<h3 id="3-6-opencode-流式执行与逻辑-step-分离">3.6 OpenCode：流式执行与逻辑 step 分离</h3>
-<p>OpenCode 的当前实现由会话执行器消费 inbox，再反复推进逻辑 step。step 内部还可以因错误或压缩进入新的 attempt，因此一个 step 不一定只有一次模型请求。<a href="https://github.com/anomalyco/opencode/blob/9d90d892dcbfc52b47e95b2ea31b8aba877128fd/packages/core/src/session/runner/llm.ts#L202-L323">[9]</a></p>
-<p>与 Pi 等完整响应后执行工具不同，OpenCode 在收到一个<strong>已经完整形成的 tool-call 事件</strong>后，就可以启动对应工具，此时模型流可能仍在继续。它最终等待工具结束，再结算这一轮并决定是否继续。<a href="https://github.com/anomalyco/opencode/blob/9d90d892dcbfc52b47e95b2ea31b8aba877128fd/packages/core/src/session/runner/step.ts#L103-L153">[9a]</a></p>
-<p>这个差异改变的是时间安排。若前面的工具已经可以开始工作，等待后续文本结束可能是一段空闲；流式启动允许两者重叠。另一方面，流后半段失败时，运行时必须处理已经启动的动作。它既要记录“请求失败”，也要保存“哪些动作已经发生”。</p>
-<p><img src="/notes/agent-loop/scheduling.svg" alt="两种调度方式：完整响应后启动工具，与完整工具调用到达后启动工具；两者都在后续决策前汇合工具结果。"></p>
-<p>图中只比较调度边界，条形长度不代表实测耗时。Pi 与 Gemini 的上述路径属于第一种；OpenCode 以及满足执行条件的 Codex 路径允许第二种。</p>
-<p>因此，流式显示、流式启动工具和边得到结果边重新规划，是三件不同的事。OpenCode 的这条路径支持前两者，下一次模型决策仍然要经过工具完成的边界。这里描述的是源码所允许的重叠，不是实测速度排名。</p>
-<h2 id="四-langgraph-与-smolagents-两个正交的设计维度">四、LangGraph 与 smolagents：两个正交的设计维度</h2>
-<p>前面的项目主要回答一个具体 Agent 怎样运行。LangGraph 与 smolagents 则适合帮助我们拆开另外两个问题：<strong>控制转移怎样表达，以及模型的一次动作能表达多少程序。</strong></p>
-<h3 id="4-1-langgraph-把控制转移变成显式图">4.1 LangGraph：把控制转移变成显式图</h3>
-<p>LangGraph 不规定所有 Agent 都必须使用同一种 Loop。节点可以调用模型、执行工具或运行普通函数；边和路由函数决定下一步去哪。一个简单的工具循环可以表示为：</p>
-<pre><code class="language-text">START → model
-          ├─ 有工具调用 → tools → model
-          └─ 返回结果   → END
-</code></pre>
-<p>如果需要强制经过某个验证阶段，可以把 <code>verify</code> 写成必经节点；如果需要失败后重新规划，可以为失败结果增加返回 <code>planner</code> 的边。模型仍可参与路由，但允许它选择哪些路线，由图结构和路由程序共同限定。</p>
-<p>底层 Pregel 运行时按 superstep 推进：先确定本轮可运行的节点，再执行它们，最后更新 channels；同一 superstep 的写入在下一步才对节点可见。<a href="https://github.com/langchain-ai/langgraph/blob/1400d25b7b88cfa055c55b8a82bd95b7c25caef1/libs/langgraph/langgraph/pregel/main.py#L460-L488">[10]</a> 这里的调度阶段叫 <code>Plan</code>，指的是运行时选择节点，并不意味着每一轮都调用一个 LLM Planner。</p>
-<p>这种结构把一部分控制知识写进程序。例如，“结果必须经过验证节点”可以成为流程约束；代价是设计者要维护状态结构、分支条件和并发更新的合并规则。图中的节点也可以嵌入一个自由工具循环，所以图编排与模型自主选择动作可以同时存在。</p>
-<h3 id="4-2-smolagents-动作语言决定反馈粒度">4.2 smolagents：动作语言决定反馈粒度</h3>
-<p>smolagents 的 <code>ToolCallingAgent</code> 与 <code>CodeAgent</code> 共享多步循环，但动作表示不同：前者产生结构化工具调用，后者产生交给 Python 执行器运行的代码。<a href="https://github.com/huggingface/smolagents/blob/96f33faaf028479119ec8d34507b47694cf14e34/src/smolagents/agents.py#L540-L611">[11]</a></p>
-<p>假设任务需要读取十个文件，再对结果做统计。结构化工具调用可以一次提交十个独立读取请求；代码动作则可以在一段程序里表达读取、过滤、循环和汇总。两者都可能减少模型调用，但代码能够在一次模型决策内部表达依赖关系和局部控制流。</p>
-<p>这时，<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">a_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> 就不再只是一个原子动作，而是一段小程序。程序中的 <code>if</code>、<code>for</code> 可以根据运行结果继续执行，期间不必重新调用语言模型。<strong>程序内部的条件控制，与模型在收到观察后重新决策，构成了不同尺度的闭环。</strong></p>
-<p>代价也由此而来。动作粒度变大后，模型通常要等这段程序返回或报错，才能利用新信息重新推理；先前已经发生的写操作也不会因为后面抛出异常而自动撤销。代码动作把更多控制流交给程序，并没有消除错误处理的需要。</p>
-<p>当前实现还支持可选的规划间隔与最终答案检查。它们是多步循环的策略插入点，不能仅凭 <code>CodeAgent</code> 这个名字推断它必然使用独立规划器，或必然获得更少的总费用。</p>
-<h2 id="五-把差异放回同一张坐标系">五、把差异放回同一张坐标系</h2>
-<p>下表概括的是本文选择的核心路径。控制层次与默认配置已经在前文分开，因而可以按同一组问题横向阅读。</p>
-<table>
-<thead>
-<tr>
-<th>实现</th>
-<th>谁推进控制流</th>
-<th>动作与反馈的主要边界</th>
-<th>怎样交回控制权</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>mini-SWE-agent</td>
-<td><code>run → query → execute_actions</code></td>
-<td>响应中的动作依次执行，再追加观察</td>
-<td>提交协议产生 <code>exit</code>，或限制与错误中止</td>
-</tr>
-<tr>
-<td>OpenHands SDK</td>
-<td>Conversation 管生命周期，Agent 推进一步</td>
-<td>事件与模型视图分离；step 可能只处理待执行动作或压缩</td>
-<td>文本结束或 FinishTool 等路径进入结束状态，hook 可要求继续</td>
-</tr>
-<tr>
-<td>Pi</td>
-<td>工具/steering 内循环，follow-up 外循环</td>
-<td>完整响应后执行工具批次；steering 在批次后进入</td>
-<td>正常路径耗尽续跑条件；结束 hook、取消或错误也可终止</td>
-</tr>
-<tr>
-<td>Codex CLI</td>
-<td>core 内的用户 turn 循环</td>
-<td>step 快照约束本次请求；允许工具执行与流重叠</td>
-<td>综合续跑信号、pending input 和 stop hooks</td>
-</tr>
-<tr>
-<td>Gemini CLI</td>
-<td>core 模型流与 CLI scheduler 配合</td>
-<td>默认路径收流后批量调度，wave 内按规则并行</td>
-<td>工具反馈继续；无后续工作则结束，也受限制与 hooks 控制</td>
-</tr>
-<tr>
-<td>OpenCode</td>
-<td>会话执行器推进逻辑 step / attempt</td>
-<td>完整调用到达即可执行；工具完成后结算，inbox 在边界晋升</td>
-<td>不需 continuation，且没有可晋升输入</td>
-</tr>
-<tr>
-<td>LangGraph</td>
-<td>图节点、边与路由函数</td>
-<td>superstep 执行与 channel 更新边界</td>
-<td>没有可调度节点，或被中断、限制阻止</td>
-</tr>
-<tr>
-<td>smolagents</td>
-<td>MultiStepAgent 及其动作执行器</td>
-<td>结构化工具批次，或一段代码的执行结果</td>
-<td><code>final_answer</code> 及可选检查；也可能达到步数上限</td>
-</tr>
-</tbody>
-</table>
-<h3 id="5-1-自主性不是单一开关">5.1 自主性不是单一开关</h3>
-<p>一个系统可能让模型自由选择工具，却由程序强制安排验证；也可能把任务路线固定下来，却允许某个节点内自由探索。决定自主性的至少有三个维度：<strong>动作选择权、流程选择权、停止权。</strong></p>
-<p>因此，比较一个自由工具循环与一张 LangGraph 图时，应当问哪些决策交给了模型、哪些约束由程序落实。仅说“前者是 Agent，后者是 workflow”，会遮住实际的控制权分配。</p>
-<h3 id="5-2-反馈越频繁-调整机会越多-但不一定更划算">5.2 反馈越频繁，调整机会越多，但不一定更划算</h3>
-<p>更短的决策间隔让模型更早适应环境，但增加调用与上下文处理；更大的动作批次减少往返，却更早承诺了一段执行过程。如果新信息需要模型作出尚未编码的判断，就应在这里重新调用模型；如果已有程序逻辑足以处理，就可以继续执行。合适的边界取决于任务的不确定性，而不是工具接口采用 JSON 还是 Python。</p>
-<h3 id="5-3-并发优化时间-依赖关系决定语义">5.3 并发优化时间，依赖关系决定语义</h3>
-<p>同时读取两个独立文件，通常可以并发；先编辑文件再测试该版本，则有明确依赖。一个调度器支持并发，只说明它可以让动作重叠，不自动证明这些动作彼此独立。</p>
-<h3 id="5-4-状态组织会改变模型下一步能做什么">5.4 状态组织会改变模型下一步能做什么</h3>
-<p>如果两套系统使用相同模型，却给它不同的历史视图，下一步策略的输入已经不同。压缩丢掉的一个约束、没有写回的工具错误、尚未进入上下文的用户纠正，都可能改变后续行为。</p>
-<p>所以，Agent Loop 的理论对象不只是“反复调用一个 LLM”。它是一套将<strong>状态表示、动作语言、控制转移和观察时机</strong>连接起来的机制。开源实现之间最有解释力的差别，正发生在这些连接处。</p>
-<h2 id="源码与论文">源码与论文</h2>
-<p>论文用于解释交互、规划与搜索；源码用于核对具体运行语义。仓库链接固定到本次阅读的 commit，避免后续重构改变文中的对应关系。</p>
+<p>工具定义保持确定的顺序与序列化方式。旧工具输出被替换成摘要后，保存该摘要，避免每次恢复会话时重新生成不同文本。记录缓存命中、首 token 延迟和总成本，检查改动位置与实际影响。</p>
+<p><strong>边界：缓存减少重复计算，并不会消除长上下文的全部成本。</strong> 新 token 仍要利用历史 KV，长历史仍占用显存、带宽和输入预算。原文讨论的 KV 编辑与组合属于研究方向，不宜当作常规 API 已支持的能力；绑定前缀的 thinking 等机制也要按具体服务协议处理。</p>
+<h3 id="1-4-prompt-应把业务判断转成可执行流程">1.4 Prompt 应把业务判断转成可执行流程</h3>
+<p><strong>Insight</strong></p>
+<p>零散规则越多，模型越需要自行判断顺序、冲突和例外。清晰的工作流程可以减少这部分负担，让推理集中于任务中真正不确定的地方。业务边界本身不明确时，继续调整措辞很难得到稳定行为。</p>
+<p><strong>Method</strong></p>
+<p>把提示词组织成“输入检查 → 分类与分支 → 执行 → 异常处理 → 验收”。每条重要规则写清适用条件、具体动作、例外和验证方式。例如，“失败后适当重试”应细化为哪些错误可重试、次数上限、什么情况下切换方案。</p>
+<p>工具说明也采用同样的思路：说明何时使用、何时不用、参数含义、输出结构及失败后的处理。数量较多时提供工具发现能力，避免所有详细定义始终占据上下文。</p>
+<p>规则能清楚描述的任务，优先写规则；风格、格式或判断边界难以讲清时，再加入少量高质量示例。用代表性任务和失败案例检验改动，避免把一次成功归因于某个标签、语气或格式。</p>
+<h3 id="1-5-skills-的关键是路由与渐进式披露">1.5 Skills 的关键是路由与渐进式披露</h3>
+<p><strong>Insight</strong></p>
+<p>把所有领域知识放进系统提示词，会同时增加输入成本和无关信息。Skill 将专业流程外化成可独立维护的模块；常驻目录负责让模型知道能力存在，完整流程在需要时才进入上下文。</p>
+<p><strong>Method</strong></p>
+<p>采用三层加载：</p>
 <ol>
-<li>Shunyu Yao et al. <a href="https://arxiv.org/abs/2210.03629v3">ReAct: Synergizing Reasoning and Acting in Language Models</a>，ICLR 2023。</li>
-<li>Binfeng Xu et al. <a href="https://arxiv.org/html/2305.18323v1">ReWOO: Decoupling Reasoning from Observations for Efficient Augmented Language Models</a>，2023，重点见 §2.1。</li>
-<li>Shunyu Yao et al. <a href="https://arxiv.org/html/2305.10601v2">Tree of Thoughts: Deliberate Problem Solving with Large Language Models</a>，NeurIPS 2023。</li>
-<li><strong>mini-SWE-agent</strong>，<code>04d809c</code>：<a href="https://github.com/SWE-agent/mini-swe-agent/blob/04d809ceab9df28f9adaed044884180159172930/src/minisweagent/agents/default.py#L88-L157">主循环</a>、<a href="https://github.com/SWE-agent/mini-swe-agent/blob/04d809ceab9df28f9adaed044884180159172930/src/minisweagent/environments/local.py#L45-L56">本地环境提交协议</a>。本文核查 v2.4.6 原生工具调用路径。</li>
-<li><strong>OpenHands Software Agent SDK</strong>，<code>33d8aa2</code>：<a href="https://github.com/OpenHands/software-agent-sdk/blob/33d8aa29c3078d074799e2fbf5e847aeb2d71360/openhands-sdk/openhands/sdk/conversation/impl/local_conversation.py#L1945-L2090">Conversation 外层循环</a>、<a href="https://github.com/OpenHands/software-agent-sdk/blob/33d8aa29c3078d074799e2fbf5e847aeb2d71360/openhands-sdk/openhands/sdk/agent/agent.py#L707-L897">Agent.step</a>、<a href="https://github.com/OpenHands/software-agent-sdk/blob/33d8aa29c3078d074799e2fbf5e847aeb2d71360/openhands-sdk/openhands/sdk/context/view/view.py#L111-L158">事件视图</a>。本文采用新 SDK。</li>
-<li><strong>Pi</strong>，<code>73f8de8</code>：<a href="https://github.com/earendil-works/pi/blob/73f8de80bc87021375f8b525292ac07492253002/packages/agent/src/agent-loop.ts#L163-L320">runLoop</a>、<a href="https://github.com/earendil-works/pi/blob/73f8de80bc87021375f8b525292ac07492253002/packages/agent/src/types.ts#L282-L317">steering 与执行策略约定</a>、<a href="https://github.com/earendil-works/pi/blob/73f8de80bc87021375f8b525292ac07492253002/packages/agent/src/agent-loop.ts#L508-L523">工具调度分支</a>、<a href="https://github.com/earendil-works/pi/blob/73f8de80bc87021375f8b525292ac07492253002/packages/coding-agent/src/core/agent-session.ts#L899-L931">上层会话 hooks</a>。原 <code>pi-mono</code> 仓库已重定向到 <code>earendil-works/pi</code>。</li>
-<li><strong>Codex CLI</strong>，<code>0144894</code>：<a href="https://github.com/openai/codex/blob/014489466a1739c2c563cdfe57880c2c7c8680e3/codex-rs/core/src/session/turn.rs#L580-L610">run_turn</a>、<a href="https://github.com/openai/codex/blob/014489466a1739c2c563cdfe57880c2c7c8680e3/codex-rs/core/src/session/step_context.rs#L22-L46">step 快照</a>、<a href="https://github.com/openai/codex/blob/014489466a1739c2c563cdfe57880c2c7c8680e3/codex-rs/core/src/stream_events_utils.rs#L347-L369">流式工具 dispatch</a>、<a href="https://github.com/openai/codex/blob/014489466a1739c2c563cdfe57880c2c7c8680e3/codex-rs/core/src/tools/router.rs#L246-L250">并发能力声明</a>、<a href="https://github.com/openai/codex/blob/014489466a1739c2c563cdfe57880c2c7c8680e3/codex-rs/core/src/session/turn.rs#L724-L776">stop hooks</a>。</li>
-<li><strong>Gemini CLI</strong>，<code>76e4d7c</code>：<a href="https://github.com/google-gemini/gemini-cli/blob/76e4d7c046c7dab5727787da378b9c06bf0948cf/packages/cli/src/nonInteractiveCli.ts#L310-L332">CLI 外层循环</a>、<a href="https://github.com/google-gemini/gemini-cli/blob/76e4d7c046c7dab5727787da378b9c06bf0948cf/packages/cli/src/ui/hooks/useGeminiStream.ts#L1762-L1778">交互路径批次调度</a>、<a href="https://github.com/google-gemini/gemini-cli/blob/76e4d7c046c7dab5727787da378b9c06bf0948cf/packages/core/src/utils/tool-utils.ts#L25-L41">并发规则</a>、<a href="https://github.com/google-gemini/gemini-cli/blob/76e4d7c046c7dab5727787da378b9c06bf0948cf/packages/core/src/core/turn.ts#L254-L297">Turn 对象</a>、<a href="https://github.com/google-gemini/gemini-cli/blob/76e4d7c046c7dab5727787da378b9c06bf0948cf/packages/core/src/config/config.ts#L1288">next-speaker 默认配置</a>、<a href="https://github.com/google-gemini/gemini-cli/blob/76e4d7c046c7dab5727787da378b9c06bf0948cf/packages/core/src/scheduler/scheduler.ts#L505-L568">wave 调度</a>。</li>
-<li><strong>OpenCode</strong>，<code>9d90d89</code>：<a href="https://github.com/anomalyco/opencode/blob/9d90d892dcbfc52b47e95b2ea31b8aba877128fd/packages/core/src/session/runner/llm.ts#L202-L323">逻辑 step</a>、<a href="https://github.com/anomalyco/opencode/blob/9d90d892dcbfc52b47e95b2ea31b8aba877128fd/packages/core/src/session/runner/step.ts#L103-L153">流与工具执行</a>、<a href="https://github.com/anomalyco/opencode/blob/9d90d892dcbfc52b47e95b2ea31b8aba877128fd/packages/core/src/session/runner/llm.ts#L56-L192">输入与退出边界</a>。本文核查 <code>dev</code> 分支这一快照的 <code>packages/core</code> 实现。</li>
-<li><strong>LangGraph</strong>，<code>1400d25</code>：<a href="https://github.com/langchain-ai/langgraph/blob/1400d25b7b88cfa055c55b8a82bd95b7c25caef1/libs/langgraph/langgraph/pregel/main.py#L460-L488">Pregel 执行语义</a>、<a href="https://github.com/langchain-ai/langgraph/blob/1400d25b7b88cfa055c55b8a82bd95b7c25caef1/libs/langgraph/langgraph/graph/state.py#L928-L1056">StateGraph 路由</a>。</li>
-<li><strong>smolagents</strong>，<code>96f33fa</code>：<a href="https://github.com/huggingface/smolagents/blob/96f33faaf028479119ec8d34507b47694cf14e34/src/smolagents/agents.py#L540-L611">多步循环</a>、<a href="https://github.com/huggingface/smolagents/blob/96f33faaf028479119ec8d34507b47694cf14e34/src/smolagents/agents.py#L1361-L1445">结构化工具调用</a>、<a href="https://github.com/huggingface/smolagents/blob/96f33faaf028479119ec8d34507b47694cf14e34/src/smolagents/agents.py#L1638-L1764">代码动作执行</a>。</li>
+<li><strong>目录层</strong>：提供名称和简短描述，写清触发条件、不适用情况和容易误触发的反例。</li>
+<li><strong>流程层</strong>：选中后加载核心步骤、约束和验收标准。</li>
+<li><strong>资料层</strong>：执行到具体步骤时，再读取模板、脚本或详细参考文档。</li>
 </ol>
-1:["$","main",null,{"id":"main","tabIndex":-1,"children":[["$","a",null,{"className":"back-link","href":"/notes/","children":["← ","Notes"]}],["$","article",null,{"children":[["$","header",null,{"className":"note-header","children":[["$","h1",null,{"children":"Agent Loop：从闭环决策到开源实现"}],["$","time",null,{"dateTime":"2026-10-20","children":"2026.10.20"}]]}],["$","details",null,{"className":"toc","children":[["$","summary",null,{"children":"目录"}],["$","nav",null,{"aria-label":"笔记目录","children":[["$","a","一-一个-loop-实际在循环什么",{"href":"#一-一个-loop-实际在循环什么","className":"$undefined","children":"一、一个 Loop 实际在循环什么"}],["$","a","1-1-模型选择动作-运行时推进执行",{"href":"#1-1-模型选择动作-运行时推进执行","className":"nested","children":"1.1 模型选择动作，运行时推进执行"}],["$","a","1-2-闭环的核心是反馈进入决策",{"href":"#1-2-闭环的核心是反馈进入决策","className":"nested","children":"1.2 闭环的核心是反馈进入决策"}],["$","a","1-3-三种时间尺度",{"href":"#1-3-三种时间尺度","className":"nested","children":"1.3 三种时间尺度"}],["$","a","二-react-规划与搜索-改变的是哪个部分",{"href":"#二-react-规划与搜索-改变的是哪个部分","className":"$undefined","children":"二、ReAct、规划与搜索，改变的是哪个部分"}],["$","a","2-1-react-每次得到新观察-再选择下一步",{"href":"#2-1-react-每次得到新观察-再选择下一步","className":"nested","children":"2.1 ReAct：每次得到新观察，再选择下一步"}],["$","a","2-2-plan-execute-提前决定结构-延后填入结果",{"href":"#2-2-plan-execute-提前决定结构-延后填入结果","className":"nested","children":"2.2 Plan–Execute：提前决定结构，延后填入结果"}],["$","a","2-3-搜索式-loop-保留多个候选状态",{"href":"#2-3-搜索式-loop-保留多个候选状态","className":"nested","children":"2.3 搜索式 Loop：保留多个候选状态"}],["$","a","三-六个开源实现怎样安排闭环",{"href":"#三-六个开源实现怎样安排闭环","className":"$undefined","children":"三、六个开源实现怎样安排闭环"}],["$","a","3-1-mini-swe-agent-把控制骨架压到消息循环",{"href":"#3-1-mini-swe-agent-把控制骨架压到消息循环","className":"nested","children":"3.1 mini-SWE-agent：把控制骨架压到消息循环"}],["$","a","3-2-openhands-sdk-会话控制与动作决策分开",{"href":"#3-2-openhands-sdk-会话控制与动作决策分开","className":"nested","children":"3.2 OpenHands SDK：会话控制与动作决策分开"}],["$","a","3-3-pi-两层循环-处理两种输入时机",{"href":"#3-3-pi-两层循环-处理两种输入时机","className":"nested","children":"3.3 Pi：两层循环，处理两种输入时机"}],["$","a","3-4-codex-cli-将续跑条件集中到一次用户轮次",{"href":"#3-4-codex-cli-将续跑条件集中到一次用户轮次","className":"nested","children":"3.4 Codex CLI：将续跑条件集中到一次用户轮次"}],["$","a","3-5-gemini-cli-模型流与工具反馈循环分层",{"href":"#3-5-gemini-cli-模型流与工具反馈循环分层","className":"nested","children":"3.5 Gemini CLI：模型流与工具反馈循环分层"}],["$","a","3-6-opencode-流式执行与逻辑-step-分离",{"href":"#3-6-opencode-流式执行与逻辑-step-分离","className":"nested","children":"3.6 OpenCode：流式执行与逻辑 step 分离"}],["$","a","四-langgraph-与-smolagents-两个正交的设计维度",{"href":"#四-langgraph-与-smolagents-两个正交的设计维度","className":"$undefined","children":"四、LangGraph 与 smolagents：两个正交的设计维度"}],["$","a","4-1-langgraph-把控制转移变成显式图",{"href":"#4-1-langgraph-把控制转移变成显式图","className":"nested","children":"4.1 LangGraph：把控制转移变成显式图"}],["$","a","4-2-smolagents-动作语言决定反馈粒度",{"href":"#4-2-smolagents-动作语言决定反馈粒度","className":"nested","children":"4.2 smolagents：动作语言决定反馈粒度"}],["$","a","五-把差异放回同一张坐标系",{"href":"#五-把差异放回同一张坐标系","className":"$undefined","children":"五、把差异放回同一张坐标系"}],["$","a","5-1-自主性不是单一开关",{"href":"#5-1-自主性不是单一开关","className":"nested","children":"5.1 自主性不是单一开关"}],["$","a","5-2-反馈越频繁-调整机会越多-但不一定更划算",{"href":"#5-2-反馈越频繁-调整机会越多-但不一定更划算","className":"nested","children":"5.2 反馈越频繁，调整机会越多，但不一定更划算"}],["$","a","5-3-并发优化时间-依赖关系决定语义",{"href":"#5-3-并发优化时间-依赖关系决定语义","className":"nested","children":"5.3 并发优化时间，依赖关系决定语义"}],["$","a","5-4-状态组织会改变模型下一步能做什么",{"href":"#5-4-状态组织会改变模型下一步能做什么","className":"nested","children":"5.4 状态组织会改变模型下一步能做什么"}],["$","a","源码与论文",{"href":"#源码与论文","className":"$undefined","children":"源码与论文"}]]}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$e"}}]]}]]}]
+<p>设计 Skill 时，先解决“什么时候应该用”，再解决“里面写什么”。把频繁出现的人工修正沉淀为带适用范围的规则，并用真实任务回归验证。</p>
+<p>Skill 和工具承担不同职责：Skill 提供做事的方法，工具提供执行动作的接口。Skill 可以携带脚本和模板，但装入指令并不等于动作已经执行。</p>
+<p><strong>边界：按需加载仍有首次读取成本，也有漏触发的风险。</strong> 目录描述、显式调用入口和触发测试都很重要；正文使用什么消息角色，由具体 Harness 决定。共同原则是保持可发现性，并控制完整内容的加载时机。</p>
+<h3 id="1-6-用显式状态减少重复推导">1.6 用显式状态减少重复推导</h3>
+<p><strong>Insight</strong></p>
+<p>历史中出现过三次调用，不等于模型能稳定判断“已经达到三次上限”。找出某条记录与汇总所有记录，是不同的计算任务。把任务进展、计数和约束显式写出，可以避免每轮从长历史重新推导。</p>
+<p>原文用“上下文学习更像检索”解释这一现象。可操作的结论是：<strong>对反复使用的聚合结果，先计算一次，再让模型直接读取。</strong> 这不意味着模型不能推理，也不足以把所有 In-Context Learning 都归结为检索。</p>
+<p><strong>Method</strong></p>
+<p>由运行时维护一个简短的状态摘要，在当前决策附近提供：</p>
+<blockquote>
+<ul>
+<li>目标：修复回调重复处理问题</li>
+<li>已确认：重复事件会再次写入；依据为复现测试</li>
+<li>当前进度：修改已完成，回归验证待完成</li>
+<li>失败记录：仅检查请求时间不能识别重复事件</li>
+<li>预算：重试已用 2/3 次</li>
+<li>下一步：运行重复事件与正常事件两类测试</li>
+</ul>
+</blockquote>
+<p>计数、预算、路径和环境状态尽量从程序或工具结果确定性更新。需要模型提取语义时，逐条提取后再校验汇总。状态摘要应保留依据，避免一条错误汇总成为后续所有决策的前提；硬性次数或权限限制还应由执行层检查。</p>
+<p>状态更新有两种取舍：持久追加可以保留稳定前缀，但会积累陈旧状态；替换上一轮状态可以减少重复信息，却使替换点后的缓存需要重建。结合状态大小、更新频率和后缀长度选择，并标明哪一份是最新状态。</p>
+<h3 id="1-7-压缩应保留未来决策的依据">1.7 压缩应保留未来决策的依据</h3>
+<p><strong>Insight</strong></p>
+<p>上下文没有装满，也可能已经难以使用：冗余搜索结果、过期状态和长日志会让关键依据更难被找到。压缩的目标除了节省 token，还包括把分散证据整理成可以继续行动的知识。</p>
+<p>好的摘要取决于当前任务。调查某个故障时，需要保留复现条件、已经排除的假设与下一步验证；仅记录“搜索了三个文件，运行了两次测试”，无法帮助下一轮决策。</p>
+<p><strong>Method</strong></p>
+<p>压缩时同时提供当前目标、已知结论与尚未解决的问题，输出一份结构化工作记录：</p>
+<table>
+<thead>
+<tr>
+<th>保留项</th>
+<th>为什么需要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目标、约束与验收标准</td>
+<td>防止继续工作时偏离需求</td>
+</tr>
+<tr>
+<td>已确认事实及来源</td>
+<td>支撑结论并允许复核</td>
+</tr>
+<tr>
+<td>关键决策及理由</td>
+<td>避免重新选择已排除的路线</td>
+</tr>
+<tr>
+<td>失败尝试及触发条件</td>
+<td>避免重复踩坑</td>
+</tr>
+<tr>
+<td>未确定事项、冲突证据</td>
+<td>防止把猜测压成事实</td>
+</tr>
+<tr>
+<td>待办与下一步</td>
+<td>支持恢复执行</td>
+</tr>
+</tbody>
+</table>
+<p>保留主体、时间、条件和例外等语义要素。原始大输出存到可访问的位置，用路径、URL 或记录 ID 关联摘要；有引用只是保留了回查入口，并不保证信息永远可恢复，因此重要证据还需可靠归档。</p>
+<p>分层处理信息：先限制单次工具输出，过滤明显噪声，再做任务感知的批量摘要；必要时进行完整交接式压缩。设置上下文预算，为模型输出和后续工具结果留余量，避免每轮重写历史。标记已经压缩的内容，减少反复摘要带来的信息漂移；压缩连续失败时应停止盲目重试。</p>
+<p><strong>边界：压缩有损，也会破坏替换点之后的缓存。</strong> 需要权衡一次重建成本与后续多轮收益，并遵循目标模型的历史推理回传约束。原文中的压缩阈值、token 节省和成功率来自特定实验，适合作为设计线索，不能直接作为生产系统的固定参数。</p>
+<h3 id="1-8-能隔离的中间信息-尽量在进入主上下文前处理">1.8 能隔离的中间信息，尽量在进入主上下文前处理</h3>
+<p><strong>Insight</strong></p>
+<p>大范围搜索和探索常产生大量一次性材料。如果主 Agent 最后只需要几个定位结果，让所有中间输出进入主历史，再做压缩，会增加清理成本。任务边界清楚时，可以在独立上下文完成探索，再回传可验证的结论。</p>
+<p><strong>Method</strong></p>
+<p>给子任务提供自包含的目标、必要背景、限制和返回格式。回传内容包括结论、证据位置、不确定性与未完成项；需要做关键决策时，主 Agent 再读取原始依据。</p>
+<p>例如代码定位任务可以返回“入口函数、调用点、相关测试及文件行号”，无需回传全部搜索日志。中间材料保留在子任务存储中，主上下文维护任务所需的结果。</p>
+<p><strong>边界：隔离转移了信息处理的位置，并不保证总成本更低。</strong> 共享状态复杂、任务难以独立描述、结果必须高频交互时，拆分可能增加协调成本；继承完整父上下文也未必能获得隔离收益。</p>
+<h3 id="1-9-外部内容的来源与权限必须保留">1.9 外部内容的来源与权限必须保留</h3>
+<p><strong>Insight</strong></p>
+<p>网页、文件和工具返回可能同时包含事实与伪装指令。进入上下文只说明它可被读取，不代表它获得了改变目标或权限的资格。压缩、记忆写入和状态提炼也可能把恶意内容包装成看似可信的结论。</p>
+<p><strong>Method</strong></p>
+<p>对外部材料标明来源及信任边界，提取事实时保留出处。不要让网页中的指令直接成为工作流程，也不要让外部文本自行更新权威计数、权限或用户偏好。摘要应区分观察事实、他人主张和待验证推断。</p>
+<p>提示词与结构化标记只能辅助识别来源，真正的权限检查、沙盒限制和必要的操作审查应由执行层承担。</p>
+<h3 id="1-10-method-把上下文构造做成每轮的明确步骤">1.10 Method：把上下文构造做成每轮的明确步骤</h3>
+<p>以下是基于原文整理的实现流程，用于串联本章各项方法：</p>
+<ol>
+<li><strong>读取状态</strong>：从持久记录恢复目标、约束、待办和已发生的动作。</li>
+<li><strong>补齐信息</strong>：识别当前决策缺少什么，再加载相关工具、Skill 或证据。</li>
+<li><strong>控制输入</strong>：大型工具结果先存储，向模型返回必要片段及回查入口。</li>
+<li><strong>检查预算</strong>：综合窗口余量、信息噪声和预计后续轮次，决定是否批量压缩。</li>
+<li><strong>组装请求</strong>：稳定指令与工具定义在前，合法的消息轨迹随后，当前状态靠近决策位置。</li>
+<li><strong>执行与核验</strong>：运行时校验并执行动作，把真实结果及错误写回，更新状态。</li>
+<li><strong>判断完成</strong>：依据验收结果与剩余工作决定继续、恢复信息或结束。</li>
+</ol>
+<p>验证上下文策略时，固定模型和任务集，分别比较稳定前缀、Skill 加载、状态摘要和压缩策略。除了总 token、延迟与缓存命中，还要观察任务成功率、重复动作、约束遗漏、来源可追溯性，以及压缩后能否继续完成任务。</p>
+<p>本章最值得带入实现的判断是：<strong>把反复需要推导的状态显式化，把偶尔需要的知识按需加载，把决定下一步的证据保留下来。</strong> 上下文的价值取决于它如何支持行动，而不只取决于它包含多少信息。</p>
+<h3 id="参考">参考</h3>
+<ul>
+<li>李博杰，《深入理解 AI Agent》<a href="https://bojieli.github.io/ai-agent-book/astro/book/chapter2/">第二章：上下文工程</a>，阅读于 2026-10-25；<a href="https://github.com/bojieli/ai-agent-book/blob/main/book/chapter2.md">章节源码</a>。本章为重新组织的阅读笔记，补充了实现取舍与验证方法，不复现原文实验结论。</li>
+</ul>
+1:["$","main",null,{"id":"main","tabIndex":-1,"children":[["$","a",null,{"className":"back-link","href":"/notes/","children":["← ","Notes"]}],["$","article",null,{"children":[["$","header",null,{"className":"note-header","children":[["$","h1",null,{"children":"Agent Loop"}],["$","time",null,{"dateTime":"2026-10-20","children":"2026.10.20"}]]}],false,["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$e"}}]]}]]}]

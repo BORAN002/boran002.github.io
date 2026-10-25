@@ -6,7 +6,7 @@
 
 ## 阅读
 
-- [Agent Loop：从闭环决策到开源实现](https://boran002.github.io/notes/agent-loop/)
+- [Agent Loop](https://boran002.github.io/notes/agent-loop/)
 - [Agent Tool Use：CVPR 与 ACL 2026 文献笔记](https://boran002.github.io/papers/agent-tool-use-2026/)
 - [359 篇论文交互表](https://boran002.github.io/papers/agent-tool-use-2026/explorer/)
 - [下载论文数据（JSON）](https://boran002.github.io/data/agent-tool-use-2026.json)
