@@ -9,11 +9,9 @@ draft: false
 
 ## Context Engineering
 
-**Context Engineering 是管理 model 每轮调用实际接收的信息。** 在 Chat Completions 中，框架用 `messages` 保存 user request、assistant reply 和 Tool Results，再连同 instructions、Tool definitions 交给 model。每轮都要决定读取什么、保留什么，以及移出哪些旧内容。
+**Context Engineering 是管理 model 每轮调用实际接收的信息。**
 
-例如查询天气：框架把 user message 放入 `messages`；model 返回带 `tool_calls` 的 assistant message；框架执行查询，再追加带 `tool_call_id` 的 tool message；下一次 model call 看到结果后回答。管理这个不断增长的列表，是 Agent 框架的核心工作之一。[李博杰 — Context Engineering][book]
-
-### KV Cache / Prompt Cache
+### • KV Cache / Prompt Cache
 
 #### Basic
 
@@ -69,11 +67,11 @@ Request A 处理过 manual 后，如果服务端仍保留它的 Cache，且 mode
 
 应用侧应同时记录 **input tokens、cached tokens、TTFT 和 task success**。TTFT 是请求发出到首个输出 token 的时间。如果为了维持 Cache Hit 一直保留无用历史，总成本未必更低；做过 Compaction 后，即使需要重建部分 Cache，后续更短的输入也可能抵消这次开销。
 
-### Prompt Engineering
+### • Prompt Engineering
 
 #### Basic
 
-**Prompt Engineering 是把“要做什么、必须遵守什么、怎样算完成”写成明确的 instructions。** 在上面的 Loop 中，它决定 model 何时调用 Tool、如何使用结果、什么时候可以结束。
+**Prompt Engineering 是把“要做什么、必须遵守什么、怎样算完成”写成明确的 instructions。** 在 Agent Loop 中，它决定 model 何时调用 Tool、如何使用结果、什么时候可以结束。
 
 例如“修一下支付 bug”没有告诉 Agent 什么行为是错的，也没有说明怎样验证。可以改成：
 
@@ -116,7 +114,7 @@ Verification:
 
 **把 Prompt 当作需要回归验证的配置。** 记录真实失败，再针对失败修改一条 instruction 或一个 example；比较修改前后的 task success、Tool 使用和成本。例如输出格式错，就调整 Schema；缺少证据，就调整 Retrieval；已经查到正确金额但算错 total，就交给程序计算。不能把所有问题都归结为 Prompt 不够长。OpenAI 的 Evals 教程也强调真实任务样本和持续回归。[OpenAI — Evaluation best practices][evals]
 
-### Context Compression
+### • Context Compression
 
 #### Basic
 
@@ -181,7 +179,7 @@ response = client.responses.create(
 
 其中 opaque item 不是给应用手工编辑的普通 Summary。若使用 server-side Compaction 或 `previous_response_id`，应遵循各自的续接规则。Claude 也提供 on-demand 与 threshold Compaction，但返回内容和历史处理规则不同，不能混用。[OpenAI — Compaction][openai-compact] [Claude — Compaction][claude-compact]
 
-### Skill
+### • Skill
 
 #### Basic
 
@@ -238,7 +236,6 @@ description: 提取 invoice PDF 中的 invoice number、currency 和 total，输
 
 如果第一类失败，修改 description 的适用条件；如果第二类执行失败，检查正文、resources 和 scripts。能确定性检查的字段类型、required fields 和金额格式交给 script；需要识别页面内容的部分交给 model。Anthropic 的 Skill authoring 教程建议从真实失败建立 Evals，再补 instructions，避免只用“Skill 已加载”判断有效。[Anthropic — Skill authoring best practices][skill-practices]
 
-[book]: https://bojieli.github.io/ai-agent-book/astro/book/chapter2/
 [kv]: https://huggingface.co/docs/transformers/main/cache_explanation
 [prefix-cache]: https://docs.vllm.ai/en/latest/features/automatic_prefix_caching/
 [structured]: https://developers.openai.com/api/docs/guides/structured-outputs

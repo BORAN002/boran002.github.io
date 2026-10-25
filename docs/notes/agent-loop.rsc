@@ -1,4 +1,4 @@
-0:{"page:/notes/agent-loop":"$L1","layout:/":"$L2","route:/notes/agent-loop":"$L3","__route":"route:/notes/agent-loop","__interceptionContext":null,"__layoutIds":["layout:/"],"__rootLayout":"/","__bfcacheSegmentIdentities":{"layout:/":"[\"layout\",\"layout:/\",\"root-boundary:/\",\"\"]","page:/notes/agent-loop":"[\"page\",\"page:/notes/:slug\",\"root-boundary:/\",\"[\\\"notes\\\",\\\"slug|agent-loop|d\\\"]\"]"},"__srcPage":["notes","[slug]","page"],"__layoutFlags":{"layout:/":"s"},"__artifactCompatibility":{"schemaVersion":1,"graphVersion":"app-route-graph:528b3508fbd9ac74","deploymentVersion":"c78b278e-5e90-4121-8450-ddcd44325230","appElementsSchemaVersion":1,"rscPayloadSchemaVersion":1,"rootBoundaryId":"/","renderEpoch":null}}
+0:{"page:/notes/agent-loop":"$L1","layout:/":"$L2","route:/notes/agent-loop":"$L3","__route":"route:/notes/agent-loop","__interceptionContext":null,"__layoutIds":["layout:/"],"__rootLayout":"/","__bfcacheSegmentIdentities":{"layout:/":"[\"layout\",\"layout:/\",\"root-boundary:/\",\"\"]","page:/notes/agent-loop":"[\"page\",\"page:/notes/:slug\",\"root-boundary:/\",\"[\\\"notes\\\",\\\"slug|agent-loop|d\\\"]\"]"},"__srcPage":["notes","[slug]","page"],"__layoutFlags":{"layout:/":"s"},"__artifactCompatibility":{"schemaVersion":1,"graphVersion":"app-route-graph:528b3508fbd9ac74","deploymentVersion":"46856d68-8ba3-412f-963e-2dce0c5f6984","appElementsSchemaVersion":1,"rscPayloadSchemaVersion":1,"rootBoundaryId":"/","renderEpoch":null}}
 4:I["dda6c9d07718",[],"Navigation",1]
 5:I["8c0f216c4604",[],"Children",1]
 6:I["593f344dc510",[],"GlobalErrorBoundary",1]
@@ -9,13 +9,12 @@ a:I["8c0f216c4604",[],"Slot",1]
 b:I["593f344dc510",[],"NotFoundBoundary",1]
 c:I["9276801271d6",[],"AppRouterScrollTarget",1]
 d:I["593f344dc510",[],"RedirectBoundary",1]
-:HL["/_next/static/css/index.CEHMhAv4.css","style"     ]
-2:[[["$","link","css:/_next/static/css/index.CEHMhAv4.css",{"rel":"stylesheet","precedence":"vite-rsc/importer-resources","href":"/_next/static/css/index.CEHMhAv4.css","data-rsc-css-href":"/_next/static/css/index.CEHMhAv4.css"}],"$undefined"],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"children":[["$","a",null,{"className":"skip-link","href":"#main","children":"跳至正文"}],["$","div",null,{"className":"page","children":[["$","header",null,{"className":"site-header","children":[["$","a",null,{"href":"/","children":"Riven Zhang"}],["$","$L4",null,{}]]}],["$","$L5",null,{}]]}]]}]}]]
+:HL["/_next/static/css/index.luhuPMPl.css","style"     ]
+2:[[["$","link","css:/_next/static/css/index.luhuPMPl.css",{"rel":"stylesheet","precedence":"vite-rsc/importer-resources","href":"/_next/static/css/index.luhuPMPl.css","data-rsc-css-href":"/_next/static/css/index.luhuPMPl.css"}],"$undefined"],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"children":[["$","a",null,{"className":"skip-link","href":"#main","children":"跳至正文"}],["$","div",null,{"className":"page","children":[["$","header",null,{"className":"site-header","children":[["$","a",null,{"href":"/","children":"Riven Zhang"}],["$","$L4",null,{}]]}],["$","$L5",null,{}]]}]]}]}]]
 3:[[["$","meta",null,{"charSet":"utf-8"}],[["$","title","0",{"children":"Agent · Riven Zhang"}],["$","meta","1",{"name":"description","content":"Context Engineering：KV Cache / Prompt Cache、Prompt Engineering、Context Compression 和 Skill，各主题分别记录 Basic 与 Insight。"}],["$","meta","2",{"property":"og:title","content":"Agent"}],["$","meta","3",{"property":"og:description","content":"Context Engineering：KV Cache / Prompt Cache、Prompt Engineering、Context Compression 和 Skill，各主题分别记录 Basic 与 Insight。"}],["$","meta","4",{"property":"og:url","content":"https://boran002.github.io/notes/agent-loop/"}],["$","meta","5",{"property":"og:type","content":"article"}],["$","meta","6",{"name":"twitter:card","content":"summary"}],["$","meta","7",{"name":"twitter:title","content":"Agent"}],["$","meta","8",{"name":"twitter:description","content":"Context Engineering：KV Cache / Prompt Cache、Prompt Engineering、Context Compression 和 Skill，各主题分别记录 Basic 与 Insight。"}],["$","link","9",{"data-vinext-streamed-icon":"$undefined","rel":"icon","href":"/favicon.svg","type":"$undefined","sizes":"$undefined","color":"$undefined","media":"$undefined","fetchPriority":"$undefined"}],["$","link","10",{"rel":"canonical","href":"https://boran002.github.io/notes/agent-loop/"}]],[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]],["$","$L6",null,{"fallback":"$7","children":["$","$L8",null,{"fallback":"$7","children":["$","$L9",null,{"providerId":"layout:/","segmentMap":{"children":["notes","agent-loop"]},"children":["$","$La",null,{"id":"layout:/","parallelSlots":"$undefined","children":["$","$Lb",null,{"resetKey":"notes","fallback":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"children":["$","$Lc",null,{"children":["$","$Ld",null,{"children":[["$","$L9",null,{"providerId":"page:/notes/agent-loop","segmentMap":{"children":["__PAGE__"]},"children":["$","$La",null,{"id":"page:/notes/agent-loop"}]}],null]}]}]}]}]}]}]}],null,null]
-e:T4ee3,<h2 id="context-engineering">Context Engineering</h2>
-<p><strong>Context Engineering 是管理 model 每轮调用实际接收的信息。</strong> 在 Chat Completions 中，框架用 <code>messages</code> 保存 user request、assistant reply 和 Tool Results，再连同 instructions、Tool definitions 交给 model。每轮都要决定读取什么、保留什么，以及移出哪些旧内容。</p>
-<p>例如查询天气：框架把 user message 放入 <code>messages</code>；model 返回带 <code>tool_calls</code> 的 assistant message；框架执行查询，再追加带 <code>tool_call_id</code> 的 tool message；下一次 model call 看到结果后回答。管理这个不断增长的列表，是 Agent 框架的核心工作之一。<a href="https://bojieli.github.io/ai-agent-book/astro/book/chapter2/">李博杰 — Context Engineering</a></p>
-<h3 id="kv-cache-prompt-cache">KV Cache / Prompt Cache</h3>
+e:T4c2d,<h2 id="context-engineering">Context Engineering</h2>
+<p><strong>Context Engineering 是管理 model 每轮调用实际接收的信息。</strong></p>
+<h3 id="kv-cache-prompt-cache">• KV Cache / Prompt Cache</h3>
 <h4 id="basic">Basic</h4>
 <p>model 不直接对 JSON 对象做 Attention。API 会把 messages、Tool definitions 等组织为 model 使用的 token 序列，再执行 inference。</p>
 <p>理解 <strong>KV Cache</strong>，先看 Attention 中的三个量。它们都是 model 在各层计算得到的向量：</p>
@@ -74,9 +73,9 @@ Request B:
 <p>当前 OpenAI 已提供 <strong>Prompt Cache Diagnostics</strong>，可以把本次请求与之前的 response 比较，定位 model、Tools、settings 或 input 的变化。例如仅修改 function name，也值得检查实际请求是否因此改变。它提供诊断信息，不会自动恢复旧 conversation 或修复 Cache。<a href="https://developers.openai.com/api/docs/guides/prompt-caching/diagnostics">OpenAI — Prompt cache diagnostics</a></p>
 <p><strong>模型层也在减少保存和搬运 KV 的开销。</strong> DeepSeek-V4.1-Flash Technical Report（2026-09）针对 input-heavy 的 Agent workload 提出 CSA2：部分层复用前面层的 main KV，避免每层都保存独立的一套；main KV 使用 FP4，以更低精度存储数值。这说明长任务的成本不仅是“算了多少 tokens”，还包括“KV 占多少空间、需要搬运多少数据”。这是报告中的架构设计，不能等同于应用层的 Summary。<a href="https://arxiv.org/html/2609.19969v1">DeepSeek-V4.1-Flash Technical Report，§2–3</a></p>
 <p>应用侧应同时记录 <strong>input tokens、cached tokens、TTFT 和 task success</strong>。TTFT 是请求发出到首个输出 token 的时间。如果为了维持 Cache Hit 一直保留无用历史，总成本未必更低；做过 Compaction 后，即使需要重建部分 Cache，后续更短的输入也可能抵消这次开销。</p>
-<h3 id="prompt-engineering">Prompt Engineering</h3>
+<h3 id="prompt-engineering">• Prompt Engineering</h3>
 <h4 id="basic-2">Basic</h4>
-<p><strong>Prompt Engineering 是把“要做什么、必须遵守什么、怎样算完成”写成明确的 instructions。</strong> 在上面的 Loop 中，它决定 model 何时调用 Tool、如何使用结果、什么时候可以结束。</p>
+<p><strong>Prompt Engineering 是把“要做什么、必须遵守什么、怎样算完成”写成明确的 instructions。</strong> 在 Agent Loop 中，它决定 model 何时调用 Tool、如何使用结果、什么时候可以结束。</p>
 <p>例如“修一下支付 bug”没有告诉 Agent 什么行为是错的，也没有说明怎样验证。可以改成：</p>
 <pre><code class="language-text">Task:
 同一 payment event 被重复投递时，只允许入账一次。
@@ -105,7 +104,7 @@ Verification:
 <p><strong>Reasoning Model 不需要默认加上“think step by step”。</strong> OpenAI 当前教程建议从直接、清晰的 Zero-shot instructions 开始，再按任务需要加入 examples。支付修复示例中的三类 test case，比要求“认真思考”更能定义任务是否完成；它们规定外部验证，不要求 model 展示完整内部 reasoning。<a href="https://developers.openai.com/api/docs/guides/reasoning-best-practices">OpenAI — Reasoning best practices</a></p>
 <p><strong>Few-shot 是否有用，要用目标 model 和目标任务验证。</strong> Gemini 的教程建议用 examples 表达模式；DeepSeek-R1 的 Technical Report（2025）则报告了该 model 在相关评测中 Few-shot 表现下降的现象。这些结果不能互相替代。实用做法是保留一组未用于编写 Prompt 的测试输入，对比 Zero-shot 与 Few-shot 的分类错误，特别看“功能请求 / 功能询问”这样的边界案例。<a href="https://ai.google.dev/gemini-api/docs/prompting-strategies">Gemini — Prompting strategies</a> <a href="https://arxiv.org/html/2501.12948v1">DeepSeek-R1 Technical Report</a></p>
 <p><strong>把 Prompt 当作需要回归验证的配置。</strong> 记录真实失败，再针对失败修改一条 instruction 或一个 example；比较修改前后的 task success、Tool 使用和成本。例如输出格式错，就调整 Schema；缺少证据，就调整 Retrieval；已经查到正确金额但算错 total，就交给程序计算。不能把所有问题都归结为 Prompt 不够长。OpenAI 的 Evals 教程也强调真实任务样本和持续回归。<a href="https://developers.openai.com/api/docs/guides/evaluation-best-practices">OpenAI — Evaluation best practices</a></p>
-<h3 id="context-compression">Context Compression</h3>
+<h3 id="context-compression">• Context Compression</h3>
 <h4 id="basic-3">Basic</h4>
 <p>每次 Tool call 都向 messages 添加内容，历史会越来越长。<strong>Context Compression 是减少下一轮需要携带的内容，同时保留继续任务所需的信息。</strong></p>
 <p>最简单的做法是 <strong>Truncation</strong>：直接删除最早的 messages。问题是最早的 user message 可能包含目标和 constraints，删掉后 Agent 可能继续写代码，却忘了用户要求兼容旧接口。</p>
@@ -151,7 +150,7 @@ response = client.responses.create(
 )
 </code></pre>
 <p>其中 opaque item 不是给应用手工编辑的普通 Summary。若使用 server-side Compaction 或 <code>previous_response_id</code>，应遵循各自的续接规则。Claude 也提供 on-demand 与 threshold Compaction，但返回内容和历史处理规则不同，不能混用。<a href="https://developers.openai.com/api/docs/guides/compaction">OpenAI — Compaction</a> <a href="https://platform.claude.com/docs/en/build-with-claude/compaction">Claude — Compaction</a></p>
-<h3 id="skill">Skill</h3>
+<h3 id="skill">• Skill</h3>
 <h4 id="basic-4">Basic</h4>
 <p><strong>Skill 是一份可复用的任务操作说明，以及执行时要用的文件。</strong> 它回答“遇到这一类任务应该怎样做”。Tool 则提供具体操作，例如读取 PDF、运行 Python、写文件。</p>
 <p>以 invoice field extraction 为例，Skill 可以组织为：</p>
