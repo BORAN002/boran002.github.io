@@ -2,276 +2,233 @@
 title: "Agent Loop"
 date: "2026-10-20"
 updated: "2026-10-25"
-description: "Context Engineering 的基础、Industry Insights 与 Methods：KV Cache、Prompt Cache、Prompt Engineering、Context Compression 和 Skill，结合 Model Technical Reports、官方教程与具体 Examples。"
+description: "Context Engineering：从 messages 和 Agent Loop 讲起，分 Basic 与 Insight 记录 KV Cache、Prompt Cache、Prompt Engineering、Context Compression 和 Skill。"
 draft: false
 ---
 
-## 1.Context Engineering
+**Context Engineering**
 
-### 1.1 What Is Context Engineering?
+## Basic
 
-#### Basics
+### messages 与 Agent Loop
 
-**Context Engineering 是设计每次 LLM call 实际接收的信息：放入什么、什么时候读取、以什么结构组织，以及哪些内容应保留或移出。** Prompt Engineering 主要处理 instructions 怎么写；Context Engineering 还管理 Tool Schema、Tool Result、retrieved documents、conversation history 和当前 task state，并在整个 Agent Loop 中反复更新这些内容。[Anthropic — Context Engineering][context]
+**先从 messages 列表理解 Context：Agent 框架的一项核心工作，就是管理这个列表。**
 
-可以把 Context 看成 Agent 当前使用的 working set。Repository、数据库和历史记录可以很大，但 Model 每次只基于本次可见的信息选择下一步。Model weights 中学到的通用知识，不能代替当前项目的代码、实时查询结果和用户指定的 constraints。
+先用这个结构理解 Agent。下面采用 Chat Completions 的格式：`messages` 保存交互历史；`tools` 是请求中的另一个字段，告诉 model 有哪些 function、每个 function 接收什么参数。两者都会进入 model 本次实际使用的 Context。其他 API 的字段名可能不同，例如 Responses API 使用 `input` 和不同类型的 items。
 
-| Context component | 提供什么 | Coding Agent example |
-| --- | --- | --- |
-| Instructions | 目标、行为要求、完成条件 | 保持 public API；必须验证 regression |
-| Tool Schema | 可用操作及输入要求 | read_file、search_code、run_tests |
-| Retrieved Evidence | 当前判断所需的原始依据 | 相关函数、调用点、失败测试 |
-| History | 已发生的 action 与 observation | 上一轮改动及测试返回 |
-| Working State | 已完成、未完成与关键决定 | 已定位 race condition；尚未跑 concurrent test |
+每个 message 都有 `role`，标明这条内容来自谁：
 
-#### Industry Insight
+- `system`：定义 Agent 的身份、行为规则和 constraints，优先于本例中的 user instructions。部分 API / model 使用 `developer` 承载应用层 instructions，应按对应协议传入。
+- `user`：用户的请求、补充信息和纠正。
+- `assistant`：model 的输出，可以是回复，也可以包含调用 Tool 的请求。
+- `tool`：框架执行 Tool 后返回的结果，例如查到的数据、文件内容或执行错误。
 
-**Context 的组织单位逐渐从“把资料放进 Prompt”转向“为下一步决策准备信息”。** Anthropic 描述的 Just-in-time Retrieval 保留 file path、query、URL 等轻量入口，Agent 需要时再读取具体内容；也可以先提供基本项目说明，再自主搜索。这降低常驻 Context，但增加 Retrieval round trips，因此需要按任务选择预加载与动态读取的比例。[Anthropic — Just-in-time Retrieval][context]
+`tool_calls` 和 `tool_call_id` 是字段，不是 role：
 
-另一个关键点是 **Tool design 直接决定 Context quality**。如果需求是查一个订单，Tool 却返回全部订单，后续再精简已经付出了读取成本。Anthropic 的 Tool 教程建议通过 filtering、pagination、range selection 和有信息量的 error message 控制返回内容。[Anthropic — Writing effective tools][tools]
+- `tool_calls` 位于 assistant message 中。每次调用包含 `id`、function `name` 和 `arguments`。
+- `tool_call_id` 位于 tool message 中，必须对应某个调用的 `id`。一次返回两个 Tool Results 时，model 靠它判断哪个是时间、哪个是天气。
 
-#### Method & Example
+例如用户问“新加坡现在几点，天气如何”。下面是**两次 model call 完成后**累积的 messages；时间和天气是说明用的模拟数据：
 
-以“修复重复支付回调导致重复入账”为例，以下是说明用的工作流程：
+```javascript
+const messages = [
+  // 第一次 model call：此时只发送前两条 message，以及 tools
+  { role: "system", content: "查询实时信息时调用 Tool，依据结果回答。" },
+  { role: "user", content: "新加坡现在几点，天气如何？" },
 
-1. 初始 Context 提供目标、API constraints、项目入口和可用 Tools。
-2. Agent 通过 search 定位 callback handler，再读取 handler、database schema 和相关 tests。
-3. Tool Result 表明同一 event ID 可以写入两次，才把相关 transaction 和 unique constraint 信息加入 Context。
-4. 修改后注入真实 test result；失败时保留 error 和已经排除的方案。
-5. Working State 更新为“顺序重复测试通过，concurrent test 待完成”，下一轮继续验证。
+  // 第一次 model call 返回：model 请求调用两个 function
+  {
+    role: "assistant",
+    tool_calls: [
+      {
+        id: "call_time", type: "function",
+        function: {
+          name: "get_current_time",
+          arguments: '{"timezone":"Asia/Singapore"}'
+        }
+      },
+      {
+        id: "call_weather", type: "function",
+        function: {
+          name: "get_weather",
+          arguments: '{"city":"Singapore"}'
+        }
+      }
+    ]
+  },
 
-如果把几百个无关文件全部放入请求，Model 需要自己识别哪些内容重要；如果只给“修复 bug”，它又缺少作出正确决定的依据。这个例子的 Context Engineering 工作，是让每一步获得足以判断的信息，并保留必要的回查入口。
+  // 框架执行 function，再把结果追加到 messages
+  {
+    role: "tool", tool_call_id: "call_time",
+    content: '{"time":"2026-10-25T10:30:00+08:00"}'
+  },
+  {
+    role: "tool", tool_call_id: "call_weather",
+    content: '{"temperature_c":29,"condition":"cloudy"}'
+  },
 
-### 1.2 KV Cache & Prompt Cache
-
-#### Basics：Prefill、Decode 与 KV Cache
-
-标准 Causal Transformer 的一次 inference 可以分为两个阶段：
-
-- **Prefill**：处理输入 tokens，计算各层的表示并建立 KV Cache。
-- **Decode**：逐步生成输出。新增 token 被送回 Model 后，计算它的表示，并将新的 Key/Value 加入 KV Cache。
-
-Attention 使用当前 Query 与已有 Keys 计算权重，再聚合对应 Values。历史 token 不会看到后来的 token，因此已有的历史 Key/Value 可以复用。**KV Cache 避免反复计算历史表示，但新的 Query 仍需要访问相关历史 Key/Value。**[Hugging Face — How caching works][kv]
-
-对于采用普通 MHA/GQA、以固定精度存储的 Model，可以用下面的近似式理解 KV memory：
-
-```text
-KV memory ≈ 2 × batch_size × layers × sequence_length
-              × num_kv_heads × head_dim × bytes_per_element
+  // 第二次 model call：发送上面的五条 message，以及 tools
+  // model 看到 Tool Results 后，返回下面的最终回复
+  {
+    role: "assistant",
+    content: "新加坡现在是上午 10:30，气温 29°C，多云。"
+  }
+];
 ```
 
-这里的 2 分别对应 Key 和 Value；该式忽略实现额外开销，也不适用于所有架构。它解释了为什么 sequence length 与并发量增加，会让 KV memory 快速增长。
+**model 生成调用请求，框架负责实际执行。** model 输出 `get_weather` 并不表示天气已经查到；只有框架执行成功、写入对应的 tool message，下一次 model call 才有查询结果可用。[OpenAI — Function calling][function-calling]
 
-**Prompt Cache** 则是跨请求复用已经处理过的 Prefix，常见实现复用该 Prefix 的 KV states。它减少重复 Prefill；新的回答仍要重新 Decode。vLLM 将这一机制称为 Automatic Prefix Caching。[vLLM — Automatic Prefix Caching][apc]
+最小 Agent Loop 就是重复以下过程：
 
-| Mechanism | 复用的对象 | 不意味着什么 |
-| --- | --- | --- |
-| KV Cache | Model 各层已处理 tokens 的 Key/Value | 不代表新 token 无需 Attention |
-| Prompt Cache | 不同请求中相同 Prefix 的计算状态 | 不代表请求不再占用 Context Window |
-| Response Cache | 已生成的回答 | 与重新运行 Model 是不同操作 |
-| Semantic Cache | 按语义相似度查找可复用结果 | 不等于 exact-prefix matching |
+```python
+# 示意代码：省略 API、异常处理和权限检查的具体实现
+while True:
+    reply = call_model(messages=messages, tools=tools)
+    messages.append(reply)
 
-#### Industry Insight
+    if not reply.tool_calls:
+        break
 
-**Prefix layout 同时影响 Model behavior 和 serving cost。** OpenAI 的 Prompt Caching 文档强调匹配实际渲染后的 Prefix；instructions、Tool Schema、输入内容及相关设置可能影响复用。即使文本相同，能否命中仍受对应 Model 的 minimum length、cache boundary、TTL 和服务端 Cache 状态约束。单独设置一个 cache key，不能把不同 Prefix 变成相同 Prefix。[OpenAI — Prompt caching][openai-cache]
-
-**Cache Hit Rate 需要与总成本一起看。** 保留无用 history 可能提高 hit rate，却增加每轮处理的 Context。相反，一次 Compaction 会失去部分旧 Prefix 的复用机会，但后续输入更短，整体可能更划算。比较时应同时看 input tokens、cached tokens、cache writes、TTFT、总 latency 与 task success。
-
-前沿 Model 也在优化 KV 本身。**DeepSeek-V4.1-Flash Technical Report（2026-09）**指出 Long-horizon Agent workload 越来越 input-heavy，并讨论 persistent KV 的容量与传输开销；其 CSA2 使用 cross-layer KV reuse，main KV Cache 采用 FP4 等设计。这是 model architecture 与 serving 层的优化，不会自动替应用维护 task state 或生成 conversation summary。[DeepSeek-V4.1-Flash Technical Report，§2–3][deepseek-v4]
-
-#### Method
-
-常见组织方式是让稳定内容先进入可复用部分，再追加变化的信息；具体字段顺序服从 API 的渲染规则：
-
-```text
-Stable instructions / Tool Schema
-→ Session-stable reference
-→ Accumulated history
-→ Current input / new evidence
+    for call in reply.tool_calls:
+        args = json.loads(call.function.arguments)
+        result = execute(call.function.name, args)
+        messages.append({
+            "role": "tool",
+            "tool_call_id": call.id,
+            "content": serialize(result)
+        })
 ```
 
-保持 Prefix 文本、Tool Schema 顺序和 serialization 稳定；动态 timestamp、request ID、临时 Retrieval results 放在相应可变部分。需要清理旧 history 时，明确承担从变动位置开始的 Cache rebuild。Manus 的公开实践也强调 stable prefix、append-only history 与 deterministic serialization。[Manus — Context Engineering][manus]
+用户继续问“那东京呢”，框架就再追加一条 user message，重新进入循环。普通无状态调用需要重新提交所需历史；由服务端管理 conversation 的 API 则由服务端恢复历史。无论历史保存在哪里，model 都要在本次 Context 中看到相关内容，才能使用它。
 
-API 配置要按服务商处理。例如 Claude 支持 Automatic Caching 和显式的 cache breakpoint，并区分 cache write 与 cache read 的计费。TTL 应与复用间隔匹配；只用一次的资料，不一定值得额外建立长生命周期 Cache。[Claude — Prompt caching][claude-cache]
+**Context Engineering 就是在每轮调用前管理这些输入：添加新结果、读取缺失资料、保留有效历史、移出无关内容。** 例如修复代码时，`read_file` 返回的函数、`run_tests` 返回的错误会成为新的 tool messages；旧的大段日志可以稍后压缩，但用户要求“保持 public API 不变”必须继续可见。这个 messages 视角也对应原文对 Agent Loop 的解释。[李博杰 — Context Engineering][book]
 
-#### Example：同一份 API manual，多次提问
+### KV Cache / Prompt Cache
 
-下面的 10,000 tokens 仅为说明用的假设值：
+model 不直接对 JSON 对象做 Attention。API 会把 messages、Tool definitions 等组织为 model 使用的 token 序列，再执行 inference。
+
+理解 **KV Cache**，先看 Attention 中的三个量。它们都是 model 在各层计算得到的向量：
+
+- **Query**：当前 token 用来与已有信息匹配的表示。
+- **Key**：每个历史 token 用来参与匹配的表示。
+- **Value**：每个历史 token 提供的信息表示。Query 与 Keys 算出权重，再按权重组合 Values。
+
+在标准 Causal Attention 中，历史 token 看不到未来 token，因此新增内容不会改变先前已经算好的 Key/Value。把这些数值留下来，下次直接使用，就是 KV Cache。
+
+一次生成通常分为两个阶段：
+
+1. **Prefill**：处理输入 tokens，计算它们的表示并建立 KV Cache。
+2. **Decode**：逐个生成输出 token。新 token 被送回 model 后，计算它的 Query/Key/Value，复用历史 K/V，并把新的 K/V 加入 Cache。
+
+**KV Cache 省掉历史表示的重复计算；新的 Query 仍然需要访问历史 K/V。** 因此即使有 Cache，较长的历史仍然带来 memory 和 Attention 开销。[Hugging Face — How caching works][kv]
+
+**Prompt Cache** 进一步把相同 Prefix 的计算跨请求复用。以下 10,000 tokens 是假设值：
 
 ```text
 Request A:
-[Instructions][10,000-token API manual] | [Question A]
+[固定 instructions][10,000-token API manual][怎样创建订单？]
 
 Request B:
-[Instructions][10,000-token API manual] | [Question B]
-                                      ↑ reusable prefix
+[固定 instructions][10,000-token API manual][怎样取消订单？]
+|------------ reusable prefix ------------|
 ```
 
-当匹配、边界和生命周期均满足要求时，Request B 可以复用 manual 对应的计算。若改成：
+Request A 处理过 manual 后，如果服务端仍保留它的 Cache，且 model、Prefix 和缓存边界等条件满足，Request B 就可以复用相同部分的 Prefill。第二个问题及其回答仍要计算。这种机制也称 **Prefix Caching**。[vLLM — Automatic Prefix Caching][prefix-cache]
 
-```text
-[Question A / Question B][10,000-token API manual]
-```
+如果把问题放到最前面，两个请求从问题处就不同，后面的 manual 也不再处于同一个 Prefix。相同文本出现在不同前文之后，不能直接当作相同 KV states 使用。
 
-Question 一变，后面的 manual 就不再处于相同 Prefix 下，即使 manual 内容完全相同也不能照原样复用整段。把每轮变化的 timestamp 放在最前面，会产生同类问题。
+三者要分清：
 
-### 1.3 Prompt Engineering
-
-#### Basics
-
-**Prompt Engineering 把目标、constraints、Evidence 使用方式和 output contract 写成 Model 可以执行的 instructions。** 对 Agent，Prompt 还需要定义什么时候调用 Tool、如何处理失败、怎样验证完成。
-
-| Technique | 基本含义 | 适合解决的问题 |
+| Mechanism | 保留或复用什么 | 对上面例子的作用 |
 | --- | --- | --- |
-| Zero-shot | 给任务与要求，不提供 demonstration | 建立最简单的 baseline |
-| Few-shot | 给少量 input → output demonstrations | 解释格式、风格与相近类别的 decision boundary |
-| CoT Prompting | 用 instructions 或 demonstrations 引导多步 reasoning | 效果依赖 Model 和任务 |
-| Structured Outputs | 通过 API 支持的 Schema 限制输出结构 | 提高字段与格式的可解析性 |
-| Evals | 用固定任务与标准比较行为 | 判断 Prompt 修改是否真的有效 |
+| KV Cache | 已计算的 Key/Value | 生成回答时复用先前 tokens 的表示 |
+| Prompt Cache | 相同 Prefix 的计算状态 | 第二次提问复用 manual 的 Prefill |
+| Context Compression | 用更短内容替换或移除部分输入 | 把 manual 换成相关章节或 Summary |
 
-#### Industry Insight
+**Cache Hit 不会把 manual 从 Context Window 中删掉，也不会直接返回上一次的答案。**
 
-**Reasoning Model 改变了 Prompt 的分工。** OpenAI 的 reasoning guide 建议给清晰直接的目标、constraints 和成功标准，从 Zero-shot 起步；不必默认加入“think step by step”。这并不排斥 Planning 或 Verification instructions，而是说明无需替 Model 规定每一步内部 reasoning。[OpenAI — Reasoning best practices][reasoning]
+### Prompt Engineering
 
-**Few-shot 没有跨 Model 的固定收益。** DeepSeek-R1 的 Technical Report 在该 Model 评测中观察到 Few-shot 会降低表现，因此采用 Zero-shot 与明确 output format；Gemini 的官方教程则推荐用 Few-shot 表达模式，同时要求试验 examples 的数量。二者提醒我们：Prompt 是 model- and task-specific 的配置，不能把一套技巧直接当作通用增益。[DeepSeek-R1 Technical Report][r1] [Gemini — Prompt design strategies][gemini-prompt]
+**Prompt Engineering 是把“要做什么、必须遵守什么、怎样算完成”写成明确的 instructions。** 在上面的 Loop 中，它决定 model 何时调用 Tool、如何使用结果、什么时候可以结束。
 
-**Output structure 与 correctness 要分别验证。** Structured Outputs 可以约束 Schema，但不能证明字段内容符合事实；API 还可能返回 refusal 或 incomplete response，需要调用方处理。关键业务计算、权限和最终 validation 应交给程序检查。[OpenAI — Structured Outputs][structured]
-
-#### Method
-
-一个实用的 Prompt skeleton 是：
-
-```text
-Task          要完成什么
-Context       当前已有的事实与可用 Evidence
-Constraints   必须保持的条件、操作边界
-Workflow      必需的外部步骤与异常处理
-Output        交付什么、采用什么格式
-Verification  用什么可观察结果判定完成
-```
-
-Workflow 只规定任务真正需要的步骤。例如修 bug 要求复现和 regression test；开放式分析则给问题、Evidence 标准和交付要求，保留探索空间。instructions 与外部资料用清晰的 sections 分开，Tool Result 中的文本不能自行获得更高的指令权限。
-
-迭代时先建立 baseline，收集真实失败，再区分是缺 Evidence、误解要求、选错 Tool，还是验证不足。每次修改一个主要因素，在 held-out tasks 上比较 task success、Tool behavior、latency 和 token cost。OpenAI 的 Evaluation 教程同样强调 task-specific Evals、真实样本和持续回归，而非凭输出是否流畅判断质量。[OpenAI — Evaluation best practices][evals]
-
-#### Example 1：给 Coding Agent 一个可验证的任务
-
-宽泛 Prompt：
-
-```text
-修复支付回调的问题，保证代码质量。
-```
-
-更明确的 Prompt：
+例如“修一下支付 bug”没有告诉 Agent 什么行为是错的，也没有说明怎样验证。可以改成：
 
 ```text
 Task:
 同一 payment event 被重复投递时，只允许入账一次。
 
-Context:
-从 callback handler、database schema 和现有 tests 开始调查。
-以实际代码和 Tool Result 为依据，未知信息先读取。
-
 Constraints:
-保持 public API 和正常回调的 response 不变。
-不得把“先查再写”视为已经解决 concurrency。
+保持 public API 的 request / response 不变。
+不得以跳过现有 tests 的方式解决问题。
+
+Tool use:
+先读取 callback handler 和相关 tests。
+不能从函数名推断实现；缺少代码就继续读取。
 
 Verification:
 验证 single delivery、sequential duplicate、concurrent duplicate。
-报告实际运行的 commands、结果和未验证项。
-
-Output:
-提交 patch，并简述 failure cause 与验证结果。
+报告实际执行的 commands、结果和未验证项。
 ```
 
-这里明确的是外部行为和完成标准。它既没有提前替 Agent 猜测正确实现，也没有要求输出完整 CoT。
+这里的每句话对应一个可观察行为：读取什么、不能改变什么、必须检查什么。具体采用哪种修复方案，仍由 Agent 根据代码决定。
 
-#### Example 2：用 Few-shot 划清分类边界
+**Zero-shot** 只给要求，不给示范；**Few-shot** 额外提供少量 input → output，让 model 看清规则的边界。例如 issue classification：
 
 ```text
-Labels: bug / feature_request / question
-
-“更新后点击保存出现 500” → bug
-“希望可以导出 CSV”       → feature_request
-“现在支持导出 CSV 吗？”   → question
+“点击保存返回 500”     → bug
+“希望支持导出 CSV”     → feature_request
+“现在支持导出 CSV 吗”  → question
 ```
 
-第三条 example 用来区分“请求新能力”和“询问现有能力”。是否保留这组 Few-shot，应由未参与编写的测试样本决定；如果只是增加 tokens 而没有改善分类，就不必加入常驻 Prompt。
+最后两条都提到 CSV，但一个请求新能力，一个询问现有能力。这样的 example 解释了分类规则，比重复写“请准确分类”具体。
 
-### 1.4 Context Compression
+如果结果交给程序消费，可以使用 **Structured Outputs**：通过 API 的 JSON Schema 约束字段和类型。例如只允许输出一个 `label`，其值必须属于 `bug / feature_request / question`。这解决结构可解析的问题；选错 label 仍然是内容错误，需要单独验证。[OpenAI — Structured Outputs][structured]
 
-#### Basics
+### Context Compression
 
-**Context Compression 减少后续 Model 请求需要携带的信息，同时尽量保留继续任务所需的内容。** 实现可以是筛选、删除、Summary、结构化 State，或 Model Provider 提供的 Compaction。
+每次 Tool call 都向 messages 添加内容，历史会越来越长。**Context Compression 是减少下一轮需要携带的内容，同时保留继续任务所需的信息。**
 
-| Method | 对 Context 的操作 | 主要取舍 |
-| --- | --- | --- |
-| Truncation | 按长度或时间直接截断 | 实现简单，但可能删掉关键早期信息 |
-| Tool Result Filtering / Clearing | 过滤无关输出，或移除不再需要的旧结果 | 需要判断哪些结果仍会被引用 |
-| Summarization / Compaction | 用更短的表示承接旧 History | 有信息损失，需要保护约束与精确字段 |
-| External Memory + Retrieval | 将原文保存在外部，Context 保留 Summary 和 source pointers | 需要再次读取，也依赖来源可用性 |
+最简单的做法是 **Truncation**：直接删除最早的 messages。问题是最早的 user message 可能包含目标和 constraints，删掉后 Agent 可能继续写代码，却忘了用户要求兼容旧接口。
 
-这里改变的是下一轮可见的信息。**KV Cache Compression 减少 inference 时 K/V states 的存储开销，属于不同层次。** Prompt Cache 复用已有计算，也不等于减少 Context tokens。
+更常见的组合是：
 
-#### Industry Insight
+- **Tool Result Clearing**：移出不再需要的旧 Tool Results。例如 test 的完整输出已经保存到文件，后续只保留失败项和日志路径。
+- **Compaction**：把较长的历史整理成较短的状态，代替旧历史参与下一轮调用。
+- **External Memory + Retrieval**：完整原文留在文件或数据库中，Context 保留必要内容和位置，需要时重新读取。
 
-**Long-context Retrieval 与 Long-horizon Planning 是不同能力。** Gemini 2.5 Technical Report 的 Pokémon Agent 案例中，作者观察到 Context 显著超过 100k tokens 后，Agent 更容易重复历史动作。报告明确将此限定为 anecdotal observation；它提示需要评估长期行为，不能把 100k 当作所有 Model 的固定 threshold。[Gemini 2.5 Technical Report，§4.1][gemini-report]
-
-**Compaction 应产生可以继续工作的 State，而不只是对话梗概。** “已经读了文件、改了代码”没有说明代码是否通过测试；“修改完成但 concurrent test 未运行”才会影响下一步。Anthropic 的 long-running harness 使用 progress file、feature list 和 Git history 支持下一次 session 恢复，说明任务状态需要在 conversation 之外也有明确记录。[Anthropic — Effective harnesses][harness]
-
-**Compaction 已成为部分 Model Provider 的原生能力。** OpenAI 的 Compaction 可以返回 opaque、encrypted 的 compaction item，不能将其当作可随意编辑的 Markdown summary；Claude 的 Compaction 则提供 instructions 等控制方式。使用原生接口时，必须遵守对应的 history continuation 协议。[OpenAI — Compaction][openai-compact] [Claude — Compaction][claude-compact]
-
-#### Method
-
-应用层通常组合以下方法：
-
-1. **先减少输入噪声。** search 返回命中片段；test Tool 优先返回失败项。大型原始结果落盘，保留 file path。
-2. **将 State 与 Evidence 分开。** State 记录当前任务进展；Evidence 保留原始代码、日志、来源与必要的精确值。
-3. **执行 Task-aware Compaction。** 输入当前 goal 和 constraints，保护 decisions、failed attempts、open questions、source pointers、next actions。ID、版本、路径和用户纠正不应被模糊化。
-4. **保留当前工作所需的 Recent History。** 不按固定条数盲删；如果 Model 协议要求原样传递某些 items，就使用其支持的 Compaction 路径。
-5. **为下一轮预留 Token Budget。** threshold 要给下一次 Tool Result、输出及所需 reasoning 留余量，按真实 workload 调整。
-6. **恢复后重新验证环境。** Summary 说“测试通过”只是历史状态；文件后来改变了，需要检查新的版本和结果。
-
-同时要考虑 Prompt Cache。Claude 的 Context editing 文档明确说明，修改旧 Tool Result 会影响对应位置之后的 cached prefix，并提供最小清理量控制。工程上应比较“一次释放足够空间”与“每轮改写少量历史”的总开销。[Claude — Context editing][context-edit]
-
-#### Example：将执行记录整理成 State Checkpoint
-
-低价值 Summary：
-
-```text
-读了支付模块，尝试了两个方案，改了代码并运行了一些测试。
-```
-
-更适合恢复工作的 Checkpoint：
+例如同一修复任务读了十个文件、运行了多次 tests，Compaction 后可以保留下面的 Checkpoint：
 
 ```yaml
 goal: 同一 payment event 只能入账一次
-constraints:
-  - 保持 public API response 不变
-verified:
-  - sequential duplicate test 已通过
-decision:
-  - 使用 database unique constraint；event_id 作为去重依据
-failed_attempt:
-  - 应用层先查后写存在 race condition
+constraint: 保持 public API 不变
+decision: 以 event_id 建立 database unique constraint
+failed_attempt: 先查再写无法阻止 concurrent requests
+verified: sequential duplicate test 已通过
+pending: concurrent duplicate test 尚未运行
 evidence:
   - tests/test_payment_callback.py
   - work/payment-test.log
-open:
-  - concurrent duplicate test 尚未运行
-next:
-  - 执行 concurrent test，再验证 transaction rollback
+next: 运行 concurrent test，检查 transaction rollback
 ```
 
-上面是示例状态，不代表真实项目结果。它保留了“为什么选这个方案”和“什么尚未验证”；完整 diff 与 logs 仍可重新读取。Compaction 效果应通过恢复后的任务表现验证：是否重复失败方案、是否漏掉约束、能否找到 Evidence，而不只看 token reduction。
+这是说明用状态。与“改了代码，运行了测试”相比，它明确告诉下一轮什么已验证、什么还没做、失败方案为什么失败，以及到哪里找原始证据。
 
-### 1.5 Skill
+应用自己管理历史时，可以组织成：
 
-#### Basics
+```text
+[固定 instructions]
+[Checkpoint]
+[仍在使用的 recent messages，保留完整 Tool call / result 配对]
+[新的 user message 或 Tool Result]
+```
 
-**Skill 将可复用的 domain knowledge、Workflow 和资源打包，供 Agent 在相关任务中按需加载。** 它在 runtime 提供 instructions，不会因为安装就改变 Model weights。
+Summary 会丢信息，尤其容易丢掉精确 ID、用户纠正和失败原因。因此需要保护这些字段，并保留原文的读取入口。Provider 的 native Compaction 可能返回专用 items，不能直接套用这份文本布局。
 
-按照 Agent Skills specification，一个 Skill 至少包含 SKILL.md，也可以带 scripts、references 和 assets。例如下面是一份说明用的结构：
+### Skill
+
+**Skill 是一份可复用的任务操作说明，以及执行时要用的文件。** 它回答“遇到这一类任务应该怎样做”。Tool 则提供具体操作，例如读取 PDF、运行 Python、写文件。
+
+以 invoice field extraction 为例，Skill 可以组织为：
 
 ```text
 invoice-extraction/
@@ -281,76 +238,116 @@ invoice-extraction/
 └── assets/output-schema.json
 ```
 
-SKILL.md 以 YAML frontmatter 声明 name 与 description，再写具体 instructions；其余文件承载详细规则、可执行逻辑和模板。[Agent Skills specification][skill-spec]
-
-| Object | 主要职责 | Example |
-| --- | --- | --- |
-| Prompt | 定义当前调用的要求 | 提取这张 invoice 的字段 |
-| Tool | 提供可执行的操作 | 读取 PDF、运行 Python |
-| Skill | 组织某类任务的可复用方法 | 字段规则、OCR 条件、validation Workflow |
-| Memory | 保存事实、偏好或任务状态 | 本项目采用的字段命名和处理进度 |
-
-#### Industry Insight
-
-**Progressive Disclosure 让细节在需要时才占用 Context。** 标准模式是先暴露 metadata；匹配任务后加载 instructions；执行到具体步骤再读取 resources。目录让能力可发现，完整正文负责执行，具体 host 决定 discovery、activation 和消息包装方式。[Agent Skills specification][skill-spec]
-
-**Skill quality 包括 Routing quality。** description 要让 Agent 判断何时使用，过宽会误触发，过窄会漏掉相关请求。另一个常见做法是按任务的容错空间控制自由度：开放式分析提供原则，严格格式转换交给明确 scripts 和 validation。Anthropic 的 authoring 教程强调这些设计，并建议先通过代表性任务发现缺口，再编写 Skill。[Claude — Skill authoring best practices][skill-author]
-
-#### Method & Example
-
-一个最小 invoice-extraction Skill 可以这样写；以下是设计示例，引用的 scripts 与 Schema 需要实际实现和测试：
+`SKILL.md` 的最小写法：
 
 ```markdown
 ---
 name: invoice-extraction
-description: Extract structured fields from invoice PDFs and validate them. Use for invoice data extraction, not general PDF summarization.
+description: 提取 invoice PDF 中的 invoice number、currency 和 total，输出 JSON。
 ---
 
-## Workflow
-1. Extract text; use OCR only when the PDF has no usable text layer.
-2. Read references/field-rules.md for field definitions.
-3. Read assets/output-schema.json and write extracted data to output.json.
-   Use null for missing evidence only where the Schema allows null.
-4. Run scripts/validate_invoice.py to validate output.json against
-   assets/output-schema.json; report any validation errors.
-5. Return extracted fields, source locations, and unresolved issues.
+1. 读取 references/field-rules.md，确认字段含义。
+2. 读取 PDF；没有可用文本时再执行 OCR。
+3. 按 assets/output-schema.json 生成 output.json。
+4. Schema 将缺失字段定义为 nullable；找不到时写 null，不自行推算。
+5. 用 scripts/validate_invoice.py 检查 output.json。
+6. 返回结果及无法确认的字段。
 ```
 
-用户要求“提取这 10 张 invoice 的 invoice number 与 total”时，Skill 提供统一的字段规则和 validation；用户要求“概括这篇论文 PDF”时，description 应避免错误激活它。
+`name` 和 `description` 让 Agent 判断是否适用；正文写执行步骤；`references` 放详细规则；`scripts` 放可以重复执行的程序；`assets` 放 Schema、模板等资源。目录规范要求 `SKILL.md`，其余目录按需要添加。[Agent Skills specification][skills-spec]
 
-把确定性环节交给 scripts，可以避免每次重新生成金额格式检查或 Schema validation。Model 负责识别输入、选择适用路径、解释异常和处理未知情况。Skill 中的 script 仍需要维护 dependencies、输入检查与错误处理；Skill 本身不替代权限控制。
+用户要求处理 invoice 时，Agent 读取这份说明，再通过已有 Tools 读取 PDF、运行 script。**Skill 本身不会自动执行，也不会改变 model weights；Agent host 还必须提供读取文件和执行程序的能力。**
 
-可以将 Skill 的 Evals 分成三组，分别检查：
+## Insight
 
-- **Activation**：该触发的任务是否触发；相似但无关的任务是否误触发。
-- **Execution**：是否读取正确 reference、运行必要 script、遵守 exceptions。
-- **Outcome**：结果是否通过 validation；与不使用 Skill 的 baseline 相比，task success、latency 和 Context cost 如何变化。
+### Context Engineering：按需读取也扩展到了 Tool definitions
 
-这三组是面向实现的检查框架。它让“Agent 读过 Skill”与“Skill 真正改善任务结果”成为两个可分别验证的问题。
+**资料先保留位置，需要时再读取正文。** Anthropic 的 Just-in-time Retrieval 实践让 Agent 先持有 file path、query 等入口，再根据当前任务读取内容。例如修复 `payment/callback.py` 时，先 search 定位 handler，再读函数和相关 tests；无需在第一次调用时放入整个 repository。这个做法节省常驻 Context，但会增加读取步骤，因此项目说明等频繁使用的小文档仍适合预加载。[Anthropic — Context Engineering][context]
 
-#### Sources
+**Tool definitions 也不必一次性全部放入。** 当前 OpenAI Tool Search 支持将 function 标为 `defer_loading: true`。Agent 先发现相关 Tool，再加载其完整定义；对单个 deferred function，name 和 description 仍可见，主要延迟加载 parameter schema。新发现的 Tools 从 Context 后部加入，避免反复改写前面的 Prefix。[OpenAI — Tool search][tool-search]
 
-- 原始阅读材料：[李博杰《深入理解 AI Agent》第二章](https://bojieli.github.io/ai-agent-book/astro/book/chapter2/)。
-- Model Technical Reports：[DeepSeek-V4.1-Flash（2026-09）][deepseek-v4]、[Gemini 2.5（2025）][gemini-report]、[DeepSeek-R1（2025）][r1]。
-- 其余官方 Tutorials 与 Specifications 已在对应段落链接；文档核查日期：2026-10-25。文中的业务场景与代码片段为说明用 Examples。
+例如系统有 CRM、calendar、repository 三组 Tools，用户只要求检查订单，先加载相关 CRM functions 就够了。由此得到的 Method 是：**把常用小集合直接提供，把大目录做成可搜索的能力目录；同时测是否找得到正确 Tool，以及额外 search 的 latency。**
 
-[context]: https://www.anthropic.com/research/effective-context-engineering-for-ai-agents
-[tools]: https://www.anthropic.com/research/writing-tools-for-agents
+### KV Cache / Prompt Cache：从保持 Prefix 稳定，到诊断和减少 KV 开销
+
+**先检查请求哪里变了，再判断为什么没有 Cache Hit。** 固定 instructions、Tool Schema 的顺序和 serialization；timestamp、当前任务状态等可变内容放到后面的相应 message 中。Manus 的公开实践强调 stable prefix 与 append-only history，因为改写较早内容会使后续 Prefix 无法照原样复用。[Manus — Context Engineering][manus]
+
+当前 OpenAI 已提供 **Prompt Cache Diagnostics**，可以把本次请求与之前的 response 比较，定位 model、Tools、settings 或 input 的变化。例如仅修改 function name，也值得检查实际请求是否因此改变。它提供诊断信息，不会自动恢复旧 conversation 或修复 Cache。[OpenAI — Prompt cache diagnostics][cache-diagnostics]
+
+**模型层也在减少保存和搬运 KV 的开销。** DeepSeek-V4.1-Flash Technical Report（2026-09）针对 input-heavy 的 Agent workload 提出 CSA2：部分层复用前面层的 main KV，避免每层都保存独立的一套；main KV 使用 FP4，以更低精度存储数值。这说明长任务的成本不仅是“算了多少 tokens”，还包括“KV 占多少空间、需要搬运多少数据”。这是报告中的架构设计，不能等同于应用层的 Summary。[DeepSeek-V4.1-Flash Technical Report，§2–3][deepseek-v4]
+
+应用侧应同时记录 **input tokens、cached tokens、TTFT 和 task success**。TTFT 是请求发出到首个输出 token 的时间。如果为了维持 Cache Hit 一直保留无用历史，总成本未必更低；做过 Compaction 后，即使需要重建部分 Cache，后续更短的输入也可能抵消这次开销。
+
+### Prompt Engineering：明确完成标准，用失败样本修改 Prompt
+
+**Reasoning Model 不需要默认加上“think step by step”。** OpenAI 当前教程建议从直接、清晰的 Zero-shot instructions 开始，再按任务需要加入 examples。支付修复示例中的三类 test case，比要求“认真思考”更能定义任务是否完成；它们规定外部验证，不要求 model 展示完整内部 reasoning。[OpenAI — Reasoning best practices][reasoning]
+
+**Few-shot 是否有用，要用目标 model 和目标任务验证。** Gemini 的教程建议用 examples 表达模式；DeepSeek-R1 的 Technical Report（2025）则报告了该 model 在相关评测中 Few-shot 表现下降的现象。这些结果不能互相替代。实用做法是保留一组未用于编写 Prompt 的测试输入，对比 Zero-shot 与 Few-shot 的分类错误，特别看“功能请求 / 功能询问”这样的边界案例。[Gemini — Prompting strategies][gemini-prompt] [DeepSeek-R1 Technical Report][r1]
+
+**把 Prompt 当作需要回归验证的配置。** 记录真实失败，再针对失败修改一条 instruction 或一个 example；比较修改前后的 task success、Tool 使用和成本。例如输出格式错，就调整 Schema；缺少证据，就调整 Retrieval；已经查到正确金额但算错 total，就交给程序计算。不能把所有问题都归结为 Prompt 不够长。OpenAI 的 Evals 教程也强调真实任务样本和持续回归。[OpenAI — Evaluation best practices][evals]
+
+### Context Compression：恢复工作比缩短文本更重要
+
+**Long Context 能装下记录，不等于 Agent 能一直正确使用记录。** Gemini 2.5 Technical Report（2025）的 Pokémon Agent 案例中，作者观察到 Context 显著超过 100k tokens 后更容易重复历史动作。报告将其限定为 anecdotal observation，不能把 100k 当作其他 model 的通用阈值。它提示我们需要测试长任务中的重复行为和进度恢复，而不只测试是否能找到某个事实。[Gemini 2.5 Technical Report，§4.1][gemini-report]
+
+Anthropic 的 long-running Agent harness 使用 progress file、feature list 和 Git history 帮助新 session 恢复。对上面的代码修复任务，可以把已验证项与 pending items 写入进度文件，完整 diff 和 logs 保存在原位置；恢复时检查文件状态，再继续 pending test。**Compaction 的验收应该包括：是否漏掉 constraints、是否重复失败方案、是否把未验证的改动误认成完成。**[Anthropic — Effective harnesses][harness]
+
+**Native Compaction 的结果必须按 API 协议续接。** 当前 OpenAI 的 standalone `/responses/compact` 返回一个 compacted window，可能同时包含 encrypted compaction item 和保留下来的其他 items。下一次请求应保留完整 `compacted.output`，不能只摘取其中的 compaction item：
+
+```python
+# 流程示意：selected_model 必须支持对应接口
+compacted = client.responses.compact(
+    model=selected_model,
+    input=history,
+)
+
+response = client.responses.create(
+    model=selected_model,
+    input=[*compacted.output, new_user_message],
+)
+```
+
+其中 opaque item 不是给应用手工编辑的普通 Summary。若使用 server-side Compaction 或 `previous_response_id`，应遵循各自的续接规则。Claude 也提供 on-demand 与 threshold Compaction，但返回内容和历史处理规则不同，不能混用。[OpenAI — Compaction][openai-compact] [Claude — Compaction][claude-compact]
+
+### Skill：分层加载，并分别验证选择和执行
+
+**Progressive Disclosure 让 Skill 按三层逐步加载。** 开始只提供 metadata；匹配任务后读取 `SKILL.md`；执行到具体步骤时再读取 references 或使用 scripts。比如 invoice Skill 不需要在处理每张票据前加载所有国家的 tax rules，遇到相关字段时再读对应文件。script 可以直接运行并返回检查结果，不必先把全部源码放进 Context。[Agent Skills specification][skills-spec]
+
+这一模式已经进入 Provider 的原生实现。当前 OpenAI Skills 文档支持 versioned bundles；在其 Responses API shell tools 中，model 先看到 Skill 的 name、description 和 path，再按 path 读取完整 instructions。部署时固定经过验证的 version，可以避免同一个 Agent 因 Skill 内容更新而悄悄改变行为。[OpenAI — Skills][openai-skills]
+
+**Skill 要分别验证 Routing 和 Execution。** Routing 是用户的任务能否选中正确 Skill；Execution 是选中后能否按步骤得到正确结果。例如：
+
+```text
+“提取 invoice number 和 total”
+→ 应选择 invoice-extraction
+
+“总结这篇研究论文 PDF”
+→ 不应只因为文件也是 PDF 就选择 invoice-extraction
+
+选中之后：
+读取 field rules → 生成 output.json → 运行 validation
+```
+
+如果第一类失败，修改 description 的适用条件；如果第二类执行失败，检查正文、resources 和 scripts。能确定性检查的字段类型、required fields 和金额格式交给 script；需要识别页面内容的部分交给 model。Anthropic 的 Skill authoring 教程建议从真实失败建立 Evals，再补 instructions，避免只用“Skill 已加载”判断有效。[Anthropic — Skill authoring best practices][skill-practices]
+
+[book]: https://bojieli.github.io/ai-agent-book/astro/book/chapter2/
+[function-calling]: https://developers.openai.com/api/docs/guides/function-calling
 [kv]: https://huggingface.co/docs/transformers/main/cache_explanation
-[apc]: https://docs.vllm.ai/en/latest/features/automatic_prefix_caching/
-[openai-cache]: https://developers.openai.com/api/docs/guides/prompt-caching
-[claude-cache]: https://platform.claude.com/docs/en/build-with-claude/prompt-caching
-[deepseek-v4]: https://arxiv.org/html/2609.19969v1
-[manus]: https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus
-[reasoning]: https://developers.openai.com/api/docs/guides/reasoning-best-practices
-[r1]: https://arxiv.org/html/2501.12948v1
-[gemini-prompt]: https://ai.google.dev/gemini-api/docs/prompting-strategies
+[prefix-cache]: https://docs.vllm.ai/en/latest/features/automatic_prefix_caching/
 [structured]: https://developers.openai.com/api/docs/guides/structured-outputs
+[skills-spec]: https://agentskills.io/specification
+[context]: https://www.anthropic.com/research/effective-context-engineering-for-ai-agents
+[tool-search]: https://developers.openai.com/api/docs/guides/tools-tool-search
+[manus]: https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus
+[cache-diagnostics]: https://developers.openai.com/api/docs/guides/prompt-caching/diagnostics
+[deepseek-v4]: https://arxiv.org/html/2609.19969v1
+[reasoning]: https://developers.openai.com/api/docs/guides/reasoning-best-practices
+[gemini-prompt]: https://ai.google.dev/gemini-api/docs/prompting-strategies
+[r1]: https://arxiv.org/html/2501.12948v1
 [evals]: https://developers.openai.com/api/docs/guides/evaluation-best-practices
 [gemini-report]: https://arxiv.org/html/2507.06261v3#S4.SS1
 [harness]: https://www.anthropic.com/research/effective-harnesses-for-long-running-agents
 [openai-compact]: https://developers.openai.com/api/docs/guides/compaction
 [claude-compact]: https://platform.claude.com/docs/en/build-with-claude/compaction
-[context-edit]: https://platform.claude.com/docs/en/build-with-claude/context-editing
-[skill-spec]: https://agentskills.io/specification
-[skill-author]: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices
+[openai-skills]: https://developers.openai.com/api/docs/guides/tools-skills
+[skill-practices]: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices
