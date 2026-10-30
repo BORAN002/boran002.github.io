@@ -1,4 +1,4 @@
-# Notes, Blog & Papers · Riven Zhang
+# Notes, Blog & Papers
 
 [打开网站](https://boran002.github.io/) · [Notes](https://boran002.github.io/notes/) · [Blog](https://boran002.github.io/blog/) · [Papers](https://boran002.github.io/papers/)
 

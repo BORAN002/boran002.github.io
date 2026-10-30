@@ -5,10 +5,10 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL('https://boran002.github.io'),
   title: {
-    default: 'Notes, Blog & Papers · Riven Zhang',
-    template: '%s · Riven Zhang',
+    default: 'Notes, Blog & Papers',
+    template: '%s · Notes, Blog & Papers',
   },
-  description: 'Riven Zhang 的学习记录、博客与论文笔记。',
+  description: '学习记录、博客与论文笔记。',
   alternates: { canonical: '/' },
   icons: { icon: '/favicon.svg' },
 };
@@ -25,7 +25,7 @@ export default function RootLayout({
         </a>
         <div className="page">
           <header className="site-header">
-            <a href="/">Riven Zhang</a>
+            <a href="/">Notes, Blog &amp; Papers</a>
             <Navigation />
           </header>
           {children}
