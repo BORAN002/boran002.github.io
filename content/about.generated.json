@@ -1,0 +1,22 @@
+{
+  "title": "About",
+  "description": "关于本站的内容、分类与阅读方式。",
+  "toc": [
+    {
+      "id": "内容分类",
+      "title": "内容分类",
+      "depth": 2
+    },
+    {
+      "id": "阅读方式",
+      "title": "阅读方式",
+      "depth": 2
+    },
+    {
+      "id": "反馈",
+      "title": "反馈",
+      "depth": 2
+    }
+  ],
+  "html": "<p>这里记录 AI 与 Agent 相关的学习、实践和论文阅读，重点是值得保留的 <strong>Insight</strong>，以及可以复用的 <strong>Method</strong>。</p>\n<h2 id=\"内容分类\">内容分类</h2>\n<ul>\n<li><strong><a href=\"/notes/\">Note</a></strong>：持续更新的主题笔记。先解释概念如何工作，再结合例子记录 Insight 与 Method。例如 <a href=\"/notes/agent-loop/\">Agent</a> 中的 Context Engineering。</li>\n<li><strong><a href=\"/blog/\">Blog</a></strong>：围绕一次实践或一个问题展开的完整文章，包括项目复盘、实验记录和观点分析。写清问题、过程、结果与局限。</li>\n<li><strong><a href=\"/papers/\">Paper</a></strong>：单篇论文阅读与专题整理。保留原论文链接，区分论文提出的结论、阅读中的判断和已经验证的结果。目前收录 <a href=\"/papers/agent-tool-use-2026/\">Agent Tool Use 文献专题</a>，可通过 <a href=\"/papers/agent-tool-use-2026/explorer/\">Explorer</a> 检索 359 篇论文。</li>\n<li><strong>About</strong>：本站的内容范围、分类与阅读说明。</li>\n</ul>\n<h2 id=\"阅读方式\">阅读方式</h2>\n<p>关键术语使用英文。Note 中的 <strong>Basic</strong> 说明机制与必要背景，<strong>Insight</strong> 记录值得注意的进展、设计判断及其适用条件。Paper 中的 <strong>Method</strong> 尽量展开为可理解的步骤，并附上来源和阅读范围。</p>\n<p>主题笔记会在原文中持续修订；论文阅读不等同于实验复现。引用中的数字和结论应结合原始来源、任务条件与评测设置理解。</p>\n<h2 id=\"反馈\">反馈</h2>\n<p>如有错误、失效链接或值得补充的资料，可以在 <a href=\"https://github.com/BORAN002/boran002.github.io/issues\">GitHub Issues</a> 留下对应页面和来源。</p>\n"
+}

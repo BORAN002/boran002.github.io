@@ -20,6 +20,31 @@ const md = new MarkdownIt({
   katexOptions: { throwOnError: false, trust: false },
 });
 const entries = [];
+function renderMarkdown(content, file) {
+  const tokens = md.parse(content, {}),
+    toc = [],
+    ids = new Map();
+  for (let i = 0; i < tokens.length; i++) {
+    if (tokens[i].type !== 'heading_open') continue;
+    if (tokens[i].tag === 'h1')
+      throw new Error(`${file}: use ## headings; the title is already H1`);
+    const title = (tokens[i + 1].children ?? [])
+      .map((token) => token.content)
+      .join('');
+    const base =
+      title
+        .toLowerCase()
+        .replace(/[^\p{L}\p{N}]+/gu, '-')
+        .replace(/^-|-$/g, '') || 'section';
+    const count = (ids.get(base) ?? 0) + 1;
+    ids.set(base, count);
+    const id = count === 1 ? base : `${base}-${count}`;
+    tokens[i].attrSet('id', id);
+    if (['h2', 'h3'].includes(tokens[i].tag))
+      toc.push({ id, title, depth: Number(tokens[i].tag.slice(1)) });
+  }
+  return { toc, html: md.renderer.render(tokens, md.options, {}) };
+}
 for (const section of ['notes', 'blog', 'papers']) {
   await mkdir(`content/${section}`, { recursive: true });
   for (const file of (await readdir(`content/${section}`))
@@ -53,28 +78,7 @@ for (const section of ['notes', 'blog', 'papers']) {
     }
     if (data.description !== undefined && typeof data.description !== 'string')
       throw new Error(`${file}: description must be a string`);
-    const tokens = md.parse(content, {}),
-      toc = [],
-      ids = new Map();
-    for (let i = 0; i < tokens.length; i++) {
-      if (tokens[i].type !== 'heading_open') continue;
-      if (tokens[i].tag === 'h1')
-        throw new Error(`${file}: use ## headings; the title is already H1`);
-      const title = (tokens[i + 1].children ?? [])
-        .map((token) => token.content)
-        .join('');
-      const base =
-        title
-          .toLowerCase()
-          .replace(/[^\p{L}\p{N}]+/gu, '-')
-          .replace(/^-|-$/g, '') || 'section';
-      const count = (ids.get(base) ?? 0) + 1;
-      ids.set(base, count);
-      const id = count === 1 ? base : `${base}-${count}`;
-      tokens[i].attrSet('id', id);
-      if (['h2', 'h3'].includes(tokens[i].tag))
-        toc.push({ id, title, depth: Number(tokens[i].tag.slice(1)) });
-    }
+    const rendered = renderMarkdown(content, file);
     entries.push({
       slug,
       section,
@@ -84,18 +88,34 @@ for (const section of ['notes', 'blog', 'papers']) {
       description: data.description?.trim() ?? '',
       updated: data.updated ?? data.date,
       url: `/${section}/${slug}/`,
-      toc,
-      html: md.renderer.render(tokens, md.options, {}),
+      ...rendered,
     });
   }
 }
 entries.sort(
-  (a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug),
+  (a, b) => b.updated.localeCompare(a.updated) || a.slug.localeCompare(b.slug),
 );
 await writeFile(
   'content/generated.json',
   JSON.stringify(entries, null, 2) + '\n',
 );
+const about = matter(await readFile('content/about.md', 'utf8'));
+for (const key of ['title', 'description']) {
+  if (typeof about.data[key] !== 'string' || !about.data[key].trim())
+    throw new Error(`about.md: ${key} must be a nonempty string`);
+}
+await writeFile(
+  'content/about.generated.json',
+  JSON.stringify(
+    {
+      title: about.data.title,
+      description: about.data.description,
+      ...renderMarkdown(about.content, 'about.md'),
+    },
+    null,
+    2,
+  ) + '\n',
+);
 console.log(
-  `Prepared ${entries.length} entries across Notes, Blog and Papers. Drafts are excluded.`,
+  `Prepared ${entries.length} entries across Note, Blog and Paper, plus About. Drafts are excluded.`,
 );

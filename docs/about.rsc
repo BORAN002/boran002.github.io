@@ -1,0 +1,28 @@
+0:{"page:/about":"$L1","layout:/":"$L2","route:/about":"$L3","__route":"route:/about","__interceptionContext":null,"__layoutIds":["layout:/"],"__rootLayout":"/","__bfcacheSegmentIdentities":{"layout:/":"[\"layout\",\"layout:/\",\"root-boundary:/\",\"\"]","page:/about":"[\"page\",\"page:/about\",\"root-boundary:/\",\"[\\\"about\\\"]\"]"},"__srcPage":["about","page"],"__layoutFlags":{"layout:/":"s"},"__artifactCompatibility":{"schemaVersion":1,"graphVersion":"app-route-graph:5d73bdb41b200fd7","deploymentVersion":"6c5b74e1-17b5-4295-9073-c75f15abdfb6","appElementsSchemaVersion":1,"rscPayloadSchemaVersion":1,"rootBoundaryId":"/","renderEpoch":null}}
+4:I["dda6c9d07718",[],"Navigation",1]
+5:I["8c0f216c4604",[],"Children",1]
+6:I["593f344dc510",[],"GlobalErrorBoundary",1]
+7:I["0b874ad30386",[],"default",1]
+8:I["593f344dc510",[],"ErrorBoundary",1]
+9:I["15c18cfaeeff",[],"LayoutSegmentProvider",1]
+a:I["8c0f216c4604",[],"Slot",1]
+b:I["593f344dc510",[],"NotFoundBoundary",1]
+c:I["9276801271d6",[],"AppRouterScrollTarget",1]
+d:I["593f344dc510",[],"RedirectBoundary",1]
+:HL["/_next/static/css/index.Bf-6DW1N.css","style"     ]
+2:[[["$","link","css:/_next/static/css/index.Bf-6DW1N.css",{"rel":"stylesheet","precedence":"vite-rsc/importer-resources","href":"/_next/static/css/index.Bf-6DW1N.css","data-rsc-css-href":"/_next/static/css/index.Bf-6DW1N.css"}],"$undefined"],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"children":[["$","a",null,{"className":"skip-link","href":"#main","children":"跳至正文"}],["$","div",null,{"className":"page","children":[["$","header",null,{"className":"site-header","children":[["$","a",null,{"href":"/","children":"Note, Blog & Paper"}],["$","$L4",null,{}]]}],["$","$L5",null,{}]]}]]}]}]]
+3:[[["$","meta",null,{"charSet":"utf-8"}],[["$","title","0",{"children":"About · Note, Blog & Paper"}],["$","meta","1",{"name":"description","content":"关于本站的内容、分类与阅读方式。"}],["$","link","2",{"data-vinext-streamed-icon":"$undefined","rel":"icon","href":"/favicon.svg","type":"$undefined","sizes":"$undefined","color":"$undefined","media":"$undefined","fetchPriority":"$undefined"}],["$","link","3",{"rel":"canonical","href":"https://boran002.github.io/about/"}]],[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]],["$","$L6",null,{"fallback":"$7","children":["$","$L8",null,{"fallback":"$7","children":["$","$L9",null,{"providerId":"layout:/","segmentMap":{"children":["about"]},"children":["$","$La",null,{"id":"layout:/","parallelSlots":"$undefined","children":["$","$Lb",null,{"resetKey":"about","fallback":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"children":["$","$Lc",null,{"children":["$","$Ld",null,{"children":[["$","$L9",null,{"providerId":"page:/about","segmentMap":{"children":["__PAGE__"]},"children":["$","$La",null,{"id":"page:/about"}]}],null]}]}]}]}]}]}]}],null,null]
+e:T734,<p>这里记录 AI 与 Agent 相关的学习、实践和论文阅读，重点是值得保留的 <strong>Insight</strong>，以及可以复用的 <strong>Method</strong>。</p>
+<h2 id="内容分类">内容分类</h2>
+<ul>
+<li><strong><a href="/notes/">Note</a></strong>：持续更新的主题笔记。先解释概念如何工作，再结合例子记录 Insight 与 Method。例如 <a href="/notes/agent-loop/">Agent</a> 中的 Context Engineering。</li>
+<li><strong><a href="/blog/">Blog</a></strong>：围绕一次实践或一个问题展开的完整文章，包括项目复盘、实验记录和观点分析。写清问题、过程、结果与局限。</li>
+<li><strong><a href="/papers/">Paper</a></strong>：单篇论文阅读与专题整理。保留原论文链接，区分论文提出的结论、阅读中的判断和已经验证的结果。目前收录 <a href="/papers/agent-tool-use-2026/">Agent Tool Use 文献专题</a>，可通过 <a href="/papers/agent-tool-use-2026/explorer/">Explorer</a> 检索 359 篇论文。</li>
+<li><strong>About</strong>：本站的内容范围、分类与阅读说明。</li>
+</ul>
+<h2 id="阅读方式">阅读方式</h2>
+<p>关键术语使用英文。Note 中的 <strong>Basic</strong> 说明机制与必要背景，<strong>Insight</strong> 记录值得注意的进展、设计判断及其适用条件。Paper 中的 <strong>Method</strong> 尽量展开为可理解的步骤，并附上来源和阅读范围。</p>
+<p>主题笔记会在原文中持续修订；论文阅读不等同于实验复现。引用中的数字和结论应结合原始来源、任务条件与评测设置理解。</p>
+<h2 id="反馈">反馈</h2>
+<p>如有错误、失效链接或值得补充的资料，可以在 <a href="https://github.com/BORAN002/boran002.github.io/issues">GitHub Issues</a> 留下对应页面和来源。</p>
+1:["$","main",null,{"id":"main","tabIndex":-1,"children":[["$","h1",null,{"className":"index-title","children":"About"}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$e"}}]]}]

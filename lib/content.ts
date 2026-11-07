@@ -1,9 +1,6 @@
 import data from '@/content/generated.json';
-export const sections = {
-  notes: { title: 'Notes', description: '学习记录、技术实践与随手笔记。' },
-  blog: { title: 'Blog', description: '想法、经验与长文章。' },
-  papers: { title: 'Papers', description: '论文阅读、文献综述与研究线索。' },
-} as const;
+import { sections } from './site';
+export { sections } from './site';
 export type Section = keyof typeof sections;
 export type Entry = {
   slug: string;

@@ -12,7 +12,11 @@
     "lint": "oxlint",
     "format": "oxfmt",
     "build:pages": "npm run build && node scripts/export-pages.mjs",
-    "content": "node scripts/build-content.mjs"
+    "content": "node scripts/build-content.mjs",
+    "new": "node scripts/new-entry.mjs",
+    "typecheck": "tsc --noEmit",
+    "check:export": "node scripts/check-export.mjs",
+    "check": "npm run build:pages && npm run typecheck && npm run lint && npm run check:export"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

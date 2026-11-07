@@ -13,8 +13,8 @@ export function SectionIndex({ section }: { section: Section }) {
             Agent Tool Use 文献交互表 <span aria-hidden="true">↗</span>
           </a>
           <p>
-            按会议、方向与相关程度筛选论文，逐篇查看 Idea、Research Problem 与
-            Insight。
+            按会议、方向与相关程度筛选论文，逐篇查看 Idea、Research Problem、
+            Insight 与 Method。
           </p>
         </aside>
       )}

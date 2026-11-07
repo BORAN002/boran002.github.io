@@ -67,11 +67,12 @@ assert.ok(
 );
 if (!entries.some(({ section }) => section === 'blog'))
   assert.ok((await read('docs/blog/index.html')).includes('还没有发布文章。'));
-for (const section of ['notes', 'blog', 'papers']) {
+for (const section of ['notes', 'blog', 'papers', 'about']) {
   const html = await read('docs/' + section + '/index.html');
   assert.ok(html.includes('aria-current="page"'));
 }
 const sitemap = await read('docs/sitemap.xml');
+assert.ok(sitemap.includes('/about/'));
 assert.ok(sitemap.includes('/papers/agent-tool-use-2026/explorer/'));
 assert.ok(!sitemap.includes('/notes/agent-tool-use-2026/'));
 assert.ok(
@@ -88,6 +89,24 @@ async function htmlFiles(path) {
 }
 for (const file of await htmlFiles('docs')) {
   const html = await read(file);
+  if (html.includes('class="site-header"')) {
+    const navigation = html.match(
+      /<nav[^>]*class="site-nav"[^>]*>[\s\S]*?<\/nav>/,
+    )?.[0];
+    assert.ok(navigation, 'Missing site navigation in ' + file);
+    for (const [path, label] of [
+      ['notes', 'Note'],
+      ['blog', 'Blog'],
+      ['papers', 'Paper'],
+      ['about', 'About'],
+    ]) {
+      assert.match(
+        navigation,
+        new RegExp(`<a[^>]*href="/${path}/"[^>]*>${label}</a>`),
+        'Incomplete navigation in ' + file,
+      );
+    }
+  }
   assert.ok(
     !html.includes('https://github.com/BORAN002/agent-tool-use-2026'),
     'Stale repository link in ' + file,

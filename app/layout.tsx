@@ -5,8 +5,8 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL('https://boran002.github.io'),
   title: {
-    default: 'Notes, Blog & Papers',
-    template: '%s · Notes, Blog & Papers',
+    default: 'Note, Blog & Paper',
+    template: '%s · Note, Blog & Paper',
   },
   description: '学习记录、博客与论文笔记。',
   alternates: { canonical: '/' },
@@ -25,7 +25,7 @@ export default function RootLayout({
         </a>
         <div className="page">
           <header className="site-header">
-            <a href="/">Notes, Blog &amp; Papers</a>
+            <a href="/">Note, Blog &amp; Paper</a>
             <Navigation />
           </header>
           {children}

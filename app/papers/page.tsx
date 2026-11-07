@@ -1,6 +1,6 @@
 import { SectionIndex } from '@/components/notebook/section-index';
 export const metadata = {
-  title: 'Papers',
+  title: 'Paper',
   alternates: { canonical: '/papers/' },
 };
 export default function Papers() {

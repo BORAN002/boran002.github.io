@@ -1,59 +1,57 @@
-# Notes, Blog & Papers
+# Note / Blog / Paper / About
 
-[打开网站](https://boran002.github.io/) · [Notes](https://boran002.github.io/notes/) · [Blog](https://boran002.github.io/blog/) · [Papers](https://boran002.github.io/papers/)
+[网站](https://boran002.github.io/) · [Note](https://boran002.github.io/notes/) · [Blog](https://boran002.github.io/blog/) · [Paper](https://boran002.github.io/papers/) · [About](https://boran002.github.io/about/)
 
-统一维护学习笔记、博客和论文阅读。Agent Tool Use 2026 的详细笔记、交互表和论文数据也在本仓库中。
+学习笔记、实践文章与论文阅读统一在本仓库维护。显示名称采用单数，已发布的 `/notes/`、`/papers/` 地址保持不变。
 
-## 阅读
+## 分类
 
-- [Agent](https://boran002.github.io/notes/agent-loop/)
-- [Agent Tool Use：CVPR 与 ACL 2026 文献笔记](https://boran002.github.io/papers/agent-tool-use-2026/)
-- [359 篇论文交互表](https://boran002.github.io/papers/agent-tool-use-2026/explorer/)
-- [下载论文数据（JSON）](https://boran002.github.io/data/agent-tool-use-2026.json)
+| 栏目 | 内容 | 当前归类 |
+| --- | --- | --- |
+| Note | 持续维护的概念、主题与方法笔记，先解释 Basic，再提炼 Insight 与 Method | [Agent / Context Engineering](https://boran002.github.io/notes/agent-loop/) |
+| Blog | 围绕具体问题展开的完整文章：项目复盘、实验记录、观点分析 | 暂无已发布文章 |
+| Paper | 单篇论文阅读、文献专题与综述，保留原文及证据来源 | [Agent Tool Use 2026](https://boran002.github.io/papers/agent-tool-use-2026/)，含 359 篇阅读笔记与 [Explorer](https://boran002.github.io/papers/agent-tool-use-2026/explorer/) |
+| About | 本站内容范围、阅读方式与反馈入口 | `content/about.md` |
 
-## 写作
+一篇内容只维护一份正文。讨论可复用机制的文章放 Note，围绕一次实践得出结论的文章放 Blog，围绕原论文展开的阅读放 Paper；跨栏目关联使用链接。
 
-将 `content/templates/post.md` 复制到相应目录：
+## 更新流程
 
-| 栏目   | 文件位置                      | 页面地址             |
-| ------ | ----------------------------- | -------------------- |
-| Notes  | `content/notes/your-slug.md`  | `/notes/your-slug/`  |
-| Blog   | `content/blog/your-slug.md`   | `/blog/your-slug/`   |
-| Papers | `content/papers/your-slug.md` | `/papers/your-slug/` |
+参考 [Self Research: How This Blog Is Maintained with AI](https://tingdeliu.github.io/en/building-blog-with-skills/)，将分类、写作与检查落实为仓库规则、模板和脚本。具体约定见 [AGENTS.md](AGENTS.md)。
 
-文件名使用小写字母、数字和连字符。填写标题、日期与正文，将 `draft` 改为 `false` 后发布；日期需加引号。支持代码高亮、表格与数学公式。正文从 `##` 标题开始，三个及以上小节显示折叠目录。Blog 暂无文章时显示空状态。
-
-## 文献专题的数据来源
-
-`content/data/agent-tool-use-2026.json` 是该专题的唯一数据源。修改论文记录时更新这里，并保持统计字段一致。详细笔记保留英文专业术语；`method` 为按执行顺序展开的步骤数组，`evidence` 记录官方 PDF、实际核读页码、章节与阅读边界。不要把仅据摘要的概括标为正文笔记。
-
-`npm run content` 会生成：
-
-- `content/papers/agent-tool-use-2026.md`：按方向整理的文献目录（自动生成，请勿直接修改）。
-- `public/papers/agent-tool-use-2026/reading/<id>/index.html`：每篇独立阅读页，包含 Idea、Research Problem、Insight、Method 与 PDF 核读页码。
-- `public/papers/agent-tool-use-2026/explorer/index.html`：可搜索、筛选的交互表。
-- `public/papers/agent-tool-use-2026/notes.md`：包含所有详细笔记的 Markdown 下载。
-- `public/data/agent-tool-use-2026.json`：JSON 下载。
-
-展示模板在 `content/templates/paper-explorer.html`，专题文案生成逻辑在 `scripts/build-paper-catalog.mjs`。主站直接承接旧文章路径 `/notes/agent-tool-use-2026/`、旧交互表路径 `/agent-tool-use-2026/` 和旧 JSON 下载地址；跳转保留章节锚点，不再依赖独立旧仓库。
-
-## 预览与发布
+1. **查重与归类**：先查已有主题和论文链接；已有 Note 优先原位更新。
+2. **建立草稿**：使用对应模板；保留原始来源，关键术语使用英文。
+3. **核读与整理**：解释机制、具体例子、Insight 和 Method；区分论文结论、自己的判断与实际验证。
+4. **检查与发布**：本地检查后提交；GitHub Actions 从源码重新构建，检查全部通过后部署，失败时保留上一次成功发布的网站。
 
 Node.js 22.13+：
 
 ```sh
 npm ci
+npm run new -- note memory "Memory"
+npm run new -- blog agent-evaluation "Agent Evaluation 实践"
+npm run new -- paper example-paper "论文标题"
 npm run dev
 ```
 
-修改 Markdown 后运行 `npm run content`；新增文件后重启预览。
+每条 `new` 命令只创建对应草稿，不发布，也不会覆盖文件。模板在 `content/templates/note.md`、`blog.md`、`paper.md`；About 直接编辑 `content/about.md`。
+
+完成正文后设置 `draft: false`。保留创建日期 `date`，实质更新时修改 `updated`；首页按 `updated` 排序。Note 默认 `showDate: false`，Agent 继续隐藏日期。正文从 `##` 开始，支持代码高亮、表格和数学公式。
 
 ```sh
-npm run build:pages
-npx tsc --noEmit
-node scripts/check-export.mjs
+npm run check
 ```
 
-发布构建会阻止尚缺 Method 或正文依据的条目；本地查看编辑中的版本可用 `PAPER_NOTES_PREVIEW=1 npm run build:pages`，预览产物不要推送。
+这个命令执行静态构建、TypeScript 检查和导出检查，涵盖四栏导航、内部链接、论文目录与下载一致性、旧路径跳转。修改 Markdown 后可单独运行 `npm run content`；新增路由后重启本地预览。
 
-提交源码与生成的 `docs/`，推送 main 后由 GitHub Pages 发布。草稿不会导出；`public/` 中的文献产物由构建生成，不需要手动提交。
+`.github/workflows/pages.yml` 在 PR 和 main 上运行检查，只有 main 的成功构建会部署。GitHub Pages 的发布来源使用 **GitHub Actions**。`docs/` 是本地导出快照，CI 会从源码重新构建，不要手动修改生成文件。
+
+## 文献专题的数据来源
+
+`content/data/agent-tool-use-2026.json` 是 Agent Tool Use 专题的唯一数据源。`method` 保存有顺序的方法步骤；`evidence` 保存官方 PDF、实际核读页码、章节与阅读范围。保留稳定 ID，增删论文时同步计数。不要将仅依据摘要的概括标为正文阅读，更不能将阅读写成实验复现。
+
+`npm run content` 自动生成目录、359 篇独立阅读页、Explorer、[JSON 下载](https://boran002.github.io/data/agent-tool-use-2026.json) 和 [Markdown 下载](https://boran002.github.io/papers/agent-tool-use-2026/notes.md)。生成器为 `scripts/build-paper-catalog.mjs`，Explorer 模板为 `content/templates/paper-explorer.html`。
+
+发布构建会阻止缺少 Method 或正文依据的条目。本地查看编辑中的版本可用 `PAPER_NOTES_PREVIEW=1 npm run build:pages`；预览模式不能用于发布。
+
+主站保留 `/notes/agent-tool-use-2026/`、`/agent-tool-use-2026/` 与旧 JSON 路径的兼容，跳转保留 query 和 hash，不依赖旧仓库。

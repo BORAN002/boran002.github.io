@@ -18,6 +18,7 @@ const paths = [
   '/notes/',
   '/blog/',
   '/papers/',
+  '/about/',
   ...entries.map((entry) => entry.url),
 ];
 const sourceFor = (path) =>
@@ -44,7 +45,7 @@ for (const [legacyPath, destination] of Object.entries(legacyRoutes)) {
   await mkdir('docs' + legacyPath, { recursive: true });
   await writeFile(
     'docs' + legacyPath + 'index.html',
-    `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=${destination}"><link rel="canonical" href="https://boran002.github.io${destination}"><title>文献笔记已迁至 Papers</title></head><body><main><p>文献笔记已迁至 Papers。</p><a href="${destination}">打开文献笔记</a></main><script>location.replace(${JSON.stringify(destination)} + location.search + location.hash)</script></body></html>`,
+    `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=${destination}"><link rel="canonical" href="https://boran002.github.io${destination}"><title>文献笔记已迁至 Paper</title></head><body><main><p>文献笔记已迁至 Paper。</p><a href="${destination}">打开文献笔记</a></main><script>location.replace(${JSON.stringify(destination)} + location.search + location.hash)</script></body></html>`,
   );
 }
 await cp(
