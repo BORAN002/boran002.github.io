@@ -1,27 +1,34 @@
-import { formatDate, sections, type Entry } from '@/lib/content';
+import { sections } from '@/lib/site';
+import type { EntrySummary } from '@/lib/content';
+
 export function EntryList({
   entries,
   showSection = false,
 }: {
-  entries: Entry[];
+  entries: EntrySummary[];
   showSection?: boolean;
 }) {
   return (
-    <ul className="note-list">
+    <ul className="entry-list">
       {entries.map((entry) => (
         <li key={entry.url}>
-          <a href={entry.url}>
-            <span>
-              {showSection && (
-                <small className="entry-section">
-                  {sections[entry.section].title}
-                </small>
+          <a className="entry-row" href={entry.url}>
+            <div className="entry-meta">
+              {showSection && <span>{sections[entry.section].title}</span>}
+              {entry.showDate !== false && (
+                <time dateTime={entry.updated}>
+                  {entry.updated.replaceAll('-', '.')}
+                </time>
               )}
-              {entry.title}
+              {entry.showDate === false && <span>主题笔记</span>}
+            </div>
+            <div className="entry-text">
+              <h3>{entry.title}</h3>
+              {entry.description && <p>{entry.description}</p>}
+            </div>
+            <span className="entry-arrow" aria-hidden="true">
+              ↗
             </span>
-            {entry.showDate !== false && (
-              <time dateTime={entry.date}>{formatDate(entry.date)}</time>
-            )}
           </a>
         </li>
       ))}

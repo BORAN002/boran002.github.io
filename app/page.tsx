@@ -1,34 +1,30 @@
-import { entries, entriesFor, sections, type Section } from '@/lib/content';
-import { EntryList } from '@/components/notebook/entry-list';
+import { entries, entrySummary } from '@/lib/content';
+import { EntryBrowser } from '@/components/notebook/entry-browser';
+import { FeaturedEntry } from '@/components/notebook/featured-entry';
+
 export default function Home() {
+  const summaries = entries.map(entrySummary);
+  const featured =
+    summaries.find((entry) => entry.slug === 'agent-loop') ?? summaries[0];
   return (
-    <main id="main" tabIndex={-1}>
-      <h1 className="index-title">Note, Blog &amp; Paper</h1>
-      <p className="section-description">记录学习，整理想法，读懂论文。</p>
-      <div className="section-grid">
-        {(Object.keys(sections) as Section[]).map((section) => (
-          <a className="section-card" href={`/${section}/`} key={section}>
-            <h2>
-              {sections[section].title}
-              <span aria-hidden="true">↗</span>
-            </h2>
-            <p>{sections[section].description}</p>
-            <small>
-              {entriesFor(section).length}
-              {section === 'papers' ? ' 个专题' : ' 篇'}
-            </small>
-          </a>
-        ))}
-        <a className="section-card" href="/about/">
-          <h2>
-            About<span aria-hidden="true">↗</span>
-          </h2>
-          <p>本站的内容范围、分类方式与阅读说明。</p>
-          <small>关于本站</small>
+    <main id="main" tabIndex={-1} className="index-layout">
+      <aside className="index-intro">
+        <p className="eyebrow">Learning / Research</p>
+        <h1>学习与研究</h1>
+        <p className="intro-topics">AI · Agents · Systems</p>
+        <p>记录概念与实践，整理值得保留的 Insight 和可以复用的 Method。</p>
+        <a className="text-link" href="/about/">
+          关于本站 ↗
         </a>
+        <div className="intro-links">
+          <a href="/notes/">主题笔记 →</a>
+          <a href="/papers/agent-tool-use-2026/explorer/">论文检索 →</a>
+        </div>
+      </aside>
+      <div className="index-main">
+        {featured && <FeaturedEntry entry={featured} />}
+        <EntryBrowser entries={summaries} />
       </div>
-      <h2 className="list-heading">最近更新</h2>
-      <EntryList entries={entries.slice(0, 8)} showSection />
     </main>
   );
 }

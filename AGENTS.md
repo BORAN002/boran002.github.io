@@ -4,12 +4,12 @@ This repository publishes https://boran002.github.io/. Keep the existing static 
 
 ## Classify before writing
 
-| Section | Use it for | Source |
-| --- | --- | --- |
-| Note | A reusable topic, concept, or method that grows over time; e.g. Agent / Context Engineering | `content/notes/*.md` |
-| Blog | A self-contained argument, project retrospective, or experiment report | `content/blog/*.md` |
-| Paper | A specific paper, a reading collection, or a survey grounded in original publications | `content/papers/*.md` or the collection's source JSON |
-| About | Site scope and reading guidance | `content/about.md` |
+| Section | Use it for                                                                                  | Source                                                |
+| ------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| Note    | A reusable topic, concept, or method that grows over time; e.g. Agent / Context Engineering | `content/notes/*.md`                                  |
+| Blog    | A self-contained argument, project retrospective, or experiment report                      | `content/blog/*.md`                                   |
+| Paper   | A specific paper, a reading collection, or a survey grounded in original publications       | `content/papers/*.md` or the collection's source JSON |
+| About   | Site scope and reading guidance                                                             | `content/about.md`                                    |
 
 Labels are singular; existing `/notes/` and `/papers/` URLs stay stable. About is a standalone page, not a dated post. Do not duplicate an article across categories: classify by its main purpose and use links elsewhere. Blog may be empty; do not invent posts to fill it.
 
@@ -27,7 +27,8 @@ Labels are singular; existing `/notes/` and `/papers/` URLs stay stable. About i
 - `content/data/agent-tool-use-2026.json` owns the existing 359-paper collection. Do not edit its generated catalog Markdown, Explorer, reading pages, or downloads individually. The generator is `scripts/build-paper-catalog.mjs`; the Explorer template is `content/templates/paper-explorer.html`.
 - Keep IDs stable, update counts when adding/removing records, and preserve evidence fields. `full_text` means cited source pages were actually read, not that experiments were reproduced.
 - `content/generated.json`, `content/about.generated.json`, generated files under `public/papers/`, and `docs/` are outputs. Edit sources and regenerate.
-- React navigation is defined in `lib/site.ts`; standalone paper pages use the generator and Explorer template. All surfaces expose Note / Blog / Paper / About. Export validation covers them.
+- React navigation is defined in `lib/site.ts`; standalone paper pages share `scripts/site-shell.mjs`. All surfaces expose Note / Blog / Paper / About. Export validation covers them.
+- `app/globals.css` owns shared layout styles, copied to `public/styles/site.css` during generation. The homepage uses a left introduction and a right featured entry / searchable list. Reading pages use a sticky Contents rail on desktop and a collapsible Contents block on mobile. Keep their alignment and responsive behavior consistent across React and generated paper pages.
 
 ## Check and publish
 

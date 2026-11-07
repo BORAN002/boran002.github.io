@@ -22,6 +22,7 @@ assert.ok(
   ),
 );
 const source = await read('content/data/agent-tool-use-2026.json');
+assert.equal(await read('docs/styles/site.css'), await read('app/globals.css'));
 assert.equal(await read('docs/data/agent-tool-use-2026.json'), source);
 assert.equal(
   await read('docs/agent-tool-use-2026/agent-tool-use-2026.json'),
@@ -89,6 +90,16 @@ async function htmlFiles(path) {
 }
 for (const file of await htmlFiles('docs')) {
   const html = await read(file);
+  for (const [toc] of html.matchAll(
+    /<nav[^>]*class="toc-links"[^>]*>[\s\S]*?<\/nav>/g,
+  )) {
+    for (const [, id] of toc.matchAll(/href="#([^"]+)"/g)) {
+      assert.ok(
+        html.includes(`id="${id}"`),
+        `Broken Contents anchor #${id} in ${file}`,
+      );
+    }
+  }
   if (html.includes('class="site-header"')) {
     const navigation = html.match(
       /<nav[^>]*class="site-nav"[^>]*>[\s\S]*?<\/nav>/,

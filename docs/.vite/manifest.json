@@ -18,18 +18,34 @@
     "file": "_next/static/chunks/rolldown-runtime-C60lm6uB.js",
     "name": "rolldown-runtime"
   },
+  "_site-N5NSrQba.js": {
+    "file": "_next/static/chunks/site-N5NSrQba.js",
+    "name": "site"
+  },
+  "components/notebook/entry-browser.tsx": {
+    "file": "_next/static/chunks/entry-browser-qMszKTrS.js",
+    "name": "entry-browser",
+    "src": "components/notebook/entry-browser.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-C60lm6uB.js",
+      "_site-N5NSrQba.js",
+      "_framework-D_rUT4EX.js"
+    ]
+  },
   "components/notebook/navigation.tsx": {
-    "file": "_next/static/chunks/navigation-CG5qY1yq.js",
+    "file": "_next/static/chunks/navigation-BNdq5ynl.js",
     "name": "navigation",
     "src": "components/notebook/navigation.tsx",
     "isDynamicEntry": true,
     "imports": [
       "virtual:vinext-app-browser-entry",
+      "_site-N5NSrQba.js",
       "_framework-D_rUT4EX.js"
     ]
   },
   "node_modules/vinext/dist/shims/internal/app-route-prefetch-policy.js": {
-    "file": "_next/static/chunks/app-route-prefetch-policy-CXrghTxk.js",
+    "file": "_next/static/chunks/app-route-prefetch-policy-12cPpITV.js",
     "name": "app-route-prefetch-policy",
     "src": "node_modules/vinext/dist/shims/internal/app-route-prefetch-policy.js",
     "isDynamicEntry": true,
@@ -38,7 +54,7 @@
     ]
   },
   "node_modules/vinext/dist/shims/layout-segment-context.js": {
-    "file": "_next/static/chunks/layout-segment-context-u73nDUtL.js",
+    "file": "_next/static/chunks/layout-segment-context-CNECLM6p.js",
     "name": "layout-segment-context",
     "src": "node_modules/vinext/dist/shims/layout-segment-context.js",
     "isDynamicEntry": true,
@@ -50,7 +66,7 @@
     ]
   },
   "node_modules/vinext/dist/shims/streamed-icons.js": {
-    "file": "_next/static/chunks/streamed-icons-BbokXyyW.js",
+    "file": "_next/static/chunks/streamed-icons-B7zI55ff.js",
     "name": "streamed-icons",
     "src": "node_modules/vinext/dist/shims/streamed-icons.js",
     "isDynamicEntry": true,
@@ -60,7 +76,7 @@
     ]
   },
   "virtual:vinext-app-browser-entry": {
-    "file": "_next/static/chunks/index-z94nr_6w.js",
+    "file": "_next/static/chunks/index-Bum6BZdU.js",
     "name": "index",
     "src": "virtual:vinext-app-browser-entry",
     "isEntry": true,
@@ -74,6 +90,7 @@
       "virtual:vinext-app-browser-entry",
       "node_modules/vinext/dist/shims/layout-segment-context.js",
       "node_modules/vinext/dist/shims/streamed-icons.js",
+      "components/notebook/entry-browser.tsx",
       "components/notebook/navigation.tsx"
     ]
   }

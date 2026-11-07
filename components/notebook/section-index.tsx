@@ -1,28 +1,48 @@
-import { entriesFor, sections, type Section } from '@/lib/content';
-import { EntryList } from './entry-list';
+import {
+  entriesFor,
+  entrySummary,
+  sections,
+  type Section,
+} from '@/lib/content';
+import { EntryBrowser } from './entry-browser';
+
 export function SectionIndex({ section }: { section: Section }) {
   const entries = entriesFor(section);
   return (
-    <main id="main" tabIndex={-1}>
-      <h1 className="index-title">{sections[section].title}</h1>
-      <p className="section-description">{sections[section].description}</p>
-      {section === 'papers' && (
-        <aside className="collection-link">
-          <span className="eyebrow">文献专题 · 2026</span>
-          <a href="/papers/agent-tool-use-2026/explorer/">
-            Agent Tool Use 文献交互表 <span aria-hidden="true">↗</span>
+    <main id="main" tabIndex={-1} className="index-layout">
+      <aside className="index-intro">
+        <p className="eyebrow">
+          [{sections[section].title[0]}] /{' '}
+          {section === 'notes'
+            ? 'Topic notes'
+            : section === 'blog'
+              ? 'Writing & Practice'
+              : 'Reading & Research'}
+        </p>
+        <h1>{sections[section].title}</h1>
+        <p>{sections[section].description}</p>
+        <a className="text-link" href="/">
+          ← 全部内容
+        </a>
+      </aside>
+      <div className="index-main">
+        {section === 'papers' && (
+          <a
+            className="collection-link"
+            href="/papers/agent-tool-use-2026/explorer/"
+          >
+            <span className="eyebrow">Literature Explorer</span>
+            <h2>
+              Agent Tool Use <span aria-hidden="true">↗</span>
+            </h2>
+            <p>
+              检索 CVPR / ACL 2026 的 359 篇论文，按会议、方向与相关程度筛选。
+            </p>
+            <span className="read-link">打开文献检索 →</span>
           </a>
-          <p>
-            按会议、方向与相关程度筛选论文，逐篇查看 Idea、Research Problem、
-            Insight 与 Method。
-          </p>
-        </aside>
-      )}
-      {entries.length ? (
-        <EntryList entries={entries} />
-      ) : (
-        <p className="empty">还没有发布文章。</p>
-      )}
+        )}
+        <EntryBrowser entries={entries.map(entrySummary)} section={section} />
+      </div>
     </main>
   );
 }

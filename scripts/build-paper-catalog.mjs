@@ -1,4 +1,5 @@
 import { readFile, writeFile, mkdir, copyFile, rm } from 'node:fs/promises';
+import { siteHeader, siteFooter, readingContents } from './site-shell.mjs';
 
 const slug = 'agent-tool-use-2026';
 const base = `/papers/${slug}/`;
@@ -58,7 +59,14 @@ function readingPage(paper, previous, next) {
     p
       ? `<a href="${notePath(p)}"><small>${label}</small><span>${esc(p.title)}</span></a>`
       : '<span></span>';
-  return `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="${esc(overview(paper))}"><title>${esc(paper.title)} · Paper Notes</title><link rel="canonical" href="https://boran002.github.io${notePath(paper)}"><link rel="stylesheet" href="${base}reading.css"></head><body><a class="skip-link" href="#main">跳至正文</a><div class="page"><header class="site-header"><a href="/">Note, Blog &amp; Paper</a><nav class="site-nav" aria-label="栏目导航"><a href="/notes/">Note</a><a href="/blog/">Blog</a><a href="/papers/" aria-current="page">Paper</a><a href="/about/">About</a></nav></header><main id="main"><a class="back-link" href="${base}">← Agent Tool Use 2026</a><article><header class="note-header"><p class="reading-meta">${esc(paper.conference)} · ${esc(paper.track)} · ${esc(paper.id)}</p><h1>${esc(paper.title)}</h1><p class="reading-meta">${esc(paper.topic)} · ${esc(paper.relevance)} · ${esc(paper.kind)}</p><div class="paper-links"><a href="${esc(paper.url)}" target="_blank" rel="noopener">官方论文页 ↗</a>${ready ? `<a href="${esc(evidence.pdf_url)}" target="_blank" rel="noopener">PDF ↗</a>` : ''}<a href="${base}explorer/">文献检索</a></div></header><nav class="reading-toc" aria-label="笔记目录"><a href="#idea">Idea</a><a href="#research-problem">Research Problem</a><a href="#insight">Insight</a><a href="#method">Method</a><a href="#sources">Sources</a></nav>${ready ? '' : '<p class="reading-status">摘要版 · 详细笔记整理中</p>'}<div class="prose">${content}<section aria-labelledby="method"><h2 id="method">Method</h2>${method}</section><section class="reading-sources" aria-labelledby="sources"><h2 id="sources">Sources & Reading Scope</h2>${sources}</section></div></article><nav class="reading-adjacent" aria-label="相邻论文">${sibling(previous, '← Previous')}${sibling(next, 'Next →')}</nav></main><footer class="reading-footer"><a href="${base}notes.md">全部笔记 · Markdown</a><a href="/data/${slug}.json">论文数据 · JSON</a></footer></div></body></html>`;
+  const toc = [
+    ['idea', 'Idea'],
+    ['research-problem', 'Research Problem'],
+    ['insight', 'Insight'],
+    ['method', 'Method'],
+    ['sources', 'Sources & Reading Scope'],
+  ];
+  return `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="${esc(overview(paper))}"><title>${esc(paper.title)} · Paper</title><link rel="canonical" href="https://boran002.github.io${notePath(paper)}"><link rel="stylesheet" href="/styles/site.css"></head><body><a class="skip-link" href="#main">跳至正文</a><div class="page">${siteHeader()}<main id="main" class="article-page"><header class="article-head"><div class="article-context"><a class="back-link" href="${base}">← Agent Tool Use 2026</a></div><div class="article-heading"><p class="eyebrow">[P] / Paper</p><h1>${esc(paper.title)}</h1><p class="reading-meta">${esc(paper.conference)} · ${esc(paper.track)} · ${esc(paper.id)}</p><p class="reading-meta">${esc(paper.topic)} · ${esc(paper.relevance)} · ${esc(paper.kind)}</p><div class="paper-links"><a href="${esc(paper.url)}" target="_blank" rel="noopener">官方论文页 ↗</a>${ready ? `<a href="${esc(evidence.pdf_url)}" target="_blank" rel="noopener">PDF ↗</a>` : ''}<a href="${base}explorer/">文献检索</a></div></div></header><div class="reading-layout">${readingContents(toc)}<article class="article-body">${ready ? '' : '<p class="reading-status">摘要版 · 详细笔记整理中</p>'}<div class="prose">${content}<section aria-labelledby="method"><h2 id="method">Method</h2>${method}</section><section class="reading-sources" aria-labelledby="sources"><h2 id="sources">Sources & Reading Scope</h2>${sources}</section></div><nav class="reading-adjacent" aria-label="相邻论文">${sibling(previous, '← Previous')}${sibling(next, 'Next →')}</nav><div class="reading-footer"><a href="${base}notes.md">全部笔记 · Markdown</a><a href="/data/${slug}.json">论文数据 · JSON</a></div></article></div></main>${siteFooter()}</div></body></html>`;
 }
 
 export async function buildPaperCatalog() {
@@ -162,16 +170,16 @@ export async function buildPaperCatalog() {
   await writeFile(`public${base}notes.md`, markdown);
   await copyFile(source, `public/data/${slug}.json`);
   const css = await readFile('app/globals.css', 'utf8');
-  await writeFile(
-    `public${base}reading.css`,
-    css +
-      `\n.page{max-width:864px}.reading-meta{font-size:12px;color:var(--muted);line-height:1.8}.paper-links,.reading-toc{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:13px;color:var(--accent)}.reading-toc{padding:16px 0;border-block:1px solid var(--line);margin:28px 0 36px}.reading-status{padding:14px 18px;background:var(--code);color:var(--muted);font-size:13px}.prose li{margin-bottom:18px}.reading-sources{color:var(--muted);font-size:13px;border-top:1px solid var(--line);margin-top:40px}.reading-sources h2{font-size:18px}.source-pages{display:flex;flex-wrap:wrap;gap:8px}.reading-adjacent{display:grid;grid-template-columns:1fr 1fr;gap:32px;border-top:1px solid var(--line);padding-top:28px;margin-top:36px;font-size:13px;line-height:1.65}.reading-adjacent a{display:flex;flex-direction:column;gap:8px}.reading-adjacent small{color:var(--muted)}.reading-adjacent a:last-child{text-align:right}.reading-footer{display:flex;gap:24px;margin-top:48px;font-size:12px;color:var(--muted)}@media(max-width:600px){.reading-adjacent{gap:20px}.reading-toc{gap:10px 18px}}\n`,
-  );
+  await mkdir('public/styles', { recursive: true });
+  await writeFile('public/styles/site.css', css);
+  await writeFile(`public${base}reading.css`, css);
   let explorer = await readFile(
     'content/templates/paper-explorer.html',
     'utf8',
   );
   for (const [key, value] of Object.entries({
+    SITE_HEADER: siteHeader(),
+    SITE_FOOTER: siteFooter(),
     PAPERS: JSON.stringify(papers).replaceAll('<', '\\u003c'),
     TOTAL: papers.length,
     CVPR: cvpr,

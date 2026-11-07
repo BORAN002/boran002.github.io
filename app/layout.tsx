@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { Navigation } from '@/components/notebook/navigation';
+import { SiteHeader } from '@/components/notebook/site-header';
+import { SiteFooter } from '@/components/notebook/site-footer';
 import 'katex/dist/katex.min.css';
 import './globals.css';
 export const metadata: Metadata = {
@@ -24,11 +25,9 @@ export default function RootLayout({
           跳至正文
         </a>
         <div className="page">
-          <header className="site-header">
-            <a href="/">Note, Blog &amp; Paper</a>
-            <Navigation />
-          </header>
+          <SiteHeader />
           {children}
+          <SiteFooter />
         </div>
       </body>
     </html>

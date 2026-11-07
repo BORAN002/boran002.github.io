@@ -43,3 +43,5 @@ next-env.d.ts
 # Generated from content/data by scripts/build-paper-catalog.mjs
 /public/data/agent-tool-use-2026.json
 /public/papers/agent-tool-use-2026/
+
+/public/styles/site.css

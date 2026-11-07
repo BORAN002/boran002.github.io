@@ -15,6 +15,12 @@ export type Entry = {
   html: string;
 };
 export const entries = data as Entry[];
+export type EntrySummary = Omit<Entry, 'html' | 'toc'>;
+export const entrySummary = ({
+  html: _html,
+  toc: _toc,
+  ...summary
+}: Entry): EntrySummary => summary;
 export const entriesFor = (section: Section) =>
   entries.filter((entry) => entry.section === section);
 export const findEntry = (section: Section, slug: string) =>

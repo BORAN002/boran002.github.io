@@ -9,7 +9,12 @@ export function Navigation() {
         const active =
           pathname === href.slice(0, -1) || pathname.startsWith(href);
         return (
-          <a key={href} href={href} aria-current={active ? 'page' : undefined}>
+          <a
+            key={href}
+            href={href}
+            data-key={`[${title[0]}]`}
+            aria-current={active ? 'page' : undefined}
+          >
             {title}
           </a>
         );
