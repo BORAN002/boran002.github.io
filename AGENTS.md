@@ -1,6 +1,6 @@
 # Site maintenance
 
-This repository publishes https://boran002.github.io/. Keep the existing static site, white background, black text, clear headings, and comfortable spacing. Do not add a personal name or biography without supplied content.
+This repository publishes https://boran002.github.io/. Preserve the static site, clear headings, and comfortable reading spacing. The current visual direction is deep ink / forest surfaces, mint accents, and restrained warm gold details. Use atmospheric interactive backgrounds on discovery pages and quiet, high-contrast reading surfaces. Do not add a personal name or biography without supplied content.
 
 ## Classify before writing
 
@@ -28,7 +28,8 @@ Labels are singular; existing `/notes/` and `/papers/` URLs stay stable. About i
 - Keep IDs stable, update counts when adding/removing records, and preserve evidence fields. `full_text` means cited source pages were actually read, not that experiments were reproduced.
 - `content/generated.json`, `content/about.generated.json`, generated files under `public/papers/`, and `docs/` are outputs. Edit sources and regenerate.
 - React navigation is defined in `lib/site.ts`; standalone paper pages share `scripts/site-shell.mjs`. All surfaces expose Note / Blog / Paper / About. Export validation covers them.
-- `app/globals.css` owns shared layout styles, copied to `public/styles/site.css` during generation. The homepage uses a left introduction and a right featured entry / searchable list. Reading pages use a sticky Contents rail on desktop and a collapsible Contents block on mobile. Keep their alignment and responsive behavior consistent across React and generated paper pages.
+- `app/globals.css` owns shared layout styles, copied to `public/styles/site.css` during generation. The homepage has an interactive hero above an introduction / searchable notebook layout. Reading pages use a sticky Contents rail on desktop and a collapsible Contents block on mobile. Keep their alignment and responsive behavior consistent across React and generated paper pages.
+- `public/scripts/atmosphere.js` owns optional canvas effects and the shared motion control. Honor reduced motion, use a static default on touch devices, pause work in hidden tabs, and keep all content usable without JavaScript. Maintain keyboard focus and sufficient text contrast.
 
 ## Check and publish
 

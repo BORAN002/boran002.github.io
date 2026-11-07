@@ -9,13 +9,13 @@ export function FeaturedEntry({ entry }: { entry: EntrySummary }) {
       aria-label={`阅读 ${entry.title}`}
     >
       <div className="featured-mark" aria-hidden="true">
-        <span>[{sections[entry.section].title[0]}]</span>
-        <span>↗</span>
+        <span className="feature-orbit" />
+        <span>{sections[entry.section].title[0]}</span>
       </div>
       <div>
         <div className="featured-label">
-          <span>Featured</span>
-          {sections[entry.section].title}
+          <span>Featured {sections[entry.section].title}</span>
+          <span className="feature-number">01 /</span>
         </div>
         <h2>{entry.title}</h2>
         <p>{entry.description}</p>

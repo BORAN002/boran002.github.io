@@ -14,15 +14,32 @@ export function SiteHeader() {
             strokeLinejoin="round"
           />
         </svg>
-        <span>Home</span>
+        <span>
+          Fieldnotes<span className="brand-dot">.</span>
+        </span>
       </a>
       <Navigation />
-      <a
-        className="source-link"
-        href="https://github.com/BORAN002/boran002.github.io"
-      >
-        GitHub ↗
-      </a>
+      <div className="header-actions">
+        <button
+          className="motion-toggle"
+          type="button"
+          data-motion-toggle=""
+          aria-pressed="false"
+          aria-label="开启背景动效"
+          disabled
+        >
+          <span className="motion-icon" aria-hidden="true">
+            ✳
+          </span>
+          <span data-motion-label="">静态</span>
+        </button>
+        <a
+          className="source-link"
+          href="https://github.com/BORAN002/boran002.github.io"
+        >
+          GitHub ↗
+        </a>
+      </div>
     </header>
   );
 }

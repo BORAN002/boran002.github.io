@@ -11,7 +11,7 @@ export function EntryList({
   return (
     <ul className="entry-list">
       {entries.map((entry) => (
-        <li key={entry.url}>
+        <li key={entry.url} data-section={entry.section}>
           <a className="entry-row" href={entry.url}>
             <div className="entry-meta">
               {showSection && <span>{sections[entry.section].title}</span>}

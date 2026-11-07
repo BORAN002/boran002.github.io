@@ -14,7 +14,7 @@ const esc = (value) =>
   );
 
 export function siteHeader(active = 'papers') {
-  return `<header class="site-header"><a class="site-home" href="/" aria-label="首页"><img src="/favicon.svg" width="32" height="32" alt=""><span>Home</span></a><nav class="site-nav" aria-label="栏目导航">${navigation.map(([path, title]) => `<a href="/${path}/" data-key="[${title[0]}]"${path === active ? ' aria-current="page"' : ''}>${title}</a>`).join('')}</nav><a class="source-link" href="https://github.com/BORAN002/boran002.github.io">GitHub ↗</a></header>`;
+  return `<header class="site-header"><a class="site-home" href="/" aria-label="首页"><img src="/favicon.svg" width="32" height="32" alt=""><span>Fieldnotes<span class="brand-dot">.</span></span></a><nav class="site-nav" aria-label="栏目导航">${navigation.map(([path, title]) => `<a href="/${path}/" data-key="[${title[0]}]"${path === active ? ' aria-current="page"' : ''}>${title}</a>`).join('')}</nav><div class="header-actions"><button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false" aria-label="开启背景动效" disabled><span class="motion-icon" aria-hidden="true">✳</span><span data-motion-label>静态</span></button><a class="source-link" href="https://github.com/BORAN002/boran002.github.io">GitHub ↗</a></div></header>`;
 }
 
 export function siteFooter() {
@@ -24,4 +24,8 @@ export function siteFooter() {
 export function readingContents(items) {
   const links = `<nav class="toc-links" aria-label="章节目录">${items.map(([id, title]) => `<a href="#${esc(id)}">${esc(title)}</a>`).join('')}</nav>`;
   return `<aside class="contents"><div class="contents-desktop"><div class="toc-label">Contents <span>本页目录</span></div>${links}<a class="back-to-top" href="#main">↑ Back to top</a></div><details class="contents-mobile"><summary>Contents <span>查看目录 · ${items.length}</span></summary>${links}</details></aside>`;
+}
+
+export function siteAtmosphere() {
+  return `<div class="ambient-scene" aria-hidden="true"><canvas data-ambient></canvas></div><script type="module" src="/scripts/atmosphere-standalone.js"></script>`;
 }

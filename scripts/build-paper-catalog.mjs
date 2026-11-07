@@ -1,5 +1,10 @@
 import { readFile, writeFile, mkdir, copyFile, rm } from 'node:fs/promises';
-import { siteHeader, siteFooter, readingContents } from './site-shell.mjs';
+import {
+  siteHeader,
+  siteFooter,
+  readingContents,
+  siteAtmosphere,
+} from './site-shell.mjs';
 
 const slug = 'agent-tool-use-2026';
 const base = `/papers/${slug}/`;
@@ -66,7 +71,7 @@ function readingPage(paper, previous, next) {
     ['method', 'Method'],
     ['sources', 'Sources & Reading Scope'],
   ];
-  return `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="${esc(overview(paper))}"><title>${esc(paper.title)} · Paper</title><link rel="canonical" href="https://boran002.github.io${notePath(paper)}"><link rel="stylesheet" href="/styles/site.css"></head><body><a class="skip-link" href="#main">跳至正文</a><div class="page">${siteHeader()}<main id="main" class="article-page"><header class="article-head"><div class="article-context"><a class="back-link" href="${base}">← Agent Tool Use 2026</a></div><div class="article-heading"><p class="eyebrow">[P] / Paper</p><h1>${esc(paper.title)}</h1><p class="reading-meta">${esc(paper.conference)} · ${esc(paper.track)} · ${esc(paper.id)}</p><p class="reading-meta">${esc(paper.topic)} · ${esc(paper.relevance)} · ${esc(paper.kind)}</p><div class="paper-links"><a href="${esc(paper.url)}" target="_blank" rel="noopener">官方论文页 ↗</a>${ready ? `<a href="${esc(evidence.pdf_url)}" target="_blank" rel="noopener">PDF ↗</a>` : ''}<a href="${base}explorer/">文献检索</a></div></div></header><div class="reading-layout">${readingContents(toc)}<article class="article-body">${ready ? '' : '<p class="reading-status">摘要版 · 详细笔记整理中</p>'}<div class="prose">${content}<section aria-labelledby="method"><h2 id="method">Method</h2>${method}</section><section class="reading-sources" aria-labelledby="sources"><h2 id="sources">Sources & Reading Scope</h2>${sources}</section></div><nav class="reading-adjacent" aria-label="相邻论文">${sibling(previous, '← Previous')}${sibling(next, 'Next →')}</nav><div class="reading-footer"><a href="${base}notes.md">全部笔记 · Markdown</a><a href="/data/${slug}.json">论文数据 · JSON</a></div></article></div></main>${siteFooter()}</div></body></html>`;
+  return `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="${esc(overview(paper))}"><title>${esc(paper.title)} · Paper</title><link rel="canonical" href="https://boran002.github.io${notePath(paper)}"><link rel="stylesheet" href="/styles/site.css"></head><body>${siteAtmosphere()}<a class="skip-link" href="#main">跳至正文</a><div class="page">${siteHeader()}<main id="main" class="article-page"><header class="article-head"><div class="article-context"><a class="back-link" href="${base}">← Agent Tool Use 2026</a></div><div class="article-heading"><p class="eyebrow">[P] / Paper</p><h1>${esc(paper.title)}</h1><p class="reading-meta">${esc(paper.conference)} · ${esc(paper.track)} · ${esc(paper.id)}</p><p class="reading-meta">${esc(paper.topic)} · ${esc(paper.relevance)} · ${esc(paper.kind)}</p><div class="paper-links"><a href="${esc(paper.url)}" target="_blank" rel="noopener">官方论文页 ↗</a>${ready ? `<a href="${esc(evidence.pdf_url)}" target="_blank" rel="noopener">PDF ↗</a>` : ''}<a href="${base}explorer/">文献检索</a></div></div></header><div class="reading-layout">${readingContents(toc)}<article class="article-body">${ready ? '' : '<p class="reading-status">摘要版 · 详细笔记整理中</p>'}<div class="prose">${content}<section aria-labelledby="method"><h2 id="method">Method</h2>${method}</section><section class="reading-sources" aria-labelledby="sources"><h2 id="sources">Sources & Reading Scope</h2>${sources}</section></div><nav class="reading-adjacent" aria-label="相邻论文">${sibling(previous, '← Previous')}${sibling(next, 'Next →')}</nav><div class="reading-footer"><a href="${base}notes.md">全部笔记 · Markdown</a><a href="/data/${slug}.json">论文数据 · JSON</a></div></article></div></main>${siteFooter()}</div></body></html>`;
 }
 
 export async function buildPaperCatalog() {
@@ -179,6 +184,7 @@ export async function buildPaperCatalog() {
   );
   for (const [key, value] of Object.entries({
     SITE_HEADER: siteHeader(),
+    SITE_ATMOSPHERE: siteAtmosphere(),
     SITE_FOOTER: siteFooter(),
     PAPERS: JSON.stringify(papers).replaceAll('<', '\\u003c'),
     TOTAL: papers.length,

@@ -16,7 +16,8 @@
     "new": "node scripts/new-entry.mjs",
     "typecheck": "tsc --noEmit",
     "check:export": "node scripts/check-export.mjs",
-    "check": "npm run build:pages && npm run typecheck && npm run lint && npm run check:export"
+    "check": "npm run build:pages && npm run typecheck && npm run lint && npm run check:export && npm run test:motion",
+    "test:motion": "node --test tests/atmosphere.test.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

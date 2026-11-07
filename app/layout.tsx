@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { SiteHeader } from '@/components/notebook/site-header';
 import { SiteFooter } from '@/components/notebook/site-footer';
+import { AmbientScene } from '@/components/notebook/ambient-scene';
 import 'katex/dist/katex.min.css';
 import './globals.css';
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <body>
+        <AmbientScene />
         <a className="skip-link" href="#main">
           跳至正文
         </a>
