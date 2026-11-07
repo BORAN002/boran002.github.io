@@ -8,7 +8,6 @@ export function AgentLoopScene() {
         <div className="orbit-halo" />
         <canvas data-orbit="" />
         <div className="orbit-center">
-          <span>CONTEXT · REASON · ACT · OBSERVE</span>
           <strong>
             Agent
             <br />

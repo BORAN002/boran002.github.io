@@ -1,6 +1,6 @@
 # Site maintenance
 
-This repository publishes https://boran002.github.io/. Preserve the static site, clear headings, and comfortable reading spacing. The current visual direction is a midnight-blue star field with cool blue and lavender accents, plus quiet, high-contrast reading surfaces. The site covers multiple topics; do not frame the whole site as Agent content. Do not add a personal name or biography without supplied content.
+This repository publishes https://boran002.github.io/. Preserve the static site, clear headings, and comfortable reading spacing. Readability comes first. The current visual direction is a light cream / apricot star field with restrained gold stars, dark brown text, and terracotta links. Keep reading panels opaque so background effects never cross the prose. The site covers multiple topics; do not frame the whole site as Agent content. Do not add a personal name or biography without supplied content.
 
 ## Classify before writing
 
@@ -28,6 +28,7 @@ Labels are singular; existing `/notes/` and `/papers/` URLs stay stable. The roo
 - Keep IDs stable, update counts when adding/removing records, and preserve evidence fields. `full_text` means cited source pages were actually read, not that experiments were reproduced.
 - `content/generated.json`, `content/about.generated.json`, generated files under `public/papers/`, and `docs/` are outputs. Edit sources and regenerate.
 - React navigation is defined in `lib/site.ts`; standalone paper pages share `scripts/site-shell.mjs`. All surfaces expose Note / Blog / Paper / About. Export validation covers them.
+- Keep prose at 18px on desktop and 17px on narrow screens, with 1.9 line height and a restrained reading width. List summaries use 16px; navigation and Contents must remain comfortably legible. Avoid tiny low-contrast text.
 - `app/globals.css` owns shared layout styles, copied to `public/styles/site.css` during generation. Section indexes display the introduction and a searchable content list. The Agent Loop visual belongs only inside the Agent note, via `components/notebook/agent-loop-scene.tsx`. Reading pages use a sticky Contents rail on desktop and a collapsible Contents block on mobile. Keep their alignment and responsive behavior consistent across React and generated paper pages.
 - `public/scripts/atmosphere.js` owns optional canvas effects and the shared motion control. Honor reduced motion, use a static default on touch devices, pause work in hidden tabs, and keep all content usable without JavaScript. Maintain keyboard focus and sufficient text contrast.
 

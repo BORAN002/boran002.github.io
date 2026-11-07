@@ -32,7 +32,7 @@ export function mountAtmosphere() {
   let pulse = null;
   const noise = (n) =>
     (((Math.sin(n * 127.1 + 311.7) * 43758.5453) % 1) + 1) % 1;
-  const stars = Array.from({ length: 170 }, (_, i) => ({
+  const stars = Array.from({ length: 120 }, (_, i) => ({
     x: noise(i + 1),
     y: noise(i + 301),
     r: i % 23 === 0 ? 1.45 : 0.55 + noise(i + 601) * 0.5,
@@ -65,13 +65,23 @@ export function mountAtmosphere() {
       const distance = Math.hypot(x - pointer.x, y - pointer.y);
       const proximity = enabled ? Math.max(0, 1 - distance / 190) : 0;
       const shimmer =
-        0.22 + (Math.sin(phase * (0.45 + star.r * 0.2) + i) + 1) * 0.16;
-      field.fillStyle = `rgba(211,222,255,${shimmer + proximity * 0.35})`;
+        0.15 + (Math.sin(phase * (0.35 + star.r * 0.15) + i) + 1) * 0.09;
+      field.fillStyle = `rgba(154,113,57,${shimmer + proximity * 0.22})`;
       field.beginPath();
       field.arc(x, y, star.r + proximity, 0, Math.PI * 2);
       field.fill();
+      if (i % 23 === 0) {
+        const ray = star.r * 3;
+        field.strokeStyle = `rgba(154,113,57,${shimmer * 0.65})`;
+        field.beginPath();
+        field.moveTo(x - ray, y);
+        field.lineTo(x + ray, y);
+        field.moveTo(x, y - ray);
+        field.lineTo(x, y + ray);
+        field.stroke();
+      }
       if (proximity > 0) {
-        field.strokeStyle = `rgba(160,184,255,${proximity * 0.2})`;
+        field.strokeStyle = `rgba(171,123,68,${proximity * 0.15})`;
         field.beginPath();
         field.moveTo(x, y);
         field.lineTo(pointer.x, pointer.y);
@@ -81,7 +91,7 @@ export function mountAtmosphere() {
     if (pulse) {
       const age = phase - pulse.start;
       if (age < 1.4) {
-        field.strokeStyle = `rgba(183,199,255,${(1 - age / 1.4) * 0.35})`;
+        field.strokeStyle = `rgba(166,116,59,${(1 - age / 1.4) * 0.22})`;
         field.beginPath();
         field.arc(pulse.x, pulse.y, age * 110, 0, Math.PI * 2);
         field.stroke();
@@ -118,7 +128,7 @@ export function mountAtmosphere() {
           points.push({ x: px, y: py, depth, warm: ring === 3 || ring === 4 });
       }
       globe.strokeStyle =
-        ring === 4 ? 'rgba(194,174,242,0.15)' : 'rgba(153,184,242,0.1)';
+        ring === 4 ? 'rgba(160,115,61,0.18)' : 'rgba(155,103,72,0.12)';
       globe.lineWidth = 0.6;
       globe.stroke();
     }
@@ -126,8 +136,8 @@ export function mountAtmosphere() {
     for (const point of points) {
       const depth = (point.depth + 180) / 360;
       globe.fillStyle = point.warm
-        ? `rgba(205,189,251,${0.25 + depth * 0.62})`
-        : `rgba(163,198,255,${0.2 + depth * 0.68})`;
+        ? `rgba(151,105,47,${0.22 + depth * 0.52})`
+        : `rgba(160,90,62,${0.2 + depth * 0.52})`;
       globe.beginPath();
       globe.arc(
         point.x,
