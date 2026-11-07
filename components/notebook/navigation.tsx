@@ -7,7 +7,9 @@ export function Navigation() {
     <nav aria-label="栏目导航" className="site-nav">
       {navigation.map(({ title, href }) => {
         const active =
-          pathname === href.slice(0, -1) || pathname.startsWith(href);
+          pathname === href.slice(0, -1) ||
+          pathname.startsWith(href) ||
+          (pathname === '/' && href === '/notes/');
         return (
           <a
             key={href}

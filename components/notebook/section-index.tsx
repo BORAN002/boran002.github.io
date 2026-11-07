@@ -21,9 +21,6 @@ export function SectionIndex({ section }: { section: Section }) {
         </p>
         <h1>{sections[section].title}</h1>
         <p>{sections[section].description}</p>
-        <a className="text-link" href="/">
-          ← 全部内容
-        </a>
       </aside>
       <div className="index-main">
         {section === 'papers' && (

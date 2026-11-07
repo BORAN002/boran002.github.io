@@ -2,6 +2,9 @@ import assert from 'node:assert/strict';
 import { readFile, access, readdir } from 'node:fs/promises';
 const read = (path) => readFile(path, 'utf8');
 const entries = JSON.parse(await read('content/generated.json'));
+const root = await read('docs/index.html');
+assert.match(root, /<h1[^>]*>Note<\/h1>/, 'The root must open Note directly');
+assert.match(root, /href="\/notes\/"[^>]*aria-current="page"/);
 assert.ok(
   entries.some(
     ({ section, slug }) =>
@@ -90,6 +93,15 @@ async function htmlFiles(path) {
 }
 for (const file of await htmlFiles('docs')) {
   const html = await read(file);
+  assert.ok(
+    !html.includes('Fieldnotes'),
+    'Obsolete landing-page branding in ' + file,
+  );
+  assert.equal(
+    html.includes('<canvas data-orbit'),
+    file === 'docs/notes/agent-loop/index.html',
+    'Agent Loop visual escaped its note: ' + file,
+  );
   for (const [toc] of html.matchAll(
     /<nav[^>]*class="toc-links"[^>]*>[\s\S]*?<\/nav>/g,
   )) {
@@ -101,6 +113,14 @@ for (const file of await htmlFiles('docs')) {
     }
   }
   if (html.includes('class="site-header"')) {
+    const header = html.match(
+      /<header class="site-header">[\s\S]*?<\/header>/,
+    )?.[0];
+    assert.deepEqual(
+      [...header.matchAll(/<a[^>]*href="([^"]+)"/g)].map((match) => match[1]),
+      ['/notes/', '/blog/', '/papers/', '/about/'],
+      'Top navigation must contain only the four sections: ' + file,
+    );
     const navigation = html.match(
       /<nav[^>]*class="site-nav"[^>]*>[\s\S]*?<\/nav>/,
     )?.[0];

@@ -14,11 +14,11 @@ const esc = (value) =>
   );
 
 export function siteHeader(active = 'papers') {
-  return `<header class="site-header"><a class="site-home" href="/" aria-label="首页"><img src="/favicon.svg" width="32" height="32" alt=""><span>Fieldnotes<span class="brand-dot">.</span></span></a><nav class="site-nav" aria-label="栏目导航">${navigation.map(([path, title]) => `<a href="/${path}/" data-key="[${title[0]}]"${path === active ? ' aria-current="page"' : ''}>${title}</a>`).join('')}</nav><div class="header-actions"><button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false" aria-label="开启背景动效" disabled><span class="motion-icon" aria-hidden="true">✳</span><span data-motion-label>静态</span></button><a class="source-link" href="https://github.com/BORAN002/boran002.github.io">GitHub ↗</a></div></header>`;
+  return `<header class="site-header"><nav class="site-nav" aria-label="栏目导航">${navigation.map(([path, title]) => `<a href="/${path}/" data-key="[${title[0]}]"${path === active ? ' aria-current="page"' : ''}>${title}</a>`).join('')}</nav></header>`;
 }
 
 export function siteFooter() {
-  return `<footer class="site-footer"><div><a class="footer-title" href="/">Note, Blog &amp; Paper</a><p>AI · Agent · Insight · Method</p></div><nav aria-label="页脚导航">${navigation.map(([path, title]) => `<a href="/${path}/">${title}</a>`).join('')}<a href="https://github.com/BORAN002/boran002.github.io">GitHub ↗</a></nav></footer>`;
+  return `<footer class="site-footer"><div><p class="footer-title">学习 · 实践 · 阅读</p><p>Insight &amp; Method</p></div><nav aria-label="页脚导航">${navigation.map(([path, title]) => `<a href="/${path}/">${title}</a>`).join('')}</nav><div class="footer-tools"><button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false" aria-label="开启背景动效" disabled><span class="motion-icon" aria-hidden="true">✳</span><span data-motion-label>静态</span></button><a href="https://github.com/BORAN002/boran002.github.io">GitHub ↗</a></div></footer>`;
 }
 
 export function readingContents(items) {

@@ -1,5 +1,6 @@
 import { formatDate, sections, type Entry } from '@/lib/content';
 import { Contents } from './contents';
+import { AgentLoopScene } from './agent-loop-scene';
 
 export function Article({ entry }: { entry: Entry }) {
   return (
@@ -30,6 +31,9 @@ export function Article({ entry }: { entry: Entry }) {
       <div className="reading-layout">
         <Contents items={entry.toc} />
         <article className="article-body">
+          {entry.section === 'notes' && entry.slug === 'agent-loop' && (
+            <AgentLoopScene />
+          )}
           <div
             className="prose"
             dangerouslySetInnerHTML={{ __html: entry.html }}

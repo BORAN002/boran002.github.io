@@ -11,8 +11,8 @@ export default function About() {
     <main id="main" tabIndex={-1} className="article-page">
       <header className="article-head">
         <div className="article-context">
-          <a className="back-link" href="/">
-            ← Home
+          <a className="back-link" href="/notes/">
+            ← Note
           </a>
         </div>
         <div className="article-heading">

@@ -30,10 +30,12 @@ export function mountAtmosphere() {
   let pointer = { x: -1000, y: -1000 };
   let tilt = { x: 0, y: 0 };
   let pulse = null;
-  const stars = Array.from({ length: 48 }, (_, i) => ({
-    x: ((i * 137.508) % 997) / 997,
-    y: ((i * 91.731) % 977) / 977,
-    r: i % 5 === 0 ? 1.5 : 0.8,
+  const noise = (n) =>
+    (((Math.sin(n * 127.1 + 311.7) * 43758.5453) % 1) + 1) % 1;
+  const stars = Array.from({ length: 170 }, (_, i) => ({
+    x: noise(i + 1),
+    y: noise(i + 301),
+    r: i % 23 === 0 ? 1.45 : 0.55 + noise(i + 601) * 0.5,
   }));
 
   function sizeCanvas(canvas, context) {
@@ -62,12 +64,14 @@ export function mountAtmosphere() {
       const y = star.y * height + Math.cos(phase * 0.12 + i) * 8;
       const distance = Math.hypot(x - pointer.x, y - pointer.y);
       const proximity = enabled ? Math.max(0, 1 - distance / 190) : 0;
-      field.fillStyle = `rgba(144,219,193,${0.14 + proximity * 0.55})`;
+      const shimmer =
+        0.22 + (Math.sin(phase * (0.45 + star.r * 0.2) + i) + 1) * 0.16;
+      field.fillStyle = `rgba(211,222,255,${shimmer + proximity * 0.35})`;
       field.beginPath();
       field.arc(x, y, star.r + proximity, 0, Math.PI * 2);
       field.fill();
       if (proximity > 0) {
-        field.strokeStyle = `rgba(144,219,193,${proximity * 0.2})`;
+        field.strokeStyle = `rgba(160,184,255,${proximity * 0.2})`;
         field.beginPath();
         field.moveTo(x, y);
         field.lineTo(pointer.x, pointer.y);
@@ -77,7 +81,7 @@ export function mountAtmosphere() {
     if (pulse) {
       const age = phase - pulse.start;
       if (age < 1.4) {
-        field.strokeStyle = `rgba(184,232,200,${(1 - age / 1.4) * 0.35})`;
+        field.strokeStyle = `rgba(183,199,255,${(1 - age / 1.4) * 0.35})`;
         field.beginPath();
         field.arc(pulse.x, pulse.y, age * 110, 0, Math.PI * 2);
         field.stroke();
@@ -90,7 +94,7 @@ export function mountAtmosphere() {
     const scale = Math.min(orbitWidth, orbitHeight) / 440;
     const centerX = orbitWidth / 2;
     const centerY = orbitHeight / 2;
-    const yaw = phase * 0.045 + tilt.x * 0.22;
+    const yaw = Math.sin(phase * 0.15) * 0.38 + tilt.x * 0.22;
     const pitch = 0.48 + tilt.y * 0.2;
     const points = [];
     for (let ring = 0; ring < 9; ring++) {
@@ -114,7 +118,7 @@ export function mountAtmosphere() {
           points.push({ x: px, y: py, depth, warm: ring === 3 || ring === 4 });
       }
       globe.strokeStyle =
-        ring === 4 ? 'rgba(221,185,125,0.15)' : 'rgba(134,219,186,0.1)';
+        ring === 4 ? 'rgba(194,174,242,0.15)' : 'rgba(153,184,242,0.1)';
       globe.lineWidth = 0.6;
       globe.stroke();
     }
@@ -122,8 +126,8 @@ export function mountAtmosphere() {
     for (const point of points) {
       const depth = (point.depth + 180) / 360;
       globe.fillStyle = point.warm
-        ? `rgba(226,194,138,${0.25 + depth * 0.62})`
-        : `rgba(141,231,193,${0.2 + depth * 0.68})`;
+        ? `rgba(205,189,251,${0.25 + depth * 0.62})`
+        : `rgba(163,198,255,${0.2 + depth * 0.68})`;
       globe.beginPath();
       globe.arc(
         point.x,

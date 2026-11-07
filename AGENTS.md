@@ -1,6 +1,6 @@
 # Site maintenance
 
-This repository publishes https://boran002.github.io/. Preserve the static site, clear headings, and comfortable reading spacing. The current visual direction is deep ink / forest surfaces, mint accents, and restrained warm gold details. Use atmospheric interactive backgrounds on discovery pages and quiet, high-contrast reading surfaces. Do not add a personal name or biography without supplied content.
+This repository publishes https://boran002.github.io/. Preserve the static site, clear headings, and comfortable reading spacing. The current visual direction is a midnight-blue star field with cool blue and lavender accents, plus quiet, high-contrast reading surfaces. The site covers multiple topics; do not frame the whole site as Agent content. Do not add a personal name or biography without supplied content.
 
 ## Classify before writing
 
@@ -11,13 +11,13 @@ This repository publishes https://boran002.github.io/. Preserve the static site,
 | Paper   | A specific paper, a reading collection, or a survey grounded in original publications       | `content/papers/*.md` or the collection's source JSON |
 | About   | Site scope and reading guidance                                                             | `content/about.md`                                    |
 
-Labels are singular; existing `/notes/` and `/papers/` URLs stay stable. About is a standalone page, not a dated post. Do not duplicate an article across categories: classify by its main purpose and use links elsewhere. Blog may be empty; do not invent posts to fill it.
+Labels are singular; existing `/notes/` and `/papers/` URLs stay stable. The root renders Note directly with Note active and `/notes/` as its canonical URL. The top navigation contains only Note / Blog / Paper / About, with no separate branded landing page. About is a standalone page, not a dated post. Do not duplicate an article across categories: classify by its main purpose and use links elsewhere. Blog may be empty; do not invent posts to fill it.
 
 ## Write and update
 
 - Search existing entries first. Extend a topic note in place when appropriate.
 - `npm run new -- note|blog|paper slug "Title"` creates a draft with the matching template and refuses to overwrite files. Replace template prompts with actual content; adapt the section order to the material.
-- Frontmatter uses quoted `title`, `date`, optional `updated`, a concise `description`, and boolean `draft`. Set `draft: false` only for content intended to go live. Keep the original `date`; change `updated` for substantive content edits, not a site-wide navigation change. The homepage sorts by `updated`.
+- Frontmatter uses quoted `title`, `date`, optional `updated`, a concise `description`, and boolean `draft`. Set `draft: false` only for content intended to go live. Keep the original `date`; change `updated` for substantive content edits, not a site-wide navigation change. Section indexes sort by `updated`.
 - Preserve the Agent note's title, hidden dates, and Basic / Insight structure under each topic. Key technical terms stay in English. Explain mechanisms with concrete examples before discussing implications. Prefer useful Insight and executable Method over unexplained terminology.
 - Cite primary sources next to factual claims. Distinguish published results, interpretation, and actual experiments. Never call a summary a reproduction or invent validation evidence.
 - The renderer supplies H1 from frontmatter; start the body at `##`. This is a static export: native anchors are intentional, so the Next.js client-Link-only lint rule is disabled. Use Markdown links and images. Assets go under `public/` with root-relative URLs. Math uses `$...$` and `$$...$$`.
@@ -28,7 +28,7 @@ Labels are singular; existing `/notes/` and `/papers/` URLs stay stable. About i
 - Keep IDs stable, update counts when adding/removing records, and preserve evidence fields. `full_text` means cited source pages were actually read, not that experiments were reproduced.
 - `content/generated.json`, `content/about.generated.json`, generated files under `public/papers/`, and `docs/` are outputs. Edit sources and regenerate.
 - React navigation is defined in `lib/site.ts`; standalone paper pages share `scripts/site-shell.mjs`. All surfaces expose Note / Blog / Paper / About. Export validation covers them.
-- `app/globals.css` owns shared layout styles, copied to `public/styles/site.css` during generation. The homepage has an interactive hero above an introduction / searchable notebook layout. Reading pages use a sticky Contents rail on desktop and a collapsible Contents block on mobile. Keep their alignment and responsive behavior consistent across React and generated paper pages.
+- `app/globals.css` owns shared layout styles, copied to `public/styles/site.css` during generation. Section indexes display the introduction and a searchable content list. The Agent Loop visual belongs only inside the Agent note, via `components/notebook/agent-loop-scene.tsx`. Reading pages use a sticky Contents rail on desktop and a collapsible Contents block on mobile. Keep their alignment and responsive behavior consistent across React and generated paper pages.
 - `public/scripts/atmosphere.js` owns optional canvas effects and the shared motion control. Honor reduced motion, use a static default on touch devices, pause work in hidden tabs, and keep all content usable without JavaScript. Maintain keyboard focus and sufficient text contrast.
 
 ## Check and publish
