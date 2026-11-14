@@ -424,6 +424,87 @@ body:has(.article-page) .ambient-scene canvas {
   font-size: 14px;
 }
 
+.daily-feature .eyebrow {
+  margin: 0;
+  color: var(--accent);
+}
+.daily-feature h2 a {
+  color: var(--text);
+}
+.daily-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+.daily-links a,
+.daily-action,
+.daily-archive a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.daily-topics {
+  min-width: 0;
+}
+.daily-topics details {
+  background: var(--surface);
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.daily-topics summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.daily-topics h3 {
+  font-size: 16px;
+  margin: 22px 0 6px;
+}
+.daily-topics p {
+  margin: 6px 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+.daily-archive {
+  align-self: start;
+}
+.daily-archive h2 {
+  margin-top: 0;
+}
+.daily-archive ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.daily-archive li {
+  border-top: 1px solid var(--line);
+  padding: 12px 0;
+}
+.daily-issue section:first-child h2 {
+  margin-top: 0;
+}
+.daily-issue .daily-paper h3 {
+  margin-top: 22px;
+  margin-bottom: 6px;
+}
+.daily-paper + .daily-paper {
+  border-top: 1px solid var(--line);
+  margin-top: 26px;
+}
+.daily-issue .daily-match,
+.daily-issue .daily-ref {
+  color: var(--muted);
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+.daily-issue .daily-match {
+  margin-top: 0;
+}
+.daily-paper h3 a {
+  color: var(--text);
+}
+
 /* Long-form reading: 18px text, generous leading, and a stable page surface. */
 .article-page {
   padding-top: 48px;

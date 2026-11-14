@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-13",
+  "source": "https://rss.arxiv.org/rss/cs.CV+cs.MM+cs.CL+cs.IR+cs.AI+cs.HC+cs.RO",
+  "papers": [
+    {
+      "id": "2611.15107",
+      "version": 1,
+      "title": "From Seeing to Remembering: Brain-Informed Agentic Text-to-Video Generation for Enhancing Memorability",
+      "topic": "creation",
+      "matched": [
+        "video generation",
+        "text-to-video generation"
+      ],
+      "excerpt": "In this paper, we propose MemCrafter, brain-informed approach that enhances video memorability through iteratively agentic prompt refinement.",
+      "note": "MemCrafter 根据预测的脑区响应估计生成视频的可记忆性，再用这个信号迭代修改 Prompt。作者评估的是预测可记忆性，以及修改后视频与原始语义的吻合程度。"
+    },
+    {
+      "id": "2611.15168",
+      "version": 1,
+      "title": "MAST: Medoid-Anchored Subspace Steering for Visual Grounding in Multimodal LLMs",
+      "topic": "vlm",
+      "matched": [
+        "multimodal large language model",
+        "MLLM",
+        "multimodal LLM"
+      ],
+      "excerpt": "To address this, we propose MAST (Medoid-Anchored Subspace Steering), a training-free, input-adaptive activation steering framework.",
+      "note": "MAST 针对 Multimodal LLM 的 Visual Grounding，在推理时根据当前输入调整中间激活，不需要重新训练模型。"
+    },
+    {
+      "id": "2611.15161",
+      "version": 1,
+      "title": "CineMME: From Dialogue Grounding to Narrative Reasoning in Multimodal Video Understanding",
+      "topic": "understanding",
+      "matched": [
+        "video understanding",
+        "video question answering"
+      ],
+      "excerpt": "We introduce CineMME, a human-verified benchmark designed to diagnose dialogue-grounded plot understanding, supported by approximately $1,600$ expert person-hours of annotation.",
+      "note": "CineMME 用同一批短视频检验两件事：模型能否定位哪位角色在何时说了什么，以及能否用这段对白解释剧情。作者观察到，正确转录台词的模型仍可能认错说话者。"
+    },
+    {
+      "id": "2611.16402",
+      "version": 1,
+      "title": "Teach with Blinks: Breaking Linguistic Momentum in On-Policy Distillation for Fine-Grained Multimodal Perception",
+      "topic": "perception",
+      "matched": [
+        "visual perception",
+        "multimodal perception"
+      ],
+      "excerpt": "To address this, we propose Blink On-Policy Distillation (BlinkOPD), in which the teacher \"blinks\" at every token: it reads the same prefix once with…",
+      "note": "BlinkOPD 让 teacher 在每个 token 位置读取同一段前文两次，一次看图、一次遮住视觉输入。两次预测的差异为细粒度感知提供训练信号。"
+    },
+    {
+      "id": "2611.15325",
+      "version": 1,
+      "title": "CaseScope: A Multi-Field Benchmark for Case-Level Pathology Diagnosis with Multimodal LLMs",
+      "topic": "vlm",
+      "matched": [
+        "multimodal large language model",
+        "MLLM",
+        "multimodal LLM"
+      ],
+      "excerpt": "We introduce CaseScope, a benchmark of diagnosis from several curated fields of one lesion: CaseScope-Teaching, 436 cases from a residency-training image library, reconstructed, de-identified…",
+      "note": "CaseScope 把同一病变的多张视野图组成一例，测试 Multimodal LLM 能否跨图整合证据。作者通过打乱诊断选项和增减图像，检查答案对选项顺序及额外视觉证据的依赖。"
+    }
+  ]
+}

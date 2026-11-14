@@ -5,7 +5,14 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  schedule:
+    - cron: '27 6 * * *' # 14:27 Asia/Singapore
   workflow_dispatch:
+    inputs:
+      collect_papers:
+        description: Fetch the latest arXiv announcement before publishing
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -15,15 +22,41 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  collect:
+    if: github.event_name == 'schedule' || (github.ref == 'refs/heads/main' && inputs.collect_papers == true)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      sha: ${{ steps.archive.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Collect daily papers
+        run: python3 scripts/collect-daily-papers.py
+      - name: Save issue to the archive
+        id: archive
+        run: |
+          git add content/daily-papers/
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Archive the latest arXiv paper digest'
+            git push origin HEAD:main
+          fi
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
   build:
+    needs: collect
+    if: ${{ !cancelled() && (needs.collect.result == 'skipped' || needs.collect.result == 'success') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: ${{ needs.collect.outputs.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: npm
       - run: npm ci
+      - run: python3 -m unittest discover -s tests -p 'test_daily_papers.py'
       - run: npm run check
       - name: Upload checked site
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
@@ -32,7 +65,7 @@ jobs:
           path: docs
 
   deploy:
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    if: ${{ !cancelled() && needs.build.result == 'success' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
     needs: build
     runs-on: ubuntu-latest
     permissions:

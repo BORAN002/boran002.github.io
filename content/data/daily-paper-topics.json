@@ -1,0 +1,173 @@
+{
+  "categories": [
+    "cs.CV",
+    "cs.MM",
+    "cs.CL",
+    "cs.IR",
+    "cs.AI",
+    "cs.HC",
+    "cs.RO"
+  ],
+  "visualContext": [
+    "multimodal",
+    "multi-modal",
+    "cross-modal",
+    "vision-language",
+    "VLM",
+    "MLLM",
+    "image-text",
+    "text-image",
+    "video-text",
+    "audio-visual",
+    "vision",
+    "visual",
+    "image",
+    "video"
+  ],
+  "topics": [
+    {
+      "id": "vlm",
+      "label": "VLM",
+      "terms": [
+        "vision-language model",
+        "vision language foundation model",
+        "large vision-language model",
+        "large multimodal model",
+        "multimodal large language model",
+        "VLM",
+        "LVLM",
+        "MLLM",
+        "vision-and-language model",
+        "vision language pretraining",
+        "multimodal LLM"
+      ],
+      "contextual": []
+    },
+    {
+      "id": "understanding",
+      "label": "多模态内容理解 / 检索 / 排序",
+      "terms": [
+        "multimodal understanding",
+        "video understanding",
+        "document understanding",
+        "visual question answering",
+        "video question answering",
+        "cross-modal retrieval",
+        "multimodal retrieval",
+        "image-text retrieval",
+        "text-to-image retrieval",
+        "text-to-video retrieval",
+        "video retrieval",
+        "multimodal embedding",
+        "multimodal reranking",
+        "cross-modal ranking",
+        "multimodal RAG",
+        "image retrieval",
+        "image reranking",
+        "video reranking",
+        "audio-visual retrieval",
+        "multimedia retrieval",
+        "video captioning",
+        "multimodal ranking",
+        "image-text matching",
+        "multimodal re-ranking"
+      ],
+      "contextual": [
+        "reranking",
+        "re-ranking",
+        "learning to rank",
+        "late interaction"
+      ]
+    },
+    {
+      "id": "perception",
+      "label": "视觉感知与反馈",
+      "terms": [
+        "visual perception",
+        "multimodal perception",
+        "visual grounding",
+        "spatial grounding",
+        "temporal grounding",
+        "spatial reasoning",
+        "visual feedback",
+        "visual reward",
+        "visual verification",
+        "visual critic",
+        "visual self-correction",
+        "closed-loop perception",
+        "object grounding",
+        "referring expression comprehension",
+        "visual reward model"
+      ],
+      "contextual": [
+        "perceptual feedback",
+        "closed-loop feedback"
+      ]
+    },
+    {
+      "id": "creation",
+      "label": "多模态剪辑 / 编辑 / 创作",
+      "terms": [
+        "video editing",
+        "image editing",
+        "instruction-guided editing",
+        "text-guided image editing",
+        "text-guided video editing",
+        "video montage",
+        "automatic video editing",
+        "video composition",
+        "video generation",
+        "image generation",
+        "audio-driven video",
+        "multimodal generation",
+        "interleaved generation",
+        "storyboard generation",
+        "subject-driven generation",
+        "text-to-image generation",
+        "text-to-video generation",
+        "video summarization",
+        "image-to-video synthesis"
+      ],
+      "contextual": [
+        "instruction-based editing",
+        "creative workflow",
+        "shot selection"
+      ]
+    },
+    {
+      "id": "harness",
+      "label": "多模态 Harness",
+      "terms": [
+        "multimodal harness",
+        "VLM harness",
+        "multimodal agent framework",
+        "multimodal agent scaffold",
+        "visual tool use",
+        "multimodal tool use",
+        "multimodal agent evaluation",
+        "vision-language agent evaluation",
+        "multimodal evaluation toolkit",
+        "VLM evaluation framework",
+        "multimodal evaluation framework",
+        "multimodal agent testbed",
+        "vision-language agent benchmark",
+        "multimodal agent benchmark"
+      ],
+      "contextual": [
+        "agent harness",
+        "evaluation harness",
+        "execution harness",
+        "agent scaffold",
+        "tool orchestration",
+        "tool-augmented agent",
+        "agent runtime",
+        "agent evaluation environment",
+        "tool-use evaluation",
+        "test harness",
+        "a harness for",
+        "evaluation toolkit",
+        "agent benchmarking environment"
+      ]
+    }
+  ]
+}

@@ -1,4 +1,12 @@
-import { cp, mkdir, rm, access, readFile, writeFile } from 'node:fs/promises';
+import {
+  cp,
+  mkdir,
+  rm,
+  access,
+  readFile,
+  writeFile,
+  readdir,
+} from 'node:fs/promises';
 const sourceCatalog = JSON.parse(
   await readFile('content/data/agent-tool-use-2026.json', 'utf8'),
 );
@@ -13,11 +21,19 @@ if (
   );
 }
 const entries = JSON.parse(await readFile('content/generated.json', 'utf8'));
+const dailyDir = 'content/daily-papers';
+const dailyDates = (await readdir(dailyDir))
+  .filter((name) => /^\d{4}-\d{2}-\d{2}\.json$/.test(name))
+  .map((name) => name.slice(0, -5))
+  .sort()
+  .reverse();
 const paths = [
   '/',
   '/notes/',
   '/blog/',
   '/papers/',
+  '/papers/daily/',
+  ...dailyDates.map((date) => '/papers/daily/' + date + '/'),
   '/about/',
   ...entries.map((entry) => entry.url),
 ];
@@ -71,6 +87,27 @@ await writeFile(
       )
       .join('\n') +
     '\n</urlset>\n',
+);
+const dailyBase = 'https://boran002.github.io/papers/daily/';
+const feedItems = [];
+for (const day of dailyDates.slice(0, 30)) {
+  const { papers } = JSON.parse(
+    await readFile(dailyDir + '/' + day + '.json', 'utf8'),
+  );
+  const titles = papers
+    .map((paper) => paper.title)
+    .join(' · ')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;');
+  const link = dailyBase + day + '/';
+  feedItems.push(
+    `<item><title>${day} 论文推送</title><link>${link}</link><guid>${link}</guid><pubDate>${new Date(day + 'T00:00:00Z').toUTCString()}</pubDate><description>${titles}</description></item>`,
+  );
+}
+await writeFile(
+  'docs/papers/daily/feed.xml',
+  `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>每日 arXiv 论文推送</title><link>${dailyBase}</link><description>多模态论文，按 arXiv 公告日期归档。</description><language>zh-CN</language>${feedItems.join('\n')}</channel></rss>\n`,
 );
 await writeFile('docs/.nojekyll', '');
 console.log(

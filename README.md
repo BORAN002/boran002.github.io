@@ -55,3 +55,9 @@ npm run check
 发布构建会阻止缺少 Method 或正文依据的条目。本地查看编辑中的版本可用 `PAPER_NOTES_PREVIEW=1 npm run build:pages`；预览模式不能用于发布。
 
 主站保留 `/notes/agent-tool-use-2026/`、`/agent-tool-use-2026/` 与旧 JSON 路径的兼容，跳转保留 query 和 hash，不依赖旧仓库。
+
+## 每日 arXiv 论文推送
+
+Paper 栏的日报按 arXiv 公告日期归档在 `/papers/daily/`，RSS 位于 `/papers/daily/feed.xml`。在 `content/data/daily-paper-topics.json` 维护分类和英文短语。标题命中优先，普通匹配使用标题与 Abstract，contextual 词需要视觉或多模态语境。每期最多五篇，优先覆盖不同方向。自动条目引用 Abstract 节选，条目的可选 `note` 字段可保存人工整理的中文阅读提示。
+
+GitHub Actions 每天 06:27 UTC（新加坡 14:27）读取官方 RSS，录入 new / cross 公告，以 arXiv ID 去重。重复日期或无匹配时保留此前归档。最新数据保存在 `content/daily-papers/YYYY-MM-DD.json`，同一条 workflow 随后从已保存的 commit 构建、检查并部署。也可从 Actions 手动运行 **Check and publish site** 并勾选 **collect_papers**。本地采集用 `python3 scripts/collect-daily-papers.py`，重放保存的 RSS 用 `--feed-file FILE`。
